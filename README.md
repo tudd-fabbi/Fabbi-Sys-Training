@@ -54,10 +54,15 @@ Create pull request to develop branch
 ### install Docker on your PC
 docker-compose build
 docker-compose up -d
-docker-compose exec web composer install
+
+### conenct to front-end vue
+docker-compose exec app sh
+
+### conenct to laravel vue
+docker-compose exec api sh
+
+### create file env
 cp .env.example .env
-docker-compose exec web php artisan key:generate
-docker-compose exec web php artisan config:clear
 ```
 
 ### Build Vue.js
