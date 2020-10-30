@@ -83,8 +83,8 @@ $ mysql -u root -h 127.0.0.1 -P 3333
 
 #### Apply migration
 ```
-(SQL)Drop Database ojt_d2_01;
-(SQL)Create Database ojt_d2_01;
+(SQL)Drop Database db;
+(SQL)Create Database db;
 docker-compose exec web php artisan migrate;
 docker-compose exec web php artisan db:seed;
 ```
