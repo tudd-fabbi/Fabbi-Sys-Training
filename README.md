@@ -76,7 +76,7 @@ npm run dev
 ```
 Host: 127.0.0.1:3333
 Username: root
-Password: root
+Password: 123456
 
 $ mysql -u root -h 127.0.0.1 -P 3333
 ```
