@@ -7,36 +7,37 @@ Vue.use(Router)
 export default new Router({
     linkExactActiveClass: 'active',
     mode: 'history',
-    routes: [
-        {
+    routes: [{
             path: '/',
             redirect: 'dashboard',
             component: DashboardLayout,
-            children: [
-                {
+            meta: {
+                requiresAuth: true
+            },
+            children: [{
                     path: '/dashboard',
                     name: 'dashboard',
-                    component: () => import(/* webpackChunkName: "demo" */ '@/views/Dashboard.vue')
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Dashboard.vue')
                 },
                 {
                     path: '/icons',
                     name: 'icons',
-                    component: () => import(/* webpackChunkName: "demo" */ '@/views/Icons.vue')
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Icons.vue')
                 },
                 {
                     path: '/profile',
                     name: 'profile',
-                    component: () => import(/* webpackChunkName: "demo" */ '@/views/UserProfile.vue')
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/UserProfile.vue')
                 },
                 {
                     path: '/maps',
                     name: 'maps',
-                    component: () => import(/* webpackChunkName: "demo" */ '@/views/Maps.vue')
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Maps.vue')
                 },
                 {
                     path: '/tables',
                     name: 'tables',
-                    component: () => import(/* webpackChunkName: "demo" */ '@/views/Tables.vue')
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Tables.vue')
                 }
             ]
         },
@@ -44,16 +45,18 @@ export default new Router({
             path: '/',
             redirect: 'login',
             component: AuthLayout,
-            children: [
-                {
+            meta: {
+                requiresVisitor: true
+            },
+            children: [{
                     path: '/login',
                     name: 'login',
-                    component: () => import(/* webpackChunkName: "demo" */ '@/views/Login.vue')
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Login.vue')
                 },
                 {
                     path: '/register',
                     name: 'register',
-                    component: () => import(/* webpackChunkName: "demo" */ '@/views/Register.vue')
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Register.vue')
                 }
             ]
         }
