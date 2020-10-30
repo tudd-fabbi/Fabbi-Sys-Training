@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoursesTable extends Migration
+class CreateUserTaskTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('user_task', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->boolean('is_active');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('task_id');
+            $table->string('status');
+            $table->string('report');
+            $table->string('comment');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('user_task');
     }
 }
