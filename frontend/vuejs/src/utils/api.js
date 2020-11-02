@@ -1,7 +1,10 @@
 import axios from 'axios';
-import AuthToken from '@/utils/token';
+import AuthToken from './token';
 
-const SERVER_BASE_URL = process.env.BASE_URL;
+// const SERVER_BASE_URL = process.env.BASE_URL;
+
+const SERVER_BASE_URL = "http://localhost:2222";
+
 const http = axios.create({
   headers: {
     'Content-Type': 'application/json'

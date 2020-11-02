@@ -193,11 +193,9 @@
     methods: {
          async testStore() {
             await this.$store.dispatch('test/TEST_ACTION')
-                .then(res => {
-                    console.log(res);
+                .then(() => {
                 })
-                .catch(err => {
-                    console.log(err);
+                .catch(() => {
                 });
         },
         //actions done
