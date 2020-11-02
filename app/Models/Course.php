@@ -10,7 +10,7 @@ class Course extends Model
         return $this->belongsTo(Category::class);
     }
     function courseImage(){
-        return $this->hasOne(Image::class, 'id', 'imgable_id');
+        return $this->hasOne(Image::class, 'imgable_id');
     }
 
     function userCourse(){
