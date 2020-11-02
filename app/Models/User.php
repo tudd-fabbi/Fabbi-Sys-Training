@@ -38,6 +38,22 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
+    function roleUser(){
+        return $this->hasMany(Role::class);
+    }
+    function imageUser(){
+        $this->hasOne(Image::class, 'id', 'imgable_id');
+    }
+    function subjectUser(){
+        $this->belongsToMany(Subject::class, 'user_subject', 'user_id', 'subject_id');
+    }
+    function courseUser(){
+        $this->belongsToMany(Course::class, 'user_course', 'user_id', 'course_id');
+    }
+    function taskUser(){
+        $this->belongsToMany(Task::class, 'user_task', 'user_id', 'task_id');
+
+
     // Rest omitted for brevity
 
     /**
@@ -58,5 +74,6 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+
     }
 }
