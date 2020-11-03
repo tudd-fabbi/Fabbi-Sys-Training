@@ -39,10 +39,10 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     function roleUser(){
-        return $this->hasMany(Role::class);
+        return $this->hasMany(Role::class, 'user_id');
     }
     function imageUser(){
-        $this->hasOne(Image::class, 'id', 'imgable_id');
+        $this->hasOne(Image::class, 'imgable_id');
     }
     function subjectUser(){
         $this->belongsToMany(Subject::class, 'user_subject', 'user_id', 'subject_id');
@@ -54,6 +54,7 @@ class User extends Authenticatable implements JWTSubject
     {
         $this->belongsToMany(Task::class, 'user_task', 'user_id', 'task_id');
     }
+
 
     // Rest omitted for brevity
 
