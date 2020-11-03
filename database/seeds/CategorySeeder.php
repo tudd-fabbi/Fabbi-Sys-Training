@@ -11,13 +11,13 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
             # code...
             DB::table('categories')->insert(
                 [
                     'name'=>Str::random(10),
-                    'parent_id'=>random_int(1,10),
-                    
+                    'parent_id'=>rand(1,10),
+
                 ]
             );
         }
