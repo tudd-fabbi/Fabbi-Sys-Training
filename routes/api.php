@@ -26,3 +26,7 @@ Route::group([
 });
 
 Route::resource('/test', 'Api\HomeController');
+Route::resource('/allsubjects', 'apiSubjectController')->only(['index','show']);
+Route::delete('/deleteSubject/{id}', 'apiSubjectController@destroy')->name('destroy');
+Route::get('/searchSubject/{nameSubject}','apiSubjectController@search')->name('search');
+

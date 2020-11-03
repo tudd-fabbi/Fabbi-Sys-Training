@@ -22,5 +22,14 @@ class UserSeeder extends Seeder
                 ]
             );
         }
+
+        DB::table('users')->insert(
+            [
+                'name'=>'Nguyen Huy Nam',
+                'email'=>'nam@gmail.com',
+                'address'=>'Quan Hoang Mai',
+                'password'=>Hash::make('123456'),
+            ]
+        );
     }
 }
