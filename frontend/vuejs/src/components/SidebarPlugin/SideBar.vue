@@ -60,6 +60,10 @@
                 </ul>
             </slot>
             <slot></slot>
+
+            <router-link to="/list-task">
+                <p>all tasks</p>
+            </router-link>
             <div v-show="$sidebar.showSidebar" class="navbar-collapse collapse show" id="sidenav-collapse-main">
 
                 <div class="navbar-collapse-header d-md-none">

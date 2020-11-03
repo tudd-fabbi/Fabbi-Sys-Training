@@ -23,6 +23,11 @@ Route::group([
     Route::post('logout', 'Auth\AuthController@logout');
     Route::post('refresh', 'Auth\AuthController@refresh');
     Route::post('me', 'Auth\AuthController@me');
+
+    //tasks
+    Route::get('list-task', 'Api\TaskController@index');
+    Route::get('delete-task/{id}', 'Api\TaskController@destroy');
+    Route::get('search/{key}', 'Api\TaskController@search');
 });
 
 Route::resource('/test', 'Api\HomeController');

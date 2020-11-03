@@ -38,6 +38,11 @@ export default new Router({
                     path: '/tables',
                     name: 'tables',
                     component: () => import( /* webpackChunkName: "demo" */ '@/views/Tables.vue')
+                },
+                {
+                    path: '/list-task',
+                    name: 'task',
+                    component: () => import('@/views/Tasks/Tasks.vue')
                 }
             ]
         },
