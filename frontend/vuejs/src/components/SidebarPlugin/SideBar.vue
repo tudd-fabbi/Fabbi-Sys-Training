@@ -9,7 +9,9 @@
             <router-link class="navbar-brand" to="/">
                 <img :src="logo" class="navbar-brand-img" alt="...">
             </router-link>
-
+            <router-link to="/list-task">
+                List Task
+            </router-link>
             <slot name="mobile-right">
                 <ul class="nav align-items-center d-md-none">
                     <base-dropdown class="nav-item" position="right">
