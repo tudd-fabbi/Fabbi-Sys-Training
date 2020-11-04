@@ -12,3 +12,5 @@ npm-debug.log
 yarn-error.log
 .idea
 frontend/nuxtjs
+database/seeds/TaskSeeder.php
+database/migrations/2020_10_30_111926_create_tasks_table.php
