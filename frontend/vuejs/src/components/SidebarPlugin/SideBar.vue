@@ -9,9 +9,9 @@
             <router-link class="navbar-brand" to="/">
                 <img :src="logo" class="navbar-brand-img" alt="...">
             </router-link>
-            <router-link to="/list-task">
-                List Task
-            </router-link>
+            <a v-bind:href="'/list-task'">
+                {{ $t("nav_bar.list_task") }}
+            </a>
             <slot name="mobile-right">
                 <ul class="nav align-items-center d-md-none">
                     <base-dropdown class="nav-item" position="right">
@@ -112,11 +112,10 @@
 </template>
 <script>
   import NavbarToggleButton from '@/components/NavbarToggleButton'
-
   export default {
     name: 'sidebar',
     components: {
-      NavbarToggleButton
+      NavbarToggleButton,
     },
     props: {
       logo: {

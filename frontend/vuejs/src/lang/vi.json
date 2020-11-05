@@ -3,5 +3,8 @@
         "label": {
             "sign_in": "Đăng Nhập"
         }
+    },
+    "nav_bar": {
+        "list_task": "Danh sách bài tập"
     }
 }

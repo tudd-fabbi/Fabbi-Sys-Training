@@ -41,7 +41,7 @@ export default new Router({
                 },
                 {
                     path: '/list-task',
-                    name: 'listTasl',
+                    name: 'listTask',
                     component: () => import('@/views/Tasks/ListTask.vue')
                 }
             ]

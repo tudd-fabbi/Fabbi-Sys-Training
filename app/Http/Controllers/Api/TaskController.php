@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Task;
+use App\Repositories\Task\TaskRepository;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -13,15 +14,26 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $taskRepository;
+
+    public function __construct(TaskRepository $taskRepository)
+    {
+        $this->taskRepository = $taskRepository;
+    }
+
     public function index()
     {
-        return response()->json(Task::paginate(5));
+        //$tasks = $this->taskRepository->getAllTask();
+
+        $tasks = $this->taskRepository->getTasks();
+
+        return response()->json($tasks);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -32,7 +44,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -43,8 +55,8 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -55,7 +67,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -69,7 +81,8 @@ class TaskController extends Controller
         return response()->json('Xóa thành công');
     }
 
-    public function search($key) {
+    public function search($key)
+    {
         return response()->json(Task::where('name', 'like', '%' . $key . '%')->paginate(2));
     }
 }

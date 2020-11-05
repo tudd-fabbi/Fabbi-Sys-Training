@@ -3,5 +3,8 @@
         "label": {
             "sign_in": "Sign In"
         }
+    },
+    "nav_bar": {
+        "list_task": "List task"
     }
 }
