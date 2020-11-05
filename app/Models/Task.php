@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    protected $primaryKey = 'id';
+    protected $table = 'tasks';
+
+    protected $guarded = [
+
+    ];
+
     function userTask(){
         return $this->belongsToMany(User::class, 'user_task','task_id','user_id');
     }

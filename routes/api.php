@@ -31,3 +31,4 @@ Route::group([
 });
 
 Route::resource('/test', 'Api\HomeController');
+Route::resource('/task', 'Api\TaskController');

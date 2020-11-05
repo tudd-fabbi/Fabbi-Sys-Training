@@ -96,7 +96,7 @@ export default {
           this.$router.push({ name: "dashboard" });
         })
         .catch((error) => {
-          this.$toast.error(error.error, "Error", 
+          this.$toast.error(error.error, "Error",
           {
             position: "topCenter",
             color: "red"
