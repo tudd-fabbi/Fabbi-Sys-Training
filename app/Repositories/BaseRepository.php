@@ -6,10 +6,8 @@ use App\Repositories\RepositoryInterface;
 
 abstract class BaseRepository implements RepositoryInterface
 {
-    //model muốn tương tác
     protected $model;
 
-    //khởi tạo
     public function __construct()
     {
         $this->setModel();
