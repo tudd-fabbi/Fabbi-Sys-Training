@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Task;
-use App\Repositories\Task\TaskRepository;
+use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -16,16 +16,15 @@ class TaskController extends Controller
      */
     private $taskRepository;
 
-    public function __construct(TaskRepository $taskRepository)
+    public function __construct(TaskRepositoryInterface $taskRepository)
     {
         $this->taskRepository = $taskRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        //$tasks = $this->taskRepository->getAllTask();
 
-        $tasks = $this->taskRepository->getTasks();
+        $tasks = $this->taskRepository->getTasks($request);
 
         return response()->json($tasks);
     }
@@ -72,17 +71,16 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        $task = Task::find($id);
+        $res = $this->taskRepository->delete($id);
 
-        if (!$task) {
+        if (!$res) {
             return response()->json('task không tồn tại');
         }
-        $task->delete();
         return response()->json('Xóa thành công');
     }
 
     public function search($key)
     {
-        return response()->json(Task::where('name', 'like', '%' . $key . '%')->paginate(2));
+        return response()->json($this->taskRepository->search($key));
     }
 }

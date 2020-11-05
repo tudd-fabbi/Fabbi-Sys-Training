@@ -42,7 +42,13 @@ export default new Router({
                 {
                     path: '/list-task',
                     name: 'listTask',
-                    component: () => import('@/views/Tasks/ListTask.vue')
+                    component: () => import('@/views/Tasks/ListTask.vue'),
+                },
+                {
+                    path: '/update-task/:id',
+                    name: 'updateTask',
+                    component: () => import('@/views/Tasks/UpdateTask.vue'),
+                    props: true,
                 }
             ]
         },
@@ -64,6 +70,6 @@ export default new Router({
                     component: () => import( /* webpackChunkName: "demo" */ '@/views/Register.vue')
                 }
             ]
-        }
+        },
     ]
 })
