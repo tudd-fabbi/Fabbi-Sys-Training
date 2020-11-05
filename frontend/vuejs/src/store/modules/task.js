@@ -14,11 +14,11 @@ export const mutations = {
     }
 }
 export const actions = {
-    getTasks({commit}, page) {
+    getTasks({commit}, params) {
         return new Promise((resolve, reject) => {
             apiCaller.getRequest(
                 '/api/auth/list-task',
-                page,
+                params,
                 response => {
                     commit('setTasks', response.data);
                     // console.log(response.data)
@@ -45,19 +45,19 @@ export const actions = {
             )
         });
     },
-    search({commit}, key) {
+    update({commit}, id) {
         return new Promise((resolve, reject) => {
-            apiCaller.getRequest(
-                '/api/auth/search/' + key,
-                '',
-                response => {
-                    commit('setTasks', response.data);
-                    resolve(response.data);
-                },
-                err => {
-                    reject(err.response.data);
-                }
-            )
-        })
+           apiCaller.getRequest(
+               '/api/auth/update-task/'+id,
+               '',
+               response => {
+                   commit('setTasks', response.data);
+                   resolve(response.data);
+               },
+               err => {
+                   reject(err.response.data);
+               }
+           )
+        });
     }
 }
