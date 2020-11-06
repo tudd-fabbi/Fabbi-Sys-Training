@@ -63,61 +63,42 @@
             </div>
         </base-header>
         <div class="content">
-            <h3 v-if="is_update">Cập nhật task</h3>
-            <h3 v-else>Thêm mới task</h3>
-            <form action="" @submit.prevent="onUpdateCreateTask()">
-                <div class="form-group">
-                    <label for="">Tên task</label>
-                    <input type="text" v-model="task.name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="">Mô tả</label>
-                    <input type="text" v-model="task.content" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="">Đề bài</label>
-                    <textarea type="text" rows="10" v-model="task.description" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="">Hạn</label>
-                    <input type="date" v-model="task.deadline" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" v-model="task.is_active">
-                    <p v-if="task.is_active">Hiện</p>
-                    <p v-else>Ẩn</p>
-                </div>
-                <button class="btn btn-primary" v-if="is_update">Cập nhật</button>
-                <button class="btn btn-primary" v-else>Thêm mới</button>
-            </form>
+            <h3>Chi tiết bài tập</h3>
+            <div class="form-group">
+                <label for="">Tên task: </label> {{ task.name }}
+            </div>
+            <div class="form-group">
+                <label for="">Mô tả: </label> {{ task.description }}
+            </div>
+            <div class="form-group">
+                <label for="">Đề bài: </label><textarea class="form-control" rows="10">{{ task.content }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Hạn</label> {{ task.deadline }}
+            </div>
+            <div class="form-group">
+                <label for="">Trạng thái: </label>
+                <span v-if="task.is_active == 1"> Hiện</span>
+                <span v-else> Ẩn</span>
+            </div>
+            <router-link class="btn btn-primary" to="/list-task"><i class="fas fa-undo-alt"> Quay về</i></router-link>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "UpdateTask",
+    name: "DetailTask",
     data() {
         return {
-            task: {
-                name: "",
-                content: "",
-                description: "",
-                deadline: "",
-                is_active: true,
-                subject_id: Math.floor(Math.random() * 10),
-            },
-            is_update: 0,
+            task: [],
         }
     },
     props: [
         'id'
     ],
     created() {
-        if (this.id) {
-            this.getTask();
-            this.is_update = 1;
-        }
+        this.getTask();
     },
     methods: {
         getTask() {
@@ -126,49 +107,15 @@ export default {
                     this.task = response;
                 })
         },
-        open(action) {
-            this.$notify({
-                group: 'foo',
-                title: action,
-                position: 'center top',
-            });
-        },
-        onUpdateCreateTask() {
-            if (this.id) {
-                this.$store.dispatch("task/update", this.task)
-                    .then(response => {
-                        this.$router.push('/list-task');
-                        this.open(response.data);
-                    })
-            } else {
-                this.$store.dispatch('task/create', this.task)
-                    .then(response => {
-                        this.open(response.data);
-                        this.$router.push('/list-task');
-                    })
-            }
-        },
     }
-
 }
 </script>
 
 <style scoped>
-.main-content {
-    padding: 50px
-}
-
 .content {
     width: 1000px;
-    margin: auto;
-}
-
-.content h3 {
-    text-align: center;
-}
-
-.content button {
-    margin: auto;
-    display: block;
+    margin: 10px auto;
+    padding: 50px;
+    box-shadow: 0 0 4px #665252;
 }
 </style>

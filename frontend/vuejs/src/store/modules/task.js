@@ -21,7 +21,6 @@ export const actions = {
                 params,
                 response => {
                     commit('setTasks', response.data);
-                    // console.log(response.data)
                     resolve(response.data);
                 },
                 err => {
