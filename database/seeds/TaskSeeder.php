@@ -18,7 +18,7 @@ class TaskSeeder extends Seeder
                     'name'=>Str::random(10),
                     'description'=>Str::random(10),
                     'content'=>Str::random(10),
-                    'deadline' => rand(45,60),
+                    'deadline' => \Carbon\Carbon::now()->subMinutes(rand(1, 55)),
                     'is_active'=>(bool)rand(0,1),
                 ]
             );

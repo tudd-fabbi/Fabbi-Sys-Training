@@ -9,9 +9,12 @@
             <router-link class="navbar-brand" to="/">
                 <img :src="logo" class="navbar-brand-img" alt="...">
             </router-link>
-            <a v-bind:href="'/list-task'">
+            <router-link to="/list-task">
                 {{ $t("nav_bar.list_task") }}
-            </a>
+            </router-link>
+            <router-link to="/create-task">
+                {{ $t("nav_bar.create_task")}}
+            </router-link>
             <slot name="mobile-right">
                 <ul class="nav align-items-center d-md-none">
                     <base-dropdown class="nav-item" position="right">

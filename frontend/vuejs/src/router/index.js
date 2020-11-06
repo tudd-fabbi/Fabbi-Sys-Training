@@ -49,6 +49,11 @@ export default new Router({
                     name: 'updateTask',
                     component: () => import('@/views/Tasks/UpdateTask.vue'),
                     props: true,
+                },
+                {
+                    path: '/create-task',
+                    name: 'createTask',
+                    component: () => import('@/views/Tasks/CreateTask.vue'),
                 }
             ]
         },

@@ -9,8 +9,8 @@ class Task extends Model
     protected $primaryKey = 'id';
     protected $table = 'tasks';
 
-    protected $guarded = [
-
+    protected $fillable = [
+        'name', 'content', 'description', 'deadline', 'is_active'
     ];
 
     function userTask(){
