@@ -10,11 +10,18 @@ import authToken from './utils/token'
 import VueIziToast from 'vue-izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import i18n from './utils/i18n';
+import Multiselect from 'vue-multiselect';
+import SlidingPagination from 'vue-sliding-pagination';
+
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
 Vue.use(ArgonDashboard);
 Vue.use(VueIziToast);
+Vue.use(Multiselect);
+Vue.use(SlidingPagination);
+
+
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresVisitor)) {

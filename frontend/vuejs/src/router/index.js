@@ -43,6 +43,23 @@ export default new Router({
                     path: '/allSubjects',
                     name: 'Subjects',
                     component: () => import( /* webpackChunkName: "demo" */ '@/views/Subjects/Subjects.vue')
+                },
+                {
+                    path: '/addSubjects',
+                    name: 'AddSubjects',
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Subjects/addSubject.vue')
+                },
+                {
+                    path: '/editSubjects/:id',
+                    name: 'EditSubjects',
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Subjects/editSubject.vue'),
+                    props:true,
+                },
+                {
+                    path: '/detailSubjects/:id',
+                    name: 'DetailSubjects',
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Subjects/detailSubject.vue'),
+                    props:true,
                 }
             ]
         },

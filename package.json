@@ -20,6 +20,9 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "vue": "^2.6.12"
+        "select2": "^4.0.13",
+        "select2-bootstrap-theme": "0.1.0-beta.10",
+        "vue": "^2.6.12",
+        "vue-multiselect": "^2.1.6"
     }
 }

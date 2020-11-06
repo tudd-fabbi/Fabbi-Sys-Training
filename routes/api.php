@@ -26,7 +26,18 @@ Route::group([
 });
 
 Route::resource('/test', 'Api\HomeController');
-Route::resource('/allsubjects', 'apiSubjectController')->only(['index','show']);
+Route::resource('getData', 'apiSubjectController');
 Route::delete('/deleteSubject/{id}', 'apiSubjectController@destroy')->name('destroy');
 Route::get('/searchSubject/{nameSubject}','apiSubjectController@search')->name('search');
+Route::get('/allcourses', 'apiSubjectController@allCourse')->name('allCourse');
+Route::post('/subjects','apiSubjectController@store')->name('store');
+Route::get('/subject/list','Api\SubjectController@index');
+Route::delete('delete/subject/{id}','Api\SubjectController@destroy');
+Route::get('/subject/add','Api\SubjectController@store');
 
+Route::get('/getsubjectbyid/{id}','Api\SubjectController@getSubjectById');
+Route::get('/countTask/{id}','Api\SubjectController@countTaskById');
+Route::get('/countCourse/{id}','Api\SubjectController@countCourseById');
+Route::get('/countUser/{id}','Api\SubjectController@countUserById');
+Route::get('/updateSubject','Api\SubjectController@update');
+Route::get('/listCourse/{id}','Api\SubjectController@listCourse');

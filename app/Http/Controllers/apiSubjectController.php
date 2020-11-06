@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Subject;
+use App\Models\Course;
 
 class apiSubjectController extends Controller
 {
@@ -17,6 +18,11 @@ class apiSubjectController extends Controller
         //
         $subjects = Subject::orderBy("id","ASC")->paginate(8);
         return response()->json($subjects);
+    } 
+
+    public function allCourse()
+    {
+        return Course::all();
     }
 
     /**
@@ -28,7 +34,16 @@ class apiSubjectController extends Controller
     public function store(Request $request)
     {
         //
-        return Subject::create($request->all());
+        dd($request->all());
+        $subject = new Subject;
+        $subject->name = $request->name;
+        $subject->description = $request->description;
+        $subject->is_active = true;
+        $subject->save();
+        
+        return response()->json($subject);
+        //return request();
+
     }
 
     /**
@@ -66,15 +81,10 @@ class apiSubjectController extends Controller
         
     }
 
-    public function search($name)
+    public function search($nameSubject)
     {
-
-        // if(EXISTS(Subject::where('name',$name))){
-        //     return Subject::where('name',$name)->get();
-        // }
-        // else{
-            // alert('Khong tim duoc mon hoc?');
-        //}
-        return Subject::where('name','like','%'.$name.'%')->get();
+        //dd($request->all());
+        $subject = Subject::where('name','like','%'.$nameSubject.'%')->get();
+        return response()->json($subject);
     }
 }

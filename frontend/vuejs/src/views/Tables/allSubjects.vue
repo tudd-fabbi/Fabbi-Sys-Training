@@ -11,7 +11,7 @@
         </div>
         
         <div class="col text-right"  >
-            <input v-model="message" placeholder="Name Subject"  name='key' id = "nameSubject">
+            <input  placeholder="Name Subject" v-model="name" name='key' id = "nameSubject">
           <base-button type="primary" size="sm" v-on:click="searchSubject()">Search</base-button>
         </div>
       </div>
@@ -97,30 +97,26 @@
       <td v-if="item.is_active == 0">An</td>
       <td v-else> Hien</td>
       <button id="delete" type="button" class="btn btn-primary" v-on:click="deleteSubject(item.id)">DELETE</button>
-      <button id="show" type="button" class="btn btn-secondary">SHOW</button>
-      <button id="update" type="button" class="btn btn-success">UPDATE</button>
+      <router-link class="btn btn-success" v-bind:to="'/detailSubjects/' + item.id" >SHOW</router-link>
+      <!-- <button id="update" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" >UPDATE</button> 
+      -->
+      <router-link class="btn btn-success" v-bind:to="'/editSubjects/' + item.id" >update</router-link>
     </tr>
   </tbody>
 </table>
 </div>
 
-    <!-- <div class="card-footer d-flex justify-content-end"
-         :class="type === 'dark' ? 'bg-transparent': ''">
-      <base-pagination total="30"></base-pagination>
-    </div> -->
-    <div class="pagination">
-        <button id="prevPage" type="button" class="btn btn-default" v-on:click="fecthPagination(pagination.prev_page_url)" :disabled="!pagination.prev_page_url">Prev Page</button>
-        <span id="currentPage">Page {{pagination.current_page}} of {{pagination.last_page}}  </span>
-        <button id="nextPage"  type="button" class="btn btn-default" v-on:click="fecthPagination(pagination.next_page_url)" :disabled="!pagination.next_page_url">Next Page</button>
-    </div>
+
+    <base-pagination style="float: right;" total="50"></base-pagination>
+   
 
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+
+//import axios from 'axios'
   export default {
+  
     name: 'projects-table',
     props: {
       type: {
@@ -130,9 +126,11 @@ import VueAxios from 'vue-axios'
     },
     data() {
       return {
+         
         tableData:null,
-        url:'/api/allsubjects',
-        pagination: [],
+        
+        pagination: null,
+        name:'',
         
             
            
@@ -140,16 +138,18 @@ import VueAxios from 'vue-axios'
     },
     created(){
         this.getData();
-        this.searchSubject();
+       // this.searchSubject();
     },
     methods: {
         getData(){
-            let $this = this
-            axios.get(this.url).then(response => {
-           this.tableData = response.data.data;
-           $this.makePagination(response.data)
+            this.$store.dispatch('subject/getData',{})
+            //axios.get(this.url)
+            .then(response => {
+           this.tableData = response.data;
+           
        })
         },
+  
         makePagination(data){
             let pagination = {
                 current_page: data.current_page,
@@ -162,25 +162,28 @@ import VueAxios from 'vue-axios'
 
         fecthPagination(url){
             this.url = url;
-            this.getData()
+            this.getData();
         },
         deleteSubject(id){
             if( confirm('Ban co muon xoa Mon hoc nay khong?')){
-                axios.delete('/api/deleteSubject/'+id).then(
+              this.$store.dispatch('subject/deleteData',id)
+                //axios.delete('/api/deleteSubject/'+id)
+                .then(
                 ()=>{this.getData()}
             )
             } 
         },
         searchSubject(){
-            var input= document.getElementById('nameSubject');
-            var nameSubject = input.value.trim();
-            let $this = this
-            axios.get('/api/searchSubject/'+ nameSubject).then(response => {
+           this.$store.dispatch('subject/getData',{params: {
+             name: this.name
+           }})
+            //axios.get(this.url)
+            .then(response => {
            this.tableData = response.data;
-           $this.makePagination(response.data);
        })
             
-        }
+        },
+
 
 
        
