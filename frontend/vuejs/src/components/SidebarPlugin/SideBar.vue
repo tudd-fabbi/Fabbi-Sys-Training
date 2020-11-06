@@ -12,9 +12,6 @@
             <router-link to="/list-task">
                 {{ $t("nav_bar.list_task") }}
             </router-link>
-            <router-link to="/create-task">
-                {{ $t("nav_bar.create_task")}}
-            </router-link>
             <slot name="mobile-right">
                 <ul class="nav align-items-center d-md-none">
                     <base-dropdown class="nav-item" position="right">
