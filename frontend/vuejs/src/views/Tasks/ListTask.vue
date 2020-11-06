@@ -79,7 +79,6 @@ export default {
             this.$store.dispatch("task/getTasks", {params: this.paginate})
                 .then(response => {
                     this.tasks = response.data;
-                    // console.log(response);
                     this.paginate.page = response.current_page;
                     this.paginate.perPage = response.per_page;
                     this.paginate.total = response.total;
@@ -101,9 +100,6 @@ export default {
                 .catch(() => {
                 })
         },
-        onUpdateTask(id) {
-
-        }
     }
 }
 </script>

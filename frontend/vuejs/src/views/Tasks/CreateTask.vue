@@ -63,30 +63,30 @@
             </div>
         </base-header>
         <div class="content">
-            <h3>Update task</h3>
-            <form action="" @submit.prevent="onUpdateTask()">
+            <h3>Create task</h3>
+            <form action="" @submit.prevent="onCreateTask">
                 <div class="form-group">
                     <label for="">Tên task</label>
-                    <input type="text" v-model="task.name" class="form-control">
+                    <input type="text" v-model="name" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="">Mô tả</label>
-                    <input type="text" v-model="task.content" class="form-control">
+                    <input type="text" v-model="content" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="">Đề bài</label>
-                    <textarea type="text" rows="10" v-model="task.description" class="form-control"></textarea>
+                    <textarea type="text" rows="10" v-model="description" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Hạn</label>
-                    <input type="date" v-model="task.deadline" class="form-control">
+                    <input type="date" v-model="deadline" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" v-model="task.is_active">
-                    <p v-if="task.is_active">Hiện</p>
+                    <input type="checkbox" v-model="is_active">
+                    <p v-if="is_active">Hiện</p>
                     <p v-else>Ẩn</p>
                 </div>
-                <button class="btn btn-primary">Cập nhật</button>
+                <button class="btn btn-primary">Thêm mới</button>
             </form>
         </div>
     </div>
@@ -94,23 +94,30 @@
 
 <script>
 export default {
-    name: "UpdateTask",
+    name: "CreateTask",
     data() {
         return {
-            task: [],
+            name: "",
+            content: "",
+            description: "",
+            deadline: "",
+            is_active: true,
         }
     },
-    props: [
-        'id'
-    ],
-    created() {
-        this.getTask()
-    },
     methods: {
-        getTask() {
-            this.$store.dispatch("task/getTaskById", this.id)
+        onCreateTask() {
+            let task = {
+                name: this.name,
+                content: this.content,
+                description: this.description,
+                deadline: this.deadline,
+                is_active: this.is_active,
+                subject_id: Math.floor(Math.random() * 10)  // Lấy id subject sau khi a c xong subject
+            };
+            this.$store.dispatch('task/create', task)
                 .then(response => {
-                    this.task = response;
+                    this.open(response.data);
+                    this.$router.push('/list-task');
                 })
         },
         open(action) {
@@ -120,15 +127,7 @@ export default {
                 position: 'center top',
             });
         },
-        onUpdateTask() {
-            this.$store.dispatch("task/update", this.task)
-                .then(response => {
-                    this.$router.push('/list-task');
-                    this.open(response.data);
-                })
-        },
     }
-
 }
 </script>
 

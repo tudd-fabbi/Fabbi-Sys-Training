@@ -28,7 +28,12 @@ Route::group([
     Route::get('list-task', 'Api\TaskController@index');
     Route::get('delete-task/{id}', 'Api\TaskController@destroy');
     Route::get('search/{key}', 'Api\TaskController@search');
+    Route::get('task/{id}', 'Api\TaskController@show');
+    Route::post('update-task/{id}', 'Api\TaskController@update');
+    Route::post('create-task', 'Api\TaskController@store');
 });
 
 Route::resource('/test', 'Api\HomeController');
 Route::resource('/task', 'Api\TaskController');
+
+

@@ -8,7 +8,6 @@ use App\Repositories\Task\TaskRepositoryInterface;
 
 class TaskRepository extends BaseRepository implements TaskRepositoryInterface
 {
-
     public function getModel()
     {
         return Task::class;
@@ -24,14 +23,9 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
         return $this->model->paginate(5);
     }
 
-    public function delete($id)
+    public function createTask($request)
     {
-        $task = $this->model->find($id);
-        return $task->delete();
-    }
-
-    public function search($key)
-    {
-        return $this->model->where('name', 'like', "%$key%")->paginate(1);
+        $task = $this->model->create($request->all());
+        return $task->subjectTask()->sync([$request->subject_id => ['status' => 1]]);
     }
 }

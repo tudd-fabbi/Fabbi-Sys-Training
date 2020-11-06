@@ -5,6 +5,7 @@
         }
     },
     "nav_bar": {
-        "list_task": "Danh sách bài tập"
+        "list_task": "Danh sách bài tập",
+        "create_task": "Thêm mới bài tập"
     }
 }

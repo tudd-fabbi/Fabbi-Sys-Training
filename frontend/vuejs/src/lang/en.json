@@ -5,6 +5,7 @@
         }
     },
     "nav_bar": {
-        "list_task": "List task"
+        "list_task": "List task",
+        "create_task": "create_task"
     }
 }

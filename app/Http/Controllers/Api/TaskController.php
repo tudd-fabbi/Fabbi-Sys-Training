@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Task;
+use App\Repositories\Task\TaskRepository;
 use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -23,10 +24,7 @@ class TaskController extends Controller
 
     public function index(Request $request)
     {
-
-        $tasks = $this->taskRepository->getTasks($request);
-
-        return response()->json($tasks);
+        return response()->json($this->taskRepository->getTasks($request));
     }
 
     /**
@@ -37,7 +35,10 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($this->taskRepository->createTask($request)) {
+            return  response()->json('Thêm mới thành công');
+        }
+        return response()->json('Thêm mới thất bại');
     }
 
     /**
@@ -48,7 +49,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json($this->taskRepository->find($id));
     }
 
     /**
@@ -58,9 +59,12 @@ class TaskController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
-        //
+        if ($this->taskRepository->update($id, $request->all())) {
+            return response()->json('Cập nhật thành công');
+        }
+        return response()->json('Cập nhật thất bại');
     }
 
     /**
@@ -83,4 +87,6 @@ class TaskController extends Controller
     {
         return response()->json($this->taskRepository->search($key));
     }
+
+
 }
