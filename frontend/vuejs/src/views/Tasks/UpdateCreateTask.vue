@@ -63,30 +63,32 @@
             </div>
         </base-header>
         <div class="content">
-            <h3>Create task</h3>
-            <form action="" @submit.prevent="onCreateTask">
+            <h3 v-if="is_update">Cập nhật task</h3>
+            <h3 v-else>Thêm mới task</h3>
+            <form action="" @submit.prevent="onUpdateCreateTask()">
                 <div class="form-group">
                     <label for="">Tên task</label>
-                    <input type="text" v-model="name" class="form-control">
+                    <input type="text" v-model="task.name" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="">Mô tả</label>
-                    <input type="text" v-model="content" class="form-control">
+                    <input type="text" v-model="task.content" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="">Đề bài</label>
-                    <textarea type="text" rows="10" v-model="description" class="form-control"></textarea>
+                    <textarea type="text" rows="10" v-model="task.description" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Hạn</label>
-                    <input type="date" v-model="deadline" class="form-control">
+                    <input type="date" v-model="task.deadline" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" v-model="is_active">
-                    <p v-if="is_active">Hiện</p>
+                    <input type="checkbox" v-model="task.is_active">
+                    <p v-if="task.is_active">Hiện</p>
                     <p v-else>Ẩn</p>
                 </div>
-                <button class="btn btn-primary">Thêm mới</button>
+                <button class="btn btn-primary" v-if="is_update">Cập nhật</button>
+                <button class="btn btn-primary" v-else>Thêm mới</button>
             </form>
         </div>
     </div>
@@ -94,30 +96,34 @@
 
 <script>
 export default {
-    name: "CreateTask",
+    name: "UpdateTask",
     data() {
         return {
-            name: "",
-            content: "",
-            description: "",
-            deadline: "",
-            is_active: true,
+            task: {
+                name: "",
+                content: "",
+                description: "",
+                deadline: "",
+                is_active: true,
+                subject_id: Math.floor(Math.random() * 10),
+            },
+            is_update: 0,
+        }
+    },
+    props: [
+        'id'
+    ],
+    created() {
+        if (this.id) {
+            this.getTask();
+            this.is_update = 1;
         }
     },
     methods: {
-        onCreateTask() {
-            let task = {
-                name: this.name,
-                content: this.content,
-                description: this.description,
-                deadline: this.deadline,
-                is_active: this.is_active,
-                subject_id: Math.floor(Math.random() * 10)  // Lấy id subject sau khi a c xong subject
-            };
-            this.$store.dispatch('task/create', task)
+        getTask() {
+            this.$store.dispatch("task/getTaskById", this.id)
                 .then(response => {
-                    this.open(response.data);
-                    this.$router.push('/list-task');
+                    this.task = response;
                 })
         },
         open(action) {
@@ -127,16 +133,33 @@ export default {
                 position: 'center top',
             });
         },
+        onUpdateCreateTask() {
+            if (this.id) {
+                this.$store.dispatch("task/update", this.task)
+                    .then(response => {
+                        this.$router.push('/list-task');
+                        this.open(response.data);
+                    })
+            }else{
+                this.$store.dispatch('task/create', this.task)
+                    .then(response => {
+                        this.open(response.data);
+                        this.$router.push('/list-task');
+                    })
+            }
+        },
     }
+
 }
 </script>
 
 <style scoped>
+.main-content {
+    padding:50px
+}
 .content {
     width: 1000px;
     margin: auto;
-    padding: 50px;
-
 }
 
 .content h3 {
