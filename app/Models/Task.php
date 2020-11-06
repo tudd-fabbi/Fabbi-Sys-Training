@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    function userTask(){
-        return $this->belongsToMany(User::class, 'user_task','task_id','user_id');
+    public function users(){
+        return $this->belongsToMany('App\Models\User', 'user_task','task_id','user_id');
     }
-    function subjectTask(){
-        return $this->belongsToMany(Subject::class, 'subject_task','task_id','subject_id');
+
+    public function subjects(){
+        return $this->belongsToMany('App\Models\Subject', 'subject_task','task_id','subject_id');
     }
+
 }

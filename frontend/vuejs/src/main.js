@@ -10,11 +10,15 @@ import authToken from './utils/token'
 import VueIziToast from 'vue-izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import i18n from './utils/i18n';
+import * as BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
 Vue.use(ArgonDashboard);
 Vue.use(VueIziToast);
+Vue.use(BootstrapVue);
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresVisitor)) {

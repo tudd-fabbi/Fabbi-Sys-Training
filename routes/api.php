@@ -25,4 +25,5 @@ Route::group([
     Route::post('me', 'Auth\AuthController@me');
 });
 
+Route::get('user/list','Api\UserController@index');
 Route::resource('/test', 'Api\HomeController');

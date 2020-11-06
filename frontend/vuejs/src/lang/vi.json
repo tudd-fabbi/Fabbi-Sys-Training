@@ -1,7 +1,19 @@
 {
-    "login_screen": {
-        "label": {
-            "sign_in": "Đăng Nhập"
-        }
+  "login_screen": {
+    "label": {
+      "sign_in": "Đăng Nhập"
     }
+  },
+  "listUsers": {
+    "listUsers": "Danh sách người dùng",
+    "search": "Tìm kiếm",
+    "no": "Stt",
+    "name": "Tên",
+    "phoneNumber": "Số điện thoại",
+    "gmail": "Email",
+    "action": "Xử lí",
+    "delete": "Xóa",
+    "show": "Hiển thị",
+    "update": "Cập nhật"
+  }
 }
