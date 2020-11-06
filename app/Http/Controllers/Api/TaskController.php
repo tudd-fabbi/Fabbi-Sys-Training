@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Task;
-use App\Repositories\Task\TaskRepository;
 use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -24,7 +22,7 @@ class TaskController extends Controller
 
     public function index(Request $request)
     {
-        return response()->json($this->taskRepository->getTasks($request));
+        return response($this->taskRepository->getTasks($request));
     }
 
     /**
@@ -36,9 +34,9 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         if ($this->taskRepository->createTask($request)) {
-            return  response()->json('Thêm mới thành công');
+            return response('Thêm mới thành công');
         }
-        return response()->json('Thêm mới thất bại');
+        return response('Thêm mới thất bại');
     }
 
     /**
@@ -49,7 +47,7 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        return response()->json($this->taskRepository->find($id));
+        return response($this->taskRepository->find($id));
     }
 
     /**
@@ -62,9 +60,9 @@ class TaskController extends Controller
     public function update($id, Request $request)
     {
         if ($this->taskRepository->update($id, $request->all())) {
-            return response()->json('Cập nhật thành công');
+            return response('Cập nhật thành công');
         }
-        return response()->json('Cập nhật thất bại');
+        return response('Cập nhật thất bại');
     }
 
     /**
@@ -78,15 +76,8 @@ class TaskController extends Controller
         $res = $this->taskRepository->delete($id);
 
         if (!$res) {
-            return response()->json('task không tồn tại');
+            return response('task không tồn tại');
         }
-        return response()->json('Xóa thành công');
+        return response('Xóa thành công');
     }
-
-    public function search($key)
-    {
-        return response()->json($this->taskRepository->search($key));
-    }
-
-
 }
