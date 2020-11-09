@@ -80,7 +80,7 @@
          paginate: {
                 page: 1,
                 perPage: 5,
-                total: 0,
+                total: 3,
                 name: ''
             },
         tableData:[
