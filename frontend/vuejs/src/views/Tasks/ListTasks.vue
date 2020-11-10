@@ -110,3 +110,49 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    name: "ListTask",
+    data() {
+        return {
+            perPage: 3,
+            currentPage: 1,
+            field: [
+                {key: 'name', label: 'Tên task', sortable: true, sortDirection: 'desc'},
+                {key: 'content', label: 'Nội dung', sortable: true, sortDirection: 'desc'},
+                {key: 'description', label: 'Đề bài', sortable: true, sortDirection: 'desc'},
+                {key: 'deadline', label: 'deadline', sortable: true, sortDirection: 'desc'},
+                {key: 'is_active', label: 'Trạng thái', sortable: true, sortDirection: 'desc'},
+                {key: 'user_task', label: 'Danh sách nộp bài'},
+                {key: 'actions', label: 'Actions'}
+            ],
+            items: null
+        }
+    },
+    created() {
+        this.getTask();
+    },
+    methods: {
+        getTask() {
+            this.$store.dispatch('task/getTasks')
+                .then(res => {
+                    this.items = res.tasks;
+                })
+        }
+    },
+    computed: {
+        rows() {
+            return this.items.length
+        }
+    },
+}
+</script>
+
+<style scoped>
+.content {
+    padding: 50px;
+}
+.custombtn {
+    margin-left: 50px;
+}
+</style>
