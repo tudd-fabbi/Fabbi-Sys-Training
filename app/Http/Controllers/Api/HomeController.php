@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(1);
+        dd(12);
     }
 
     /**
