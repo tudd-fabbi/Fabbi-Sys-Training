@@ -38,6 +38,22 @@ export default new Router({
                     path: '/tables',
                     name: 'tables',
                     component: () => import( /* webpackChunkName: "demo" */ '@/views/Tables.vue')
+                },
+                {
+                    path: '/list-task',
+                    name: 'listTask',
+                    component: () => import('@/views/Tasks/ListTask.vue')
+                },
+                {
+                    path: '/create-task',
+                    name: 'createTask',
+                    component: () => import('@/views/Tasks/CreateUpdateTask.vue')
+                },
+                {
+                    path: '/update-task/:id',
+                    name: 'updateTask',
+                    component: () => import('@/views/Tasks/CreateUpdateTask.vue'),
+                    props: true
                 }
             ]
         },

@@ -5,7 +5,7 @@ export const state = {
             name: 'Fred',
             description: 'Flintstone',
             content: 'asdasdasd',
-            deadline: '12-12-2020',
+            deadline: '2020-12-12',
             is_active: '0'
         },
         {
@@ -13,7 +13,7 @@ export const state = {
             name: 'Fred',
             description: 'Flintstone',
             content: 'asdasdasd',
-            deadline: '12-12-2020',
+            deadline: '2020-12-12',
             is_active: '1'
         },
         {
@@ -21,7 +21,7 @@ export const state = {
             name: 'Fred',
             description: 'Flintstone',
             content: 'asdasdasd',
-            deadline: '12-12-2020',
+            deadline: '2020-12-12',
             is_active: '1'
         },
         {
@@ -29,7 +29,7 @@ export const state = {
             name: 'Fred',
             description: 'Flintstone',
             content: 'asdasdasd',
-            deadline: '12-12-2020',
+            deadline: '2020-12-12',
             is_active: '1'
         },
         {
@@ -37,7 +37,7 @@ export const state = {
             name: 'Fred',
             description: 'Flintstone',
             content: 'asdasdasd',
-            deadline: '12-12-2020',
+            deadline: '2020-12-12',
             is_active: '1'
         },
         {
@@ -45,7 +45,7 @@ export const state = {
             name: 'Fred',
             description: 'Flintstone',
             content: 'asdasdasd',
-            deadline: '12-12-2020',
+            deadline: '2020-12-12',
             is_active: '1'
         },
         {
@@ -53,7 +53,7 @@ export const state = {
             name: 'Fred',
             description: 'Flintstone',
             content: 'asdasdasd',
-            deadline: '12-12-2020',
+            deadline: '2020-12-12',
             is_active: '1'
         },
         {
@@ -61,8 +61,8 @@ export const state = {
             name: 'Fred',
             description: 'Flintstone',
             content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '1'
+            deadline: '2020-12-12',
+            is_active: '0'
         },
     ],
 };
@@ -70,6 +70,9 @@ export const state = {
 export const actions = {
     getTasks({state}) {
         return state
+    },
+    getTaskById({state}, id) {
+        return state.tasks[0];
     }
 }
 
