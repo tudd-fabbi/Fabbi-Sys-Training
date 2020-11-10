@@ -47,24 +47,22 @@
         </div>
         <div>
             <b-table striped hover :items="data" :fields="fields">
-                <template #cell(actions)="row">
-                    <b-button size="sm" variant="primary">
-                        Details
-                    </b-button>
-                    <b-button size="sm" variant="warning">
-                        Edit
-                    </b-button>
-                    <b-button size="sm" variant="danger">
-                        Delete
-                    </b-button>
-                </template>
+
+                    <template slot="actions" slot-scope="row">
+                        <b-button class="btn btn-danger" @click="onDeleteTask(row.item.id)">delete</b-button>
+                        <router-link class="btn btn-success" v-bind:to="'updateCourse/' + row.item.id">update
+                        </router-link>
+                        <router-link class="btn btn-primary" v-bind:to="'detailCourse/' + row.item.id">Detail
+                        </router-link>
+                    </template>
+
             </b-table>
         </div>
 
-        <!--        <div class="card-footer d-flex justify-content-end"-->
-        <!--             :class="type === 'dark' ? 'bg-transparent': ''">-->
-        <!--            <base-pagination total="30"></base-pagination>-->
-        <!--        </div>-->
+<!--                <div class="card-footer d-flex justify-content-end"-->
+<!--                     :class="type === 'dark' ? 'bg-transparent': ''">-->
+<!--                    <base-pagination total="30"></base-pagination>-->
+<!--                </div>-->
 
     </div>
 </template>
@@ -74,7 +72,9 @@ export default {
     data() {
         return {
             fields: ['name', 'description', 'is_active',  'actions'],
-            data: null
+            data: null,
+            type: '',
+            filter: ''
         }
     },
     created() {
