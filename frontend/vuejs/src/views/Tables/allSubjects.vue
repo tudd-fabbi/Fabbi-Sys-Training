@@ -9,7 +9,7 @@
           <h3 class="mb-0" :class="type === 'dark' ? 'text-white' : ''">
             List Subjects
           </h3>
-          <!-- <router-link id="show" class="btn btn-success" v-bind:to="'/addSubjects/'" >ADD</router-link> -->
+          <router-link id="show" class="btn btn-success" v-bind:to="'/addSubjects/'" >ADD NEW SUBJECT</router-link>
         </div>
 
         <div class="col text-right">
