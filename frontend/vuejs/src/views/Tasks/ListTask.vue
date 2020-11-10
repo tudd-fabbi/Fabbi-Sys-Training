@@ -70,7 +70,8 @@
                 <label>Tìm kiếm theo tên</label>
                 <input class="form-control form-control-sm ml-3 w-75" type="text"
                        placeholder="Search"
-                       aria-label="Search">
+                       aria-label="Search"
+                >
                 <button class="btn">Tìm kiếm</button>
             </form>
             <br>
@@ -83,6 +84,10 @@
                     :fields="field"
                     small
                 >
+                    <template slot="is_active" slot-scope="row">
+                        <p v-if="row.item.is_active == 1">Đang hiện</p>
+                        <p v-else>Đang ẩn</p>
+                    </template>
                     <template slot="user_task" slot-scope="row">
                         <router-link class="btn btn-primary custombtn" v-bind:to="'user-task/' + row.item.id">Xem
                         </router-link>
@@ -108,6 +113,8 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
     name: "ListTask",
     data() {
@@ -119,82 +126,29 @@ export default {
                 {key: 'content', label: 'Nội dung', sortable: true, sortDirection: 'desc'},
                 {key: 'description', label: 'Đề bài', sortable: true, sortDirection: 'desc'},
                 {key: 'deadline', label: 'deadline', sortable: true, sortDirection: 'desc'},
-                {key: 'user_task', label: 'Danh sách nộp bài', sortable: true, sortDirection: 'desc'},
+                {key: 'is_active', label: 'Trạng thái', sortable: true, sortDirection: 'desc'},
+                {key: 'user_task', label: 'Danh sách nộp bài'},
                 {key: 'actions', label: 'Actions'}
             ],
-            items: [
-                {
-                    id: 1,
-                    name: 'Fred',
-                    description: 'Flintstone',
-                    content: 'asdasdasd',
-                    deadline: '12-12-2020',
-                    is_active: '1'
-                },
-                {
-                    id: 2,
-                    name: 'Fred',
-                    description: 'Flintstone',
-                    content: 'asdasdasd',
-                    deadline: '12-12-2020',
-                    is_active: '1'
-                },
-                {
-                    id: 3,
-                    name: 'Fred',
-                    description: 'Flintstone',
-                    content: 'asdasdasd',
-                    deadline: '12-12-2020',
-                    is_active: '1'
-                },
-                {
-                    id: 4,
-                    name: 'Fred',
-                    description: 'Flintstone',
-                    content: 'asdasdasd',
-                    deadline: '12-12-2020',
-                    is_active: '1'
-                },
-                {
-                    id: 5,
-                    name: 'Fred',
-                    description: 'Flintstone',
-                    content: 'asdasdasd',
-                    deadline: '12-12-2020',
-                    is_active: '1'
-                },
-                {
-                    id: 6,
-                    name: 'Fred',
-                    description: 'Flintstone',
-                    content: 'asdasdasd',
-                    deadline: '12-12-2020',
-                    is_active: '1'
-                },
-                {
-                    id: 7,
-                    name: 'Fred',
-                    description: 'Flintstone',
-                    content: 'asdasdasd',
-                    deadline: '12-12-2020',
-                    is_active: '1'
-                },
-                {
-                    id: 8,
-                    name: 'Fred',
-                    description: 'Flintstone',
-                    content: 'asdasdasd',
-                    deadline: '12-12-2020',
-                    is_active: '1'
-                },
-            ]
+            items: null
+        }
+    },
+    created() {
+        this.getTask();
+    },
+    methods: {
+        getTask() {
+            this.$store.dispatch('task/getTasks')
+                .then(res => {
+                    this.items = res.tasks;
+                })
         }
     },
     computed: {
         rows() {
             return this.items.length
         }
-    }
+    },
 }
 </script>
 
