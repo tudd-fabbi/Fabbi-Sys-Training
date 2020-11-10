@@ -38,6 +38,11 @@ export default new Router({
                     path: '/tables',
                     name: 'tables',
                     component: () => import( /* webpackChunkName: "demo" */ '@/views/Tables.vue')
+                },
+                {
+                    path: '/course',
+                    name: 'course',
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Course/Course.vue')
                 }
             ]
         },

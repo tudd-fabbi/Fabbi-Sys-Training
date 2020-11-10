@@ -10,7 +10,11 @@ import authToken from './utils/token'
 import VueIziToast from 'vue-izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import i18n from './utils/i18n';
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+Vue.use(BootstrapVue);
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
 Vue.use(ArgonDashboard);
