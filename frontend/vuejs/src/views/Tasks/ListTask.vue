@@ -100,7 +100,6 @@
                         </router-link>
                     </template>
                 </b-table>
-
                 <b-pagination
                     v-model="currentPage"
                     :total-rows="rows"
@@ -113,8 +112,6 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
-
 export default {
     name: "ListTask",
     data() {

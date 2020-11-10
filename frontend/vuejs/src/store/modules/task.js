@@ -69,7 +69,7 @@ export const state = {
 
 export const actions = {
     getTasks({state}) {
-        return state
+        return state;
     }
 }
 
