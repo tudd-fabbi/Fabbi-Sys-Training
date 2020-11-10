@@ -11,6 +11,7 @@ import VueIziToast from 'vue-izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import i18n from './utils/i18n';
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
+import Multiselect from 'vue-multiselect'
 
 
 // Import the styles directly. (Or you could add them via script tags.)
@@ -19,9 +20,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 
 Vue.use(BootstrapVue);
-
-
-
+Vue.use(Multiselect)
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
 Vue.use(ArgonDashboard);

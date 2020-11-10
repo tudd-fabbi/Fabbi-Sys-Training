@@ -7,14 +7,14 @@ export const state = {
           name: "PHP cơ bản",
           description: "Hướng dẫn bạn học PHP cơ bản nhất",
           time: "30",
-          is_active: "1",
+          is_active: "0",
         },
         {
           id : '2',
           name: "PHP nâng cao",
           description: "Hướng dẫn bạn học các kiến thức PHP nâng cao",
           time: "30",
-          is_active: "0",
+          is_active: "1",
         },
         {
           id : '3',
@@ -79,10 +79,53 @@ export const state = {
           is_active: "1",
         },
       ],
+
+      course: [
+          {
+              id: '1',
+              name: 'Khoa hoc PHP',
+              description: 'Hoc PHP tu co ban den nang cao'
+          },
+          {
+            id: '2',
+            name: 'Khoa hoc Vuejs',
+            description: 'Hoc Vuejs tu co ban den nang cao'
+        },
+        {
+            id: '3',
+            name: 'Khoa hoc ReactJS',
+            description: 'Hoc ReactJS tu co ban den nang cao'
+        },
+        {
+            id: '4',
+            name: 'Khoa hoc ReactNative',
+            description: 'Hoc ReactNative tu co ban den nang cao'
+        },
+        {
+            id: '5',
+            name: 'Khoa hoc Lavavel',
+            description: 'Hoc Lavavel tu co ban den nang cao'
+        },
+        {
+            id: '6',
+            name: 'Khoa hoc SQL',
+            description: 'Hoc SQL tu co ban den nang cao'
+        },
+        {
+            id: '7',
+            name: 'Khoa hoc Javascript',
+            description: 'Hoc Javascript tu co ban den nang cao'
+        },
+        {
+            id: '8',
+            name: 'Khoa hoc Java',
+            description: 'Hoc PHP tu co ban den nang cao'
+        },
+
+      ]
 };
 
 export const getters = {
-    listSubject: state => state.test
 };
 
 
@@ -93,6 +136,12 @@ export const mutations = {
 export const actions = {
     getSubject({state}) {
         return state;
+    },
+    getCourse({state}) {
+        return state;
+    },
+    getSubjectById_Test({state},id){
+        return state.test[id-1];
     },
     getData({commit},param) {
         return new Promise((resolve, reject) => {
