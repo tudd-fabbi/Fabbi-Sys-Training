@@ -43,6 +43,11 @@ export default new Router({
                     path: '/course',
                     name: 'course',
                     component: () => import( /* webpackChunkName: "demo" */ '@/views/Course/Course.vue')
+                },
+                {
+                    path: '/list-task',
+                    name: 'listTask',
+                    component: () => import('@/views/Tasks/ListTasks.vue')
                 }
             ]
         },

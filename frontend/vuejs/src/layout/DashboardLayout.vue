@@ -21,6 +21,7 @@
         <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
         <sidebar-item :link="{name: 'Register', icon: 'ni ni-circle-08 text-pink', path: '/register'}"/>
         <sidebar-item :link="{name: 'Course', icon: 'ni ni-circle-08 text-pink', path: '/course'}"/>
+        <sidebar-item :link="{name: 'listTask', icon: 'ni ni-circle-08 text-pink', path: '/list-task'}"/>
 
       </template>
     </side-bar>
