@@ -3,5 +3,20 @@
         "label": {
             "sign_in": "Sign In"
         }
+    },
+    "list_subjects": {
+        "subject": {
+            "name": "Name Subject",
+            "description": "Description",
+            "time": "Time",
+            "is_active": "IsActive",
+            "action": "Action",
+            "search": "Search",
+            "list_subjects": "List Subjects",
+            "add_new_subject": "Add New Subject",
+            "delete": "Delete",
+            "show": "Show",
+            "update": "Update"
+        }
     }
 }

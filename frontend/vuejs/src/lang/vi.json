@@ -3,5 +3,20 @@
         "label": {
             "sign_in": "Đăng Nhập"
         }
+    },
+    "list_subjects": {
+        "subject": {
+            "name": "Tên Môn Học",
+            "description": "Mô Tả",
+            "time": "Thời gian",
+            "is_active": "Tình Trạng",
+            "action": "Hành Động",
+            "search": "Tìm kiếm",
+            "list_subjects": "Danh sách môn học",
+            "add_new_subject": "Thêm mới môn học",
+            "delete": "Xóa",
+            "show": "Chi tiết",
+            "update": "Cập nhật"
+        }
     }
 }

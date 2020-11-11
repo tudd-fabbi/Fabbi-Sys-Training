@@ -48,7 +48,12 @@ export default new Router({
                     path: '/list-task',
                     name: 'listTask',
                     component: () => import('@/views/Tasks/ListTasks.vue')
-                }
+                },
+                {
+                    path: '/listSubjects',
+                    name: 'Subjects',
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Subjects/ListSubjects.vue')
+                },
             ]
         },
         {
