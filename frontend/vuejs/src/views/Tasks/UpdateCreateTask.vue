@@ -19,6 +19,20 @@
                     <textarea type="text" rows="10" v-model="task.description" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
+                    <label class="typo__label">Chọn subject</label>
+                    <multiselect v-model="multi.value"
+                                 tag-placeholder="Add this as new tag"
+                                 placeholder="Search or add a tag"
+                                 label="name"
+                                 track-by="code"
+                                 :options="multi.subjects"
+                                 :multiple="true"
+                                 :taggable="true"
+                                 @tag="addTag"
+                    >
+                    </multiselect>
+                </div>
+                <div class="form-group">
                     <label>{{ $t("task.task_deadline") }}</label>
                     <input type="date" v-model="task.deadline" class="form-control">
                 </div>
@@ -45,6 +59,16 @@ export default {
                 description: "",
                 deadline: "",
                 is_active: true,
+            },
+            multi: {
+                value: [
+                    {name: 'Javascript', code: 'js'}
+                ],
+                subjects: [
+                    {name: 'Vue.js', code: 'vu'},
+                    {name: 'Javascript', code: 'js'},
+                    {name: 'Open Source', code: 'os'}
+                ]
             }
         }
     },
@@ -63,11 +87,19 @@ export default {
                     this.task = response;
                 })
         },
+        addTag(newTag) {
+            const tag = {
+                name: newTag,
+                code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+            }
+            this.multi.subjects.push(tag)
+            this.multi.value.push(tag)
+        }
     }
 
 }
 </script>
-
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .main-content {
     padding: 50px

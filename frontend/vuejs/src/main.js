@@ -13,12 +13,14 @@ import i18n from './utils/i18n';
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import Multiselect from 'vue-multiselect';
 
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
 Vue.use(ArgonDashboard);
 Vue.use(VueIziToast);
+Vue.component('multiselect', Multiselect)
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresVisitor)) {
