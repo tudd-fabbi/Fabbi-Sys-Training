@@ -54,6 +54,17 @@ export default new Router({
                     name: 'Subjects',
                     component: () => import( /* webpackChunkName: "demo" */ '@/views/Subjects/ListSubjects.vue')
                 },
+                {
+                    path: '/update-task/:id',
+                    name: 'updateTask',
+                    component: () => import('@/views/Tasks/UpdateCreateTask.vue'),
+                    props: true,
+                },
+                {
+                    path: '/create-task',
+                    name: 'createTask',
+                    component: () => import('@/views/Tasks/UpdateCreateTask.vue')
+                }
             ]
         },
         {

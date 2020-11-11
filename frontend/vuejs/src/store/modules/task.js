@@ -70,5 +70,8 @@ export const state = {
 export const actions = {
     getTasks({state}) {
         return state;
+    },
+    getTaskById({state}, id) {
+        return state.tasks[0];
     }
 }

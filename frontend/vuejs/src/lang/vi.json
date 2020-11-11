@@ -18,5 +18,15 @@
             "show": "Chi tiết",
             "update": "Cập nhật"
         }
+    },
+    "task_screen": {
+        "update_title": "Cập nhật task",
+        "create_title": "Thêm mới task"
+    },
+    "task": {
+        "task_name": "Tên task",
+        "task_content": "Đề bài",
+        "task_description": "Mô tả",
+        "task_deadline": "Hạn"
     }
 }
