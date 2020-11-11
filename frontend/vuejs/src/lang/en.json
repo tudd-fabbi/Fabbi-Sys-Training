@@ -18,5 +18,15 @@
             "show": "Show",
             "update": "Update"
         }
+    },
+    "task_screen": {
+        "update_title": "Update task",
+        "create_title": "Create task"
+    },
+    "task": {
+        "task_name": "Title",
+        "task_content": "Content",
+        "task_description": "Description",
+        "task_deadline": "Deadline"
     }
 }
