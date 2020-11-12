@@ -6,13 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    function users(){
+    protected $fillable = [
+        'name',
+        'description',
+        'is_active',
+    ];
+    function users()
+    {
         return $this->belongsToMany(User::class, 'user_subject');
     }
-    function tasks(){
+    function tasks()
+    {
         return $this->belongsToMany(Task::class, 'subject_task');
     }
-    function subjectCourse(){
-        return$this->belongsToMany(Subject::class, 'course_subject', 'course_id', 'subject_id');
+    function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_subject');
     }
 }

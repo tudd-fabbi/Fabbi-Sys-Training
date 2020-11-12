@@ -14,11 +14,12 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(
-            \App\Repositories\Task\TaskRepositoryInterface::class,
-            \App\Repositories\Task\TaskRepository::class,
-        //
             \App\Repositories\Subjects\SubjectInterface::class,
-            \App\Repositories\Subjects\SubjectRepon::class
+            \App\Repositories\Subjects\SubjectRepon::class,  
+        );
+        $this->app->singleton(
+            \App\Repositories\Task\TaskRepositoryInterface::class,
+            \App\Repositories\Task\TaskRepository::class
         );
     }
 

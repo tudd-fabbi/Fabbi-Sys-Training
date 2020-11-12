@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class BaseRepository implements BaseRepositoryInterface
 {
+
+    /**
+     * @var Model
+     */
     protected $model;
 
     public function __construct(Model $model)
@@ -82,7 +86,7 @@ class BaseRepository implements BaseRepositoryInterface
     {
         try {
             $this->model->findOrFail($id)->update($request);
-
+            
             return [
                 'success' => true,
             ];
