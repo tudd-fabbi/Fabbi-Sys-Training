@@ -15,8 +15,24 @@
             "list_subjects": "Danh sách môn học",
             "add_new_subject": "Thêm mới môn học",
             "delete": "Xóa",
-            "show": "Chi tiết",
-            "update": "Cập nhật"
+            "detail": "Chi tiết",
+            "update": "Cập nhật",
+            "add": "Thêm mới",
+            "course": "Khóa học",
+            "cancel": "Hủy",
+            "addSubject": "Thêm mới môn học",
+            "editSubject": "Cập nhật môn học",
+            "active": "Hiện",
+            "unActive": "Ẩn",
+            "nameCourse": "Tên Khóa Học",
+            "countCourse": "Môn học này thuộc về ",
+            "countTask": "Môn học này có",
+            "task": "bài tập",
+            "student": "học viên",
+            "finish": "đã hoàn thành",
+            "detailSubject": "Chi tiết môn học",
+            "courses": "khóa học",
+            "nameSubject": "Tên của môn học này là: "
         }
     },
     "task_screen": {
