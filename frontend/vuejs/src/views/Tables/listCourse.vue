@@ -17,7 +17,7 @@
         <div>
             <b-row>
                 <b-col>
-                    <b-button class="my-1"  size="sm" variant="primary">
+                    <b-button :to="'addCourse'" class="my-1" size="sm" variant="primary">
                         Add Course
                     </b-button>
                 </b-col>
@@ -48,49 +48,68 @@
         <div>
             <b-table striped hover :items="data" :fields="fields">
 
-                    <template slot="actions" slot-scope="row">
-                        <b-button class="btn btn-danger" @click="onDeleteTask(row.item.id)">delete</b-button>
-                        <router-link class="btn btn-success" v-bind:to="'updateCourse/' + row.item.id">update
-                        </router-link>
-                        <router-link class="btn btn-primary" v-bind:to="'detailCourse/' + row.item.id">Detail
-                        </router-link>
-                    </template>
+                <template slot="actions" slot-scope="row">
+                    <b-button class="btn btn-danger" @click="onDeleteTask(row.item.id)">delete</b-button>
+                    <b-button class="btn btn-success" v-bind:to="'editCourse/' + row.item.id">update
+                    </b-button>
+                    <b-button v-b-modal.modal-center @click="getData(row.item.id)">Detail</b-button>
+                </template>
 
             </b-table>
+            <b-modal id="modal-center" centered title="BootstrapVue">
+                <p class="my-4" v-if="course">Tên môn học: {{ course.name }} </p>
+            </b-modal>
         </div>
 
-<!--                <div class="card-footer d-flex justify-content-end"-->
-<!--                     :class="type === 'dark' ? 'bg-transparent': ''">-->
-<!--                    <base-pagination total="30"></base-pagination>-->
-<!--                </div>-->
+        <!--                        <div class="card-footer d-flex justify-content-end"-->
+        <!--                             :class="type === 'dark' ? 'bg-transparent': ''">-->
+        <!--                            <base-pagination total="30"></base-pagination>-->
+        <!--                        </div>-->
 
     </div>
 </template>
 <script>
 export default {
     name: 'projects-table',
+
     data() {
         return {
-            fields: ['name', 'description', 'is_active',  'actions'],
+            fields: ['name', 'description', 'is_active', 'actions'],
             data: null,
             type: '',
-            filter: ''
+            filter: '',
+            course:
+                {
+                    name: "",
+                    description: "",
+                    is_active: "",
+                },
+
         }
     },
     created() {
-        this.getTask();
+        this.getCourse();
+        this.getData();
+
     },
     methods: {
-        getTask() {
+        getCourse() {
             this.$store.dispatch('course/getCourse')
                 .then(res => {
                     this.data = res;
                 })
+        },
+        getData(id) {
+            this.$store.dispatch('course/getData',id).then(
+                res => {
+                    this.course = res;
+                }
+            )
         }
     },
     computed: {
         rows() {
-            return this.tableData.length
+            return this.courseData.length
         }
     }
 }
