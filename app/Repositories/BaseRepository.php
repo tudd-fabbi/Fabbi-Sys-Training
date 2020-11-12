@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class BaseRepository implements BaseRepositoryInterface
 {
+
     /**
      * @var Model
      */
@@ -123,3 +124,4 @@ class BaseRepository implements BaseRepositoryInterface
         }
     }
 }
+
