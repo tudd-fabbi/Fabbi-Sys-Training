@@ -15,8 +15,24 @@
             "list_subjects": "List Subjects",
             "add_new_subject": "Add New Subject",
             "delete": "Delete",
-            "show": "Show",
-            "update": "Update"
+            "detail": "Detail",
+            "update": "Update",
+            "add": "Add",
+            "course": "Courses",
+            "cancel": "Cancel",
+            "addSubject": "Add Subject",
+            "editSubject": "Edit Subject",
+            "active": "Active",
+            "unActive": "UnActive",
+            "nameCourse": "Name Course",
+            "countCourse": "This Subject belongs to",
+            "countTask": "This Subject has",
+            "task": "Tasks",
+            "student": "Students",
+            "finish": "Finished",
+            "detailSubject": "Detail Subject",
+            "courses": "Courses",
+            "nameSubject": "This Subject's name is: "
         }
     },
     "task_screen": {

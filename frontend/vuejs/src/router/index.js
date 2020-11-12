@@ -64,7 +64,18 @@ export default new Router({
                     path: '/create-task',
                     name: 'createTask',
                     component: () => import('@/views/Tasks/UpdateCreateTask.vue')
-                }
+                },
+                {
+                    path: '/addSubjects',
+                    name: 'AddSubjects',
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Subjects/AddCreateSubject.vue')
+                },
+                {
+                    path: '/editSubjects/:id',
+                    name: 'EditSubjects',
+                    component: () => import( /* webpackChunkName: "demo" */ '@/views/Subjects/AddCreateSubject.vue'),
+                    props:true,
+                },
             ]
         },
         {

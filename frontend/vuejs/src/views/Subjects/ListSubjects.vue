@@ -29,7 +29,10 @@
               name="key"
               id="nameSubject"
             />
-            <base-button type="primary" size="sm" v-on:click="searchSubject()"
+            <base-button
+              type="primary"
+              size="sm"
+              v-on:click="searchSubject()"
               >{{ $t("list_subjects.subject.search") }}</base-button
             >
           </div>
@@ -52,7 +55,7 @@
               <td>{{ sub.name }}</td>
               <td>{{ sub.description }}</td>
               <td>{{ sub.time }}</td>
-              <td v-if="sub.is_active == 0">
+              <td v-if="sub.is_active == 1">
                 <base-button
                   icon="ni ni-check-bold"
                   style="background-color: white"
@@ -72,12 +75,15 @@
               >
                 {{ $t("list_subjects.subject.delete") }}
               </b-button>
-              <router-link
-                id="show"
-                class="btn btn-success"
-                v-bind:to="'/detailSubjects/' + sub.id"
-                >{{ $t("list_subjects.subject.show") }}</router-link
+
+              <b-button
+                id="detail"
+                v-b-modal.modal-detail-subject
+                class="btn btn-primary"
+                v-on:click="detail(sub.id)"
+                >{{ $t("list_subjects.subject.detail") }}</b-button
               >
+
               <router-link
                 id="update"
                 class="btn btn-success"
@@ -87,7 +93,6 @@
             </tr>
           </tbody>
         </table>
-        <b-table> </b-table>
         <div class="overflow-auto">
           <b-pagination
             v-model="paginate.page"
@@ -98,6 +103,33 @@
             style="float: right; margin-right: 10%"
           ></b-pagination>
         </div>
+
+        <b-modal
+          id="modal-detail-subject"
+          centered
+          :title="$t('list_subjects.subject.detailSubject')"
+        >
+          <p class="my-4">
+            {{ $t("list_subjects.subject.nameSubject") }}
+            {{ Subject.name }}
+          </p>
+          <p class="my-4">
+            {{ $t("list_subjects.subject.countCourse") }} 5
+            {{ $t("list_subjects.subject.courses") }}
+          </p>
+          <p class="my-4">
+            {{ $t("list_subjects.subject.countTask") }} 5
+            {{ $t("list_subjects.subject.task") }}
+          </p>
+          <p class="my-4">
+            {{ $t("list_subjects.subject.countTask") }} 5
+            {{ $t("list_subjects.subject.student") }}
+          </p>
+          <p class="my-4">
+            {{ $t("list_subjects.subject.countTask") }} 5
+            {{ $t("list_subjects.subject.finish") }}
+          </p>
+        </b-modal>
       </div>
     </div>
   </div>
@@ -117,6 +149,11 @@ export default {
         total: "",
         name: "",
       },
+      Subject: {
+        name: "",
+        description: "",
+        is_active: "",
+      },
 
       tableData: null,
     };
@@ -124,10 +161,16 @@ export default {
   created() {
     this.getData();
   },
+
   methods: {
     getData() {
       this.$store.dispatch("subject/getSubject").then((response) => {
         this.tableData = response.test;
+      });
+    },
+    detail(id) {
+      this.$store.dispatch("subject/getDataById", id).then((response) => {
+        this.Subject = response;
       });
     },
   },
@@ -138,7 +181,7 @@ export default {
   background-color: red;
   margin-top: 2%;
 }
-#show {
+#detail {
   background-color: blue;
   color: white;
   margin-top: 2%;
