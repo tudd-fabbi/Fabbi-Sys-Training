@@ -79,6 +79,50 @@ export const state = {
             is_active: "1",
         },
     ],
+
+    Course: [
+        {
+            id: '1',
+            name: 'Khoa hoc PHP',
+            description: "Hoc PHP tu co ban den nang cao"
+        },
+        {
+            id: '2',
+            name: 'Khoa hoc VueJs',
+            description: "Hoc VueJs tu co ban den nang cao"
+        },
+        {
+            id: '3',
+            name: 'Khoa hoc Java',
+            description: "Hoc Java tu co ban den nang cao"
+        },
+        {
+            id: '4',
+            name: 'Khoa hoc Laravel',
+            description: "Hoc Laravel tu co ban den nang cao"
+        },
+        {
+            id: '5',
+            name: 'Khoa hoc Javascript',
+            description: "Hoc Javascript tu co ban den nang cao"
+        },
+        {
+            id: '6',
+            name: 'Khoa hoc ReactJs',
+            description: "Hoc ReactJs tu co ban den nang cao"
+        },
+        {
+            id: '7',
+            name: 'Khoa hoc SQL',
+            description: "Hoc SQL tu co ban den nang cao"
+        },
+        {
+            id: '8',
+            name: 'Khoa hoc ReactNative',
+            description: "Hoc ReactNative tu co ban den nang cao"
+        },
+
+    ]
 };
 
 export const getters = {
@@ -93,6 +137,9 @@ export const mutations = {
 export const actions = {
     getSubject({ state }) {
         return state;
+    },
+    getDataById({ state }, id) {
+        return state.test[id - 1];
     },
     getData({ commit }, param) {
         return new Promise((resolve, reject) => {
