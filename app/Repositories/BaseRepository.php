@@ -1,25 +1,13 @@
 <?php
 
-namespace App\Repositories;
 
+namespace App\Repositories;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class BaseRepository
- * @package App\Repositories
- */
 class BaseRepository implements BaseRepositoryInterface
 {
-
-    /**
-     * @var Model
-     */
     protected $model;
 
-    /**
-     * BaseRepository constructor.
-     * @param Model $model
-     */
     public function __construct(Model $model)
     {
         $this->model = $model;

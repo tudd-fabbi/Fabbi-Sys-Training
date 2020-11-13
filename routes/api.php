@@ -26,6 +26,10 @@ Route::group([
 });
 
 Route::resource('/test', 'Api\HomeController');
+
 Route::resource('/tasks', 'Api\TaskController');
 Route::get('/subject/list','Api\SubjectController@index');
 Route::get('/subject/add','Api\SubjectController@store');
+
+Route::get('/course', 'Api\CourseController@index');
+

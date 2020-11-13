@@ -29,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->singleton(\App\Repositories\Courses\CourseInterface::class, \App\Repositories\Courses\CourseRepository::class);
     }
 }
