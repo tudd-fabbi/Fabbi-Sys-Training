@@ -13,13 +13,12 @@ export const mutations = {
 };
 
 export const actions = {
-    TEST_ACTION: ({ }) => {
+    TEST_ACTION: () => {
         return new Promise((resolve, reject) => {
             apiCaller.getRequest(
                 `api/test`,
                 null,
                 res => {
-                    console.log('res');
                     resolve(res);
                 },
                 err => {

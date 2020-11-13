@@ -7,11 +7,10 @@ import store from '@/store/index';
 Vue.use(VueI18n);
 
 const i18n = new VueI18n({
-  locale: Cookies.get('locale') || 'vi',
-  fallbackLocale: Cookies.get('locale') || 'vi',
+  locale: Cookies.get('locale') || 'en',
+  fallbackLocale: Cookies.get('locale') || 'en',
   messages: {}
 });
-
 /**
  * @param {String} locale
  */
@@ -33,7 +32,7 @@ Vue.prototype.$loadMessages = loadMessages;
   let check = false;
   if (locale) {
     store.getters['lang/locales'].map(item => {
-      if (item.target === locale) check = true;
+      if (item === locale) check = true;
       return item;
     });
   }

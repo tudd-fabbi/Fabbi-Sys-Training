@@ -75,7 +75,6 @@
                                 <div class="col-lg-3 col-md-6"
                                      v-for="(icon, index) in icons" :key="icon.name + index">
                                     <button type="button"
-                                            v-b-tooltip.hover.top
                                             :title="icon.name"
                                             v-clipboard:copy="icon.name"
                                             v-clipboard:success="onCopy"
@@ -92,18 +91,17 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 <script>
   import Vue from 'vue'
   import VueClipboard from 'vue-clipboard2'
-  import BTooltipDirective from 'bootstrap-vue/es/directives/tooltip'
+  // import BTooltipDirective from 'bootstrap-vue/es/directives/tooltip'
   Vue.use(VueClipboard)
   export default {
-    directives: {
-      'b-tooltip': BTooltipDirective
-    },
+    // directives: {
+    //   'b-tooltip': BTooltipDirective
+    // },
     data() {
       return {
         icons: [

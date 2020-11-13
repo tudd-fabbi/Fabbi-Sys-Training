@@ -20,6 +20,9 @@
         <sidebar-item :link="{name: 'Tables', icon: 'ni ni-bullet-list-67 text-red', path: '/tables'}"/>
         <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
         <sidebar-item :link="{name: 'Register', icon: 'ni ni-circle-08 text-pink', path: '/register'}"/>
+        <sidebar-item :link="{name: 'Course', icon: 'ni ni-circle-08 text-pink', path: '/course'}"/>
+        <sidebar-item :link="{name: 'listTask', icon: 'ni ni-circle-08 text-pink', path: '/list-task'}"/>
+        <sidebar-item :link="{name: 'ListSubjects', icon: 'ni ni-circle-08 text-pink', path: '/listSubjects'}"/>
 
       </template>
     </side-bar>
