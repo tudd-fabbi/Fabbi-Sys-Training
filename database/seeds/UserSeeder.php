@@ -22,5 +22,13 @@ class UserSeeder extends Seeder
                 ]
             );
         }
+        DB::table('users')->insert(
+            [
+                'name'=>Str::random(10),
+                'email'=>'nam@gmail.com',
+                'address'=>Str::random(10),
+                'password'=> Hash::make('123456'),
+            ]
+        );
     }
 }
