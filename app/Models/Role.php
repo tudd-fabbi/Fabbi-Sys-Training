@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-    function userRole(){
+    function user(){
         return $this->belongsTo(User::class);
     }
     function permissions(){

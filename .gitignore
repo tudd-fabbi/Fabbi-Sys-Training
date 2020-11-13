@@ -10,4 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.idea   
+.idea
+/frontend/nuxtjs
+/frontend/nuxtjs/node_modules
+/frontend/vuejs/node_modules
