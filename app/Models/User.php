@@ -42,17 +42,17 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Role::class, 'user_id');
     }
     function imageUser(){
-        $this->hasOne(Image::class, 'imgable_id');
+        return $this->hasOne(Image::class, 'imgable_id');
     }
     function subjectUser(){
-        $this->belongsToMany(Subject::class, 'user_subject', 'user_id', 'subject_id');
+        return $this->belongsToMany(Subject::class, 'user_subject', 'user_id', 'subject_id');
     }
     function courseUser(){
-        $this->belongsToMany(Course::class, 'user_course', 'user_id', 'course_id');
+        return $this->belongsToMany(Course::class, 'user_course', 'user_id', 'course_id');
     }
     function taskUser()
     {
-        $this->belongsToMany(Task::class, 'user_task', 'user_id', 'task_id');
+        return $this->belongsToMany(Task::class, 'user_task', 'user_id', 'task_id');
     }
 
 
