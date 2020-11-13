@@ -63,5 +63,23 @@
     "button": {
       "search_btn": "Tìm kiếm"
     }
+  },
+  "user_screen": {
+    "title": {
+        "user_screen": "THÊM NGƯỜI DÙNG"
+    },
+    "label": {
+        "name": "Tên",
+        "upload_image": "Tải ảnh lên",
+        "birth_day": "Ngày sinh",
+        "phone_number": "Số điện thoại",
+        "address": "Địa chỉ",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "course": "Khóa học"
+    },
+    "button": {
+        "submit": "Gửi"
+    }
   }
 }

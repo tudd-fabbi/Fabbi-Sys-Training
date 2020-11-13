@@ -94,6 +94,12 @@ export default new Router({
           name: 'task.detail',
           component: () =>import('@/views/Tasks/DetailTask.vue'),
           props: true
+        },
+        {
+          path: '/users/add',
+          name: 'users.add',
+          component: () =>import('@/views/User/AddUsers.vue'),
+          props: true
         }
       ]
     },
