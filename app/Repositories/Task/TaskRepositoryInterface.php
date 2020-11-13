@@ -7,5 +7,7 @@ interface TaskRepositoryInterface
     public function getTasks($request);
     public function createTask($request);
     public function showTask($id);
+    public function deleteTask($id);
+    public function updateTask($request, $id);
 }
 

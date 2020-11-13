@@ -47,12 +47,18 @@ class TaskController extends ApiBaseController
      */
     public function store(Request $request)
     {
-        $task =$this->taskRepository->createTask($request->all());
+        $data = $request->only(
+            [
+                'subject_id',
+                'task'
+            ]
+        );
+        $task = $this->taskRepository->createTask($data);
         if (!$task['success']) {
             return $this->sendError(500, $task['message'], 'failed');
         }
 
-        return $this->sendSuccess(null,'Thêm mới thành công');
+        return $this->sendSuccess(null, 'Thêm mới thành công');
     }
 
     /**
@@ -91,7 +97,18 @@ class TaskController extends ApiBaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only(
+            [
+                'subject_id',
+                'task'
+            ]
+        );
+        $task = $this->taskRepository->updateTask($data, $id);
+        if (!$task['success']) {
+            return $this->sendError(500, $task['message'], 'failed');
+        }
+
+        return $this->sendSuccess(null, "Cập nhật thành công");
     }
 
     /**
@@ -102,6 +119,11 @@ class TaskController extends ApiBaseController
      */
     public function destroy($id)
     {
-        //
+        $task = $this->taskRepository->deleteTask($id);
+        if (!$task['success']) {
+            return $this->sendError(500, $task['message'], 'failed');
+        }
+
+        return $this->sendSuccess(null, 'Xóa thành công');
     }
 }
