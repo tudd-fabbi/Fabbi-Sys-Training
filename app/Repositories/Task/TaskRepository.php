@@ -61,4 +61,41 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
             ];
         }
     }
+
+    public function deleteTask($id)
+    {
+        try {
+            $task = $this->model->findOrFail($id);
+            $task->subjects()->detach();
+            $task->delete();
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return [
+            'success' => true,
+        ];
+    }
+
+    public function updateTask($request, $id)
+    {
+        try {
+            $task = $this->model->findOrFail($id);
+            $task->update($request['task']);
+            $task->subjects()->detach();
+            $task->subjects()->attach($request['subject_id'], ['status' => config('config.task.status')]);
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return [
+            'success' => true,
+        ];
+    }
 }

@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('content');
+            $table->date('deadline');
             $table->boolean('is_active');
             $table->timestamps();
         });
