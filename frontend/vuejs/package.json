@@ -33,19 +33,23 @@
     "vue-multiselect": "^2.1.6",
     "vue-router": "3.0.1",
     "vue2-transitions": "0.3.0",
+    "vuetify": "^2.3.18",
+    "vuetify-loader": "^1.6.0",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "axios": "^0.19",
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-eslint": "^3.5.0",
     "@vue/cli-plugin-pwa": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
+    "axios": "^0.19",
     "babel-eslint": "^10.0.1",
+    "deepmerge": "^4.2.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
-    "sass-loader": "^7.1.0",
+    "sass": "^1.29.0",
+    "sass-loader": "^7.3.1",
     "vue-template-compiler": "2.6.6"
   },
   "eslintConfig": {

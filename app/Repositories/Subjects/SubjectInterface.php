@@ -8,10 +8,13 @@ interface SubjectInterface extends BaseRepositoryInterface
 {
     public function getListSubject($request);
     public function deleteSubject($id);
-    public function createSubject(array $data);
-    public function updateSubject(array $data, $id);
+    public function createSubject($data);
+    public function updateSubject($data, $id);
     public function getSubjectById($id);
     public function countTaskCourseSubjectById($id);
+    public function listCourses();
     public function ListCourseBySubjetID($id);
-    public function getAllSubject();
+    public function updateActive($id);
 }
+    
+

@@ -35,6 +35,7 @@ Route::get('/category','Api\CategoryController@index');
 Route::get('/course/category/{id}','Api\CourseController@listCategoryByCourseId');
 
 
+Route::resource('/course', 'Api\CourseController');
 Route::get('/course', 'Api\CourseController@index');
 Route::resource('/subjects','Api\SubjectController');
 Route::get('/subjects/count/{id}','Api\SubjectController@countTaskCourseSubjectById');
@@ -47,3 +48,8 @@ Route::get('/user/userName/{id}', 'Api\UserController@userName');
 Route::get('/user-task/{id}', 'Api\TaskController@getUserTask');
 Route::get('/user/getInfo/{id}','Api\UserController@getUserInfo');
 Route::put('user-task/{id}', 'Api\TaskController@updateComment');
+Route::get('/courses/list','Api\SubjectController@listCourses' );
+Route::put('/is_active/update/{id}','Api\SubjectController@updateActive' );
+Route::get('/categories', 'Api\CategoryController@category');
+Route::resource('/category', 'Api\CategoryController');
+

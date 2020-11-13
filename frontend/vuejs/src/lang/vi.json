@@ -1,75 +1,95 @@
 {
-    "login_screen": {
-        "label": {
-            "sign_in": "Đăng Nhập"
-        }
+  "login_screen": {
+    "label": {
+      "sign_in": "Đăng Nhập"
+    }
+  },
+  "task_screen": {
+    "label": {
+      "task_name": "Tên task",
+      "task_content": "Đề bài",
+      "task_description": "Mô tả",
+      "task_deadline": "Hạn",
+      "task_isActive": "Trạng thái",
+      "task_user": "Danh sách nộp bài",
+      "task_index": "STT",
+      "task_active": "Đang hiện",
+      "task_inactive": "Đang ẩn",
+      "task_delete": "xóa",
+      "task_update": "cập nhật",
+      "task_detail": "chi tiết",
+      "update_title": "Cập nhật task",
+      "create_title": "Thêm mới task",
+      "create_task": "Thêm mới",
+      "search_task": "Tìm kiếm theo tên",
+      "custom_paginate": "Chọn số bản ghi",
+      "back_home": "Quay về",
+      "detail_task": "Chi tiết bài tập",
+      "pick_subject": "Chọn subject",
+      "subject_placeholder": "Tìm kiếm, thêm subject"
     },
-    "list_subjects": {
-        "subject": {
-            "name": "Tên Môn Học",
-            "description": "Mô Tả",
-            "time": "Thời gian",
-            "is_active": "Tình Trạng",
-            "action": "Hành Động",
-            "search": "Tìm kiếm",
-            "list_subjects": "Danh sách môn học",
-            "add_new_subject": "Thêm mới môn học",
-            "delete": "Xóa",
-            "detail": "Chi tiết",
-            "update": "Cập nhật",
-            "add": "Thêm mới",
-            "course": "Khóa học",
-            "cancel": "Hủy",
-            "addSubject": "Thêm mới môn học",
-            "editSubject": "Cập nhật môn học",
-            "active": "Hiện",
-            "unActive": "Ẩn",
-            "nameCourse": "Tên Khóa Học",
-            "countCourse": "Môn học này thuộc về ",
-            "countTask": "Môn học này có",
-            "task": "bài tập",
-            "student": "học viên",
-            "finish": "đã hoàn thành",
-            "detailSubject": "Chi tiết môn học",
-            "courses": "khóa học",
-            "nameSubject": "Tên của môn học này là: "
-        }
+    "message": {
+      "task_msgDelete": "Xóa thành công",
+      "task_msgUpdate": "Cập nhật thành công",
+      "task_msgCreate": "Thêm mới thành công"
     },
-    "task_screen": {
-        "label": {
-            "task_name": "Tên task",
-            "task_content": "Đề bài",
-            "task_description": "Mô tả",
-            "task_deadline": "Hạn",
-            "task_isActive": "Trạng thái",
-            "task_user": "Danh sách nộp bài",
-            "task_index": "STT",
-            "task_active": "Đang hiện",
-            "task_inactive": "Đang ẩn",
-            "task_delete": "xóa",
-            "task_update": "cập nhật",
-            "task_detail": "chi tiết",
-            "update_title": "Cập nhật task",
-            "create_title": "Thêm mới task",
-            "create_task": "Thêm mới",
-            "search_task": "Tìm kiếm theo tên",
-            "custom_paginate": "Chọn số bản ghi",
-            "back_home": "Quay về",
-            "detail_task": "Chi tiết bài tập",
-            "pick_subject": "Chọn subject",
-            "subject_placeholder": "Tìm kiếm, thêm subject"
-        },
-        "message": {
-            "task_msgDelete": "Xóa thành công",
-            "task_msgUpdate": "Cập nhật thành công",
-            "task_msgCreate": "Thêm mới thành công"
-        },
-        "button": {
-            "search_btn": "Tìm kiếm",
-            "create_btn": "Thêm mới",
-            "update_btn": "Cập nhật"
-        }
+    "button": {
+      "search_btn": "Tìm kiếm",
+      "create_btn": "Thêm mới",
+      "update_btn": "Cập nhật"
+    }
+  },
+  "list_subjects": {
+    "label": {
+      "name": "Tên Môn Học",
+      "description": "Mô Tả",
+      "time": "Thời gian",
+      "is_active": "Tình Trạng",
+      "action": "Hành Động",
+      "course": "Khóa học",
+      "active": "Hiện",
+      "unActive": "Ẩn",
+      "nameCourse": "Tên Khóa Học",
+      "countCourse": "Môn học này thuộc về ",
+      "countTask": "Môn học này có",
+      "task": "bài tập",
+      "student": "học viên",
+      "finish": "đã hoàn thành",
+      "detailSubject": "Chi tiết môn học",
+      "courses": "khóa học",
+      "nameSubject": "Tên của môn học này là: ",
+      "deleteConfirm": "Bạn có muốn xóa môn học này không?",
+      "selectRecords": "Chọn số lượng bản ghi trả về"
     },
+    "title": {
+      "list_subjects": "Danh sách môn học",
+      "add_new_subject": "Thêm mới môn học",
+      "addSubject": "Thêm mới môn học",
+      "editSubject": "Cập nhật môn học"
+    },
+    "button": {
+      "search": "Tìm kiếm",
+      "cancel": "Hủy",
+      "delete": "Xóa",
+      "detail": "Chi tiết",
+      "update": "Cập nhật",
+      "add": "Thêm mới"
+    }
+  },
+  "categories":{
+    "title" : {
+      "list_category": "Danh Sách Danh Mục",
+      "add_new_category": "Thêm mới danh mục"
+    },
+    "label" : {
+      "name_category" : "Tên Danh Mục",
+      "action_category" : "Hành Động"
+    },
+    "button" : {
+      "button_delete" : "Xóa",
+      "button_update" : "Cập nhật"
+    }
+  },
     "user_screen": {
         "title": {
             "user_screen": "THÊM NGƯỜI DÙNG"
@@ -173,3 +193,4 @@
         }
     }
 }
+

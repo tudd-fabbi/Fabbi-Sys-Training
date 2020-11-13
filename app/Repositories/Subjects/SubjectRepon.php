@@ -3,6 +3,7 @@
 namespace App\Repositories\Subjects;
 
 use App\Models\Subject;
+use App\Models\Course;
 
 use App\Repositories\BaseRepository;
 use App\Repositories\Subjects\SubjectInterface;
@@ -54,7 +55,7 @@ class SubjectRepon extends BaseRepository implements SubjectInterface
         }
     }
 
-    public function createSubject(array $data)
+    public function createSubject($data)
     {
         $subject = $this->model->create($data);
         $course_id = $data['course_id'];
@@ -100,7 +101,7 @@ class SubjectRepon extends BaseRepository implements SubjectInterface
         }
     }
 
-    public function updateSubject(array $data, $id)
+    public function updateSubject($data, $id)
     {
         try {
             $subject = $this->model->findOrFail($id);
@@ -136,17 +137,28 @@ class SubjectRepon extends BaseRepository implements SubjectInterface
         }
     }
 
-    public function getAllSubject()
+    public function listCourses()
     {
-      $data = $this->model->all();
+        $course = Course::all();
+        return [
+            'data' => $course,
+            'success' => true,
+        ];
+    }
+
+    public function updateActive($id)
+    {
         try {
+            $subject = $this->model->findOrFail($id);
+            $subject->is_active = !$subject->is_active;
+            $subject->update();
             return [
-                'success' => true,
-                'data' => $data
+                'success' => true
             ];
         } catch (\Exception $e) {
             return [
-                'success' => false
+                'success' => false,
+                'message' => $e->getMessage()
             ];
         }
     }

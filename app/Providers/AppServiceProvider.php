@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             \App\Repositories\Subjects\SubjectInterface::class,
-            \App\Repositories\Subjects\SubjectRepon::class,  
+            \App\Repositories\Subjects\SubjectRepon::class,
         );
         $this->app->singleton(
             \App\Repositories\Task\TaskRepositoryInterface::class,
@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             \App\Repositories\Users\UserRepositoryInterface::class,
             \App\Repositories\Users\UserRepository::class,
+        );
+        $this->app->singleton(
+            \App\Repositories\Categories\CategoryInterface::class,
+            \App\Repositories\Categories\CategoryRepo::class
         );
     }
 

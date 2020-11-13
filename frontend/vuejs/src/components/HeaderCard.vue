@@ -9,7 +9,6 @@
     <div class="container-fluid mt--7">
       <div class="row">
         <div class="col">
-          <projec-table title="Light Table"></projec-table>
         </div>
       </div>
     </div>
