@@ -47,7 +47,12 @@ class TaskController extends ApiBaseController
      */
     public function store(Request $request)
     {
-        //
+        $task =$this->taskRepository->createTask($request->all());
+        if (!$task['success']) {
+            return $this->sendError(500, $task['message'], 'failed');
+        }
+
+        return $this->sendSuccess(null,'Thêm mới thành công');
     }
 
     /**
@@ -58,7 +63,12 @@ class TaskController extends ApiBaseController
      */
     public function show($id)
     {
-        //
+        $task = $this->taskRepository->showTask($id);
+        if (!$task['success']) {
+            return $this->sendError(500, $task['message'], 'failed');
+        }
+
+        return $this->sendSuccess($task['data']);
     }
 
     /**
