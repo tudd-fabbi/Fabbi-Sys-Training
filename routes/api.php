@@ -32,3 +32,7 @@ Route::get('/subject/add','Api\SubjectController@store');
 Route::resource('/course', 'Api\CourseController');
 
 
+Route::get('/course', 'Api\CourseController@index');
+Route::resource('/subjects','Api\SubjectController');
+Route::get('/subjects/count/{id}','Api\SubjectController@countTaskCourseSubjectById');
+Route::get('/subjects/courses/{id}','Api\SubjectController@ListCourseBySubjetID');

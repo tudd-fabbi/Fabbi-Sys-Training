@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Repositories\Subjects\SubjectInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class SubjectController extends ApiBaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(SubjectInterface $repository){
+    public function __construct(SubjectInterface $repository)
+    {
         $this->repository = $repository;
     }
 
@@ -20,9 +22,10 @@ class SubjectController extends ApiBaseController
     {
         $subjects = $this->repository->getListSubject($request);
         if (!$subjects['success']) {
-          return $this->sendError(500, "ERROR", "500");
-      }
-      return $this->sendSuccess($subjects['data']);
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess($subjects['data']);
     }
 
     /**
@@ -33,8 +36,13 @@ class SubjectController extends ApiBaseController
      */
     public function store(Request $request)
     {
-        //
-        $this->repository->createSubject($request);
+        $data = $request->only('name', 'description', 'is_active', 'course_id');
+        $subjects = $this->repository->createSubject($data);
+        if (!$subjects['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess("ADD SUBJECT SUCCESS");
     }
 
     /**
@@ -45,7 +53,12 @@ class SubjectController extends ApiBaseController
      */
     public function show($id)
     {
-        //
+        $subjects = $this->repository->getSubjectbyId($id);
+        if (!$subjects['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess($subjects['data']);
     }
 
     /**
@@ -57,7 +70,13 @@ class SubjectController extends ApiBaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only('name', 'description', 'is_active', 'course_id');
+        $subjects = $this->repository->updateSubject($data, $id);
+        if (!$subjects['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess("UPDATE SUBJECT SUCCESS");
     }
 
     /**
@@ -69,5 +88,31 @@ class SubjectController extends ApiBaseController
     public function destroy($id)
     {
         //
+        $subjects = $this->repository->deleteSubject($id);
+        if (!$subjects['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess("DELETE SUBJECT SUCCESS");
+    }
+
+    public function countTaskCourseSubjectById($id)
+    {
+        $subjects = $this->repository->countTaskCourseSubjectById($id);
+        if (!$subjects['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess($subjects['data']);
+    }
+
+    public function ListCourseBySubjetID($id)
+    {
+        $subjects = $this->repository->ListCourseBySubjetID($id);
+        if (!$subjects['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess($subjects['data']);
     }
 }
