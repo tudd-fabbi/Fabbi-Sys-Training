@@ -8,6 +8,6 @@ interface CourseInterface
 {
     public function getListCourse($request);
     public function deleteCourse($id);
-    public function createCourse($request);
-    public function updateCourse($request);
+    public function createCourse(array $data);
+    public function updateCourse(array $data, $id);
 }
