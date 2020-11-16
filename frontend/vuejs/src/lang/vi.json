@@ -2,6 +2,7 @@
   "login_screen": {
     "label": {
       "sign_in": "Đăng Nhập"
+
     }
   },
   "list_subjects": {
@@ -81,5 +82,70 @@
     "button": {
         "submit": "Gửi"
     }
+
+    }
+  },
+  "list_subjects": {
+    "subject": {
+      "name": "Tên Môn Học",
+      "description": "Mô Tả",
+      "time": "Thời gian",
+      "is_active": "Tình Trạng",
+      "action": "Hành Động",
+      "search": "Tìm kiếm",
+      "list_subjects": "Danh sách môn học",
+      "add_new_subject": "Thêm mới môn học",
+      "delete": "Xóa",
+      "detail": "Chi tiết",
+      "update": "Cập nhật",
+      "add": "Thêm mới",
+      "course": "Khóa học",
+      "cancel": "Hủy",
+      "addSubject": "Thêm mới môn học",
+      "editSubject": "Cập nhật môn học",
+      "active": "Hiện",
+      "unActive": "Ẩn",
+      "nameCourse": "Tên Khóa Học",
+      "countCourse": "Môn học này thuộc về ",
+      "countTask": "Môn học này có",
+      "task": "bài tập",
+      "student": "học viên",
+      "finish": "đã hoàn thành",
+      "detailSubject": "Chi tiết môn học",
+      "courses": "khóa học",
+      "nameSubject": "Tên của môn học này là: "
+    }
+  },
+  "task_screen": {
+    "update_title": "Cập nhật task",
+    "create_title": "Thêm mới task"
+  },
+  "task": {
+    "task_name": "Tên task",
+    "task_content": "Đề bài",
+    "task_description": "Mô tả",
+    "task_deadline": "Hạn"
+  },
+  "course_screen": {
+    "course": {
+      "name": "tên khóa học",
+      "description": "Mô tả",
+      "is_active": "Thực trạng",
+      "activate": "Thực trạng",
+      "actions": "Hành động",
+      "search": "Tìm kiếm",
+      "list_course": "Danh sách khóa học",
+      "add_course": "Thêm mới khóa học",
+      "delete": "Xóa",
+      "detail": "Chi tiết",
+      "update": "Sửa",
+      "course": "Khóa học",
+      "reset": "Làm mới",
+      "active": "Hiện ",
+      "inactive": "Ẩn",
+      "Submit": "Lưu",
+      "record": "Số bản ghi"
+    }
+
   }
 }

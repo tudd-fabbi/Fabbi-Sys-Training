@@ -2,6 +2,7 @@
   "login_screen": {
     "label": {
       "sign_in": "Sign In"
+
     }
   },
   "list_subjects": {
@@ -86,6 +87,70 @@
     },
     "button": {
       "submit": "Submit"
+
+    }
+  },
+  "list_subjects": {
+    "subject": {
+      "name": "Name Subject",
+      "description": "Description",
+      "time": "Time",
+      "is_active": "IsActive",
+      "action": "Action",
+      "search": "Search",
+      "list_subjects": "List Subjects",
+      "add_new_subject": "Add New Subject",
+      "delete": "Delete",
+      "detail": "Detail",
+      "update": "Update",
+      "add": "Add",
+      "course": "Courses",
+      "cancel": "Cancel",
+      "addSubject": "Add Subject",
+      "editSubject": "Edit Subject",
+      "active": "Active",
+      "unActive": "UnActive",
+      "nameCourse": "Name Course",
+      "countCourse": "This Subject belongs to",
+      "countTask": "This Subject has",
+      "task": "Tasks",
+      "student": "Students",
+      "finish": "Finished",
+      "detailSubject": "Detail Subject",
+      "courses": "Courses",
+      "nameSubject": "This Subject's name is: "
+    }
+  },
+  "task_screen": {
+    "update_title": "Update task",
+    "create_title": "Create task"
+  },
+  "task": {
+    "task_name": "Title",
+    "task_content": "Content",
+    "task_description": "Description",
+    "task_deadline": "Deadline"
+  },
+  "course_screen": {
+    "course": {
+      "name": "Name course",
+      "description": "Description",
+      "is_active": "IsActive",
+      "activate": "Activate",
+      "actions": "Actions",
+      "search": "Search",
+      "list_course": "List Course",
+      "add_course": "Add Course",
+      "delete": "Delete",
+      "detail": "Detail",
+      "update": "Update",
+      "course": "Courses",
+      "reset": "Reset",
+      "namecourse": "Add Course",
+      "active": "Active",
+      "inactive": "Inactive",
+      "submit": "Submit",
+      "record": "Record"
     }
   }
 }

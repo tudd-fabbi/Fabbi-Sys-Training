@@ -15,26 +15,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
+  'middleware' => 'api',
+  'prefix' => 'auth'
 ], function () {
-    Route::post('login', 'Auth\AuthController@login');
-    Route::post('register', 'Auth\AuthController@register');
-    Route::post('logout', 'Auth\AuthController@logout');
-    Route::post('refresh', 'Auth\AuthController@refresh');
-    Route::post('me', 'Auth\AuthController@me');
+  Route::post('login', 'Auth\AuthController@login');
+  Route::post('register', 'Auth\AuthController@register');
+  Route::post('logout', 'Auth\AuthController@logout');
+  Route::post('refresh', 'Auth\AuthController@refresh');
+  Route::post('me', 'Auth\AuthController@me');
 });
 
 Route::resource('/test', 'Api\HomeController');
 Route::resource('/tasks', 'Api\TaskController');
-Route::get('/subject/list','Api\SubjectController@index');
-Route::get('/subject/add','Api\SubjectController@store');
+Route::get('/subject/list', 'Api\SubjectController@index');
+Route::get('/subject/add', 'Api\SubjectController@store');
 Route::resource('/course', 'Api\CourseController');
 
 
 Route::get('/course', 'Api\CourseController@index');
-Route::resource('/subjects','Api\SubjectController');
-Route::get('/subjects/count/{id}','Api\SubjectController@countTaskCourseSubjectById');
-Route::get('/subjects/courses/{id}','Api\SubjectController@ListCourseBySubjetID');
+Route::resource('/subjects', 'Api\SubjectController');
+Route::get('/subjects/count/{id}', 'Api\SubjectController@countTaskCourseSubjectById');
+Route::get('/subjects/courses/{id}', 'Api\SubjectController@ListCourseBySubjetID');
 
-Route::resource('user','Api\UserController');
+Route::resource('user', 'Api\UserController');
+
+Route::resource('/subjects', 'Api\SubjectController');
+Route::get('/subjects/count/{id}', 'Api\SubjectController@countTaskCourseSubjectById');
+Route::get('/subjects/courses/{id}', 'Api\SubjectController@ListCourseBySubjetID');
+

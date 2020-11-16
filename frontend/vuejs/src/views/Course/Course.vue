@@ -17,6 +17,7 @@
 </template>
 <script>
 import ProjectsTable from '../Tables/listCourse'
+
 export default {
     name: 'tables',
     components: {
