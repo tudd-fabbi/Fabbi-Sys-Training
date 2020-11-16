@@ -39,4 +39,20 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             ];
         }
     }
+
+    public function getListUser(array $data)
+    {
+       $list = $this->model;
+       $perPage = $data['perPage'];
+       if(array_key_exists('search', $data) && !empty($data['search']))
+       {
+          $input = $data['search'];
+          $list = $list->where('name', 'LIKE', "%$input%");
+       }
+
+       return [
+          'success' => true,
+          'listUser' => $list->paginate($perPage)
+       ];
+    }
 }
