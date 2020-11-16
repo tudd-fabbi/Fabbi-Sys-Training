@@ -62,6 +62,30 @@
     },
     "button": {
       "search_btn": "Search"
+    },
+    "task": {
+        "task_name": "Title",
+        "task_content": "Content",
+        "task_description": "Description",
+        "task_deadline": "Deadline"
+    }
+  },
+  "user_screen": {
+    "title": {
+      "user_screen": "ADD USER"
+    },
+    "label": {
+      "name": "Name",
+      "upload_image": "Upload Image",
+      "birth_day": "Birth day",
+      "phone_number": "Phone number",
+      "address": "Address",
+      "email": "Email",
+      "password": "Password",
+      "course": "Course"
+    },
+    "button": {
+      "submit": "Submit"
     }
   }
 }
