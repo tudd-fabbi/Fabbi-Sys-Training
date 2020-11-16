@@ -53,7 +53,9 @@
       "create_title": "Thêm mới task",
       "create_task": "Thêm mới",
       "search_task": "Tìm kiếm theo tên",
-      "custom_paginate": "Chọn số bản ghi"
+      "custom_paginate": "Chọn số bản ghi",
+      "back_home": "Quay về",
+      "detail_task": "Chi tiết bài tập"
     },
     "message": {
       "task_msgDelete": "Xóa thành công"
