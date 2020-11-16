@@ -1,158 +1,168 @@
 <template>
-    <div class="main-content">
-        <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
-            <!-- Card stats -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
-                                type="gradient-red"
-                                sub-title="350,897"
-                                icon="ni ni-active-40"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
-                                type="gradient-orange"
-                                sub-title="2,356"
-                                icon="ni ni-chart-pie-35"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 12.18%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Sales"
-                                type="gradient-green"
-                                sub-title="924"
-                                icon="ni ni-money-coins"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 5.72%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Performance"
-                                type="gradient-info"
-                                sub-title="49,65%"
-                                icon="ni ni-chart-bar-32"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 54.8%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-                </div>
-            </div>
-        </base-header>
-        <div class="content">
-            <router-link to="/create-task" class="btn btn-primary">
-                Thêm mới
-            </router-link>
-            <form class="form-inline d-flex justify-content-center md-form form-sm mt-0 col-4">
-                <label>Tìm kiếm theo tên</label>
-                <input class="form-control form-control-sm ml-3 w-75" type="text"
-                       placeholder="Search"
-                       aria-label="Search"
-                >
-                <button class="btn">Tìm kiếm</button>
-            </form>
-            <br>
-            <div class="overflow-auto">
-                <b-table
-                    id="my-table"
-                    :items="items"
-                    :per-page="perPage"
-                    :current-page="currentPage"
-                    :fields="field"
-                    small
-                >
-                    <template slot="is_active" slot-scope="row">
-                        <p v-if="row.item.is_active == 1">Đang hiện</p>
-                        <p v-else>Đang ẩn</p>
-                    </template>
-                    <template slot="user_task" slot-scope="row">
-                        <router-link class="btn btn-primary custombtn" v-bind:to="'user-task/' + row.item.id">Xem
-                        </router-link>
-                    </template>
-                    <template slot="actions" slot-scope="row">
-                        <b-button class="btn btn-danger" @click="onDeleteTask(row.item.id)">delete</b-button>
-                        <router-link class="btn btn-success" v-bind:to="'update-task/' + row.item.id">update
-                        </router-link>
-                        <router-link class="btn btn-primary" v-bind:to="'detail-task/' + row.item.id">Detail
-                        </router-link>
-                    </template>
-                </b-table>
-                <b-pagination
-                    v-model="currentPage"
-                    :total-rows="rows"
-                    :per-page="perPage"
-                    aria-controls="my-table"
-                ></b-pagination>
-            </div>
-        </div>
+  <div class="main-content">
+    <base-header
+      type="gradient-success"
+      class="pb-6 pb-8 pt-5 pt-md-8"
+    ></base-header>
+    <div class="content">
+      <router-link to="/tasks/create" class="btn btn-primary">
+        {{ $t("task_screen.label.create_task") }}
+      </router-link>
+      <form
+        class="form-inline d-flex justify-content-center md-form form-sm mt-0 col-4"
+        @submit.prevent="getData()"
+      >
+        <label>{{ $t("task_screen.label.search_task") }}</label>
+        <input
+          class="form-control form-control-sm ml-3 w-75"
+          type="text"
+          v-model="paginate.name"
+          v-bind:placeholder="$t('task_screen.label.search_task')"
+          aria-label="Search"
+        />
+        <button class="btn">{{ $t("task_screen.button.search_btn") }}</button>
+      </form>
+      <div class="custom-paginate">
+        <label class="typo__label">{{ $t("task_screen.label.custom_paginate") }}</label>
+        <multiselect
+          v-model="paginate.perPage"
+          :options="options"
+          :searchable="false"
+          :close-on-select="false"
+          :show-labels="false"
+          @select="customPaginate()"
+        >
+        </multiselect>
+      </div>
+      <div style="clear: both"></div>
+      <br/>
+      <b-table show-empty small stacked="md" :items="tasks" :fields="fields">
+        <template #cell(index)="row">
+          {{ ++row.index }}
+        </template>
+        <template v-slot:cell(is_active)="row">
+          <p>{{ row.item.is_active == 1 ? $t("task_screen.label.task_active") : $t("task_screen.label.task_inactive") }}</p>
+        </template>
+        <template v-slot:cell(actions)="row">
+          <b-button class="btn btn-danger" @click="onDeleteTask(row.item.id)"
+          >{{ $t("task_screen.label.task_delete") }}
+          </b-button
+          >
+          <router-link
+            class="btn btn-success"
+            v-bind:to="'/tasks/update/' + row.item.id"
+          >{{ $t("task_screen.label.task_update") }}
+          </router-link
+          >
+          <router-link
+            class="btn btn-primary"
+            v-bind:to="'/tasks/detail/' + row.item.id"
+          >{{ $t("task_screen.label.task_detail") }}
+          </router-link
+          >
+        </template>
+        <template v-slot:cell(user_task)="row"></template>
+      </b-table>
+      <div class="pagination">
+        <b-pagination
+          v-model="paginate.page"
+          :total-rows="paginate.total"
+          :per-page="paginate.perPage"
+          aria-controls="my-table"
+          @change="changePage"
+        ></b-pagination>
+      </div>
     </div>
+  </div>
 </template>
+
 <script>
+
+import {DEFAULT_OPTION, DEFAULT_PERPAGE} from "../../definition/constants";
+
 export default {
-    name: "ListTask",
-    data() {
-        return {
-            perPage: 3,
-            currentPage: 1,
-            field: [
-                {key: 'name', label: 'Tên task', sortable: true, sortDirection: 'desc'},
-                {key: 'content', label: 'Nội dung', sortable: true, sortDirection: 'desc'},
-                {key: 'description', label: 'Đề bài', sortable: true, sortDirection: 'desc'},
-                {key: 'deadline', label: 'deadline', sortable: true, sortDirection: 'desc'},
-                {key: 'is_active', label: 'Trạng thái', sortable: true, sortDirection: 'desc'},
-                {key: 'user_task', label: 'Danh sách nộp bài'},
-                {key: 'actions', label: 'Actions'}
-            ],
-            items: null
-        }
+  name: "Tasks",
+  data() {
+    return {
+      options: DEFAULT_OPTION,
+      tasks: [],
+      paginate: {
+        page: 1,
+        perPage: DEFAULT_PERPAGE,
+        total: 0,
+        name: '',
+      },
+      fields: [
+        {key: 'index', label: this.$i18n.t("task_screen.label.task_index")},
+        {key: 'name', label: this.$i18n.t("task_screen.label.task_name"), sortable: true, sortDirection: 'desc'},
+        {
+          key: 'description',
+          label: this.$i18n.t("task_screen.label.task_description"),
+          sortable: true,
+          sortDirection: 'desc'
+        },
+        {key: 'content', label: this.$i18n.t("task_screen.label.task_content"), sortable: true, sortDirection: 'desc'},
+        {
+          key: 'deadline',
+          label: this.$i18n.t("task_screen.label.task_deadline"),
+          sortable: true,
+          sortDirection: 'desc'
+        },
+        {key: 'is_active', label: this.$i18n.t("task_screen.label.task_isActive")},
+        {key: 'user_task', label: this.$i18n.t("task_screen.label.task_user")},
+        {key: 'actions', label: 'Actions'}
+      ],
+    }
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    changePage(page) {
+      this.paginate.page = page;
+      this.getData();
     },
-    created() {
-        this.getTask();
+    getData() {
+      if (this.paginate.name) {
+        this.paginate.page = 1;
+      }
+      this.$store.dispatch("task/getTasks", {params: this.paginate})
+        .then(response => {
+          this.tasks = response.data;
+          this.paginate.perPage = response.per_page;
+          this.paginate.total = response.total;
+        })
     },
-    methods: {
-        getTask() {
-            this.$store.dispatch('task/getTasks')
-                .then(res => {
-                    this.items = res.tasks;
-                })
-        }
+    makeToast(message, variant) {
+      this.$bvToast.toast(message, {
+        variant: variant,
+        solid: true
+      })
     },
-    computed: {
-        rows() {
-            return this.items.length
-        }
+    onDeleteTask(id) {
+      this.$store.dispatch("task/delete", id)
+        .then(() => {
+          this.getData();
+          this.makeToast(this.$i18n.t("task_screen.message.task_msgDelete"), 'success');
+        })
+        .catch(() => {
+        })
     },
+    customPaginate() {
+      this.getData();
+    }
+  },
 }
 </script>
-
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .content {
-    padding: 50px;
+  padding: 50px;
 }
-.custombtn {
-    margin-left: 50px;
+
+.custom-paginate {
+  float: right;
+  margin-right: 50px;
+  width: 200px;
 }
 </style>
