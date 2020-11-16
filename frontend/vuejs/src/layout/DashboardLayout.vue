@@ -21,7 +21,7 @@
         <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/>
         <sidebar-item :link="{name: 'Register', icon: 'ni ni-circle-08 text-pink', path: '/register'}"/>
         <sidebar-item :link="{name: 'Course', icon: 'ni ni-circle-08 text-pink', path: '/course'}"/>
-        <sidebar-item :link="{name: 'listTask', icon: 'ni ni-circle-08 text-pink', path: '/list-task'}"/>
+        <sidebar-item :link="{name: 'listTask', icon: 'ni ni-circle-08 text-pink', path: '/tasks'}"/>
         <sidebar-item :link="{name: 'ListSubjects', icon: 'ni ni-circle-08 text-pink', path: '/listSubjects'}"/>
 
       </template>
@@ -40,29 +40,29 @@
   </div>
 </template>
 <script>
-  import DashboardNavbar from './DashboardNavbar.vue';
-  import ContentFooter from './ContentFooter.vue';
-  import { FadeTransition } from 'vue2-transitions';
+import DashboardNavbar from './DashboardNavbar.vue';
+import ContentFooter from './ContentFooter.vue';
+import {FadeTransition} from 'vue2-transitions';
 
-  export default {
-    components: {
-      DashboardNavbar,
-      ContentFooter,
-      FadeTransition
-    },
-    data() {
-      return {
-        sidebarBackground: 'vue' //vue|blue|orange|green|red|primary
-      };
-    },
-    methods: {
-      toggleSidebar() {
-        if (this.$sidebar.showSidebar) {
-          this.$sidebar.displaySidebar(false);
-        }
+export default {
+  components: {
+    DashboardNavbar,
+    ContentFooter,
+    FadeTransition
+  },
+  data() {
+    return {
+      sidebarBackground: 'vue' //vue|blue|orange|green|red|primary
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      if (this.$sidebar.showSidebar) {
+        this.$sidebar.displaySidebar(false);
       }
     }
-  };
+  }
+};
 </script>
 <style lang="scss">
 </style>

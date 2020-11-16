@@ -1,77 +1,47 @@
+import apiCaller from '../../utils/api';
+
 export const state = {
-    tasks: [
-        {
-            id: 1,
-            name: 'Fred',
-            description: 'Flintstone',
-            content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '0'
-        },
-        {
-            id: 2,
-            name: 'Fred',
-            description: 'Flintstone',
-            content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '1'
-        },
-        {
-            id: 3,
-            name: 'Fred',
-            description: 'Flintstone',
-            content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '1'
-        },
-        {
-            id: 4,
-            name: 'Fred',
-            description: 'Flintstone',
-            content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '1'
-        },
-        {
-            id: 5,
-            name: 'Fred',
-            description: 'Flintstone',
-            content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '1'
-        },
-        {
-            id: 6,
-            name: 'Fred',
-            description: 'Flintstone',
-            content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '1'
-        },
-        {
-            id: 7,
-            name: 'Fred',
-            description: 'Flintstone',
-            content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '1'
-        },
-        {
-            id: 8,
-            name: 'Fred',
-            description: 'Flintstone',
-            content: 'asdasdasd',
-            deadline: '12-12-2020',
-            is_active: '1'
-        },
-    ],
+  tasks: null,
 };
 
+export const getters = {
+  tasks: state => state.tasks
+};
+
+export const mutations = {
+  setTasks(state, tasks) {
+    state.tasks = tasks;
+  },
+}
+
 export const actions = {
-    getTasks({state}) {
-        return state;
-    },
-    getTaskById({state}, id) {
-        return state.tasks[0];
-    }
+  getTasks({commit}, params) {
+    return new Promise((resolve, reject) => {
+      apiCaller.getRequest(
+        '/api/tasks',
+        params,
+        response => {
+          commit('setTasks', response.data.data);
+          resolve(response.data.data);
+        },
+        err => {
+          reject(err.response);
+        }
+      )
+    });
+  },
+  delete({}, id) {
+    return new Promise((resolve, reject) => {
+      apiCaller.deleteRequest(
+        '/api/tasks/' + id,
+        '',
+        response => {
+          resolve(response.data);
+        },
+        err => {
+          reject(err.response.data);
+        }
+      )
+    });
+  },
 }
