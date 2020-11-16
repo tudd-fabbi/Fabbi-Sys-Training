@@ -44,4 +44,18 @@ export const actions = {
       )
     });
   },
+  getTaskById({}, id) {
+    return new Promise((resolve, reject) => {
+      apiCaller.getRequest(
+        '/api/tasks/' + id,
+        '',
+        response => {
+          resolve(response.data.data);
+        },
+        err => {
+          reject(err.response);
+        }
+      )
+    });
+  }
 }

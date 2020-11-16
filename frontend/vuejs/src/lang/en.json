@@ -53,7 +53,9 @@
       "create_title": "Create task",
       "create_task": "Create task",
       "search_task": "Search task",
-      "custom_paginate": "Pick option record"
+      "custom_paginate": "Pick option record",
+      "back_home": "Back",
+      "detail_task": "Detail task"
     },
     "message": {
       "task_msgDelete": "delete ok"

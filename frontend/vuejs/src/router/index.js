@@ -89,6 +89,12 @@ export default new Router({
           component: () => import( /* webpackChunkName: "demo" */ '@/views/Course/formCourse.vue'),
           props: true
         },
+        {
+          path: '/tasks/detail/:id',
+          name: 'task.detail',
+          component: () =>import('@/views/Tasks/DetailTask.vue'),
+          props: true
+        }
       ]
     },
     {
