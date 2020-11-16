@@ -21,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Task\TaskRepositoryInterface::class,
             \App\Repositories\Task\TaskRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\Users\UserRepositoryInterface::class,
+            \App\Repositories\Users\UserRepository::class,
+        );
     }
 
     /**
