@@ -58,6 +58,7 @@ class UserController extends ApiBaseController
             'img_path'
         );
 
+        $inputData['password'] = bcrypt($inputData['password']);
         $data = $this->repository->addUser($inputData);
         if ($data['success']) {
             return $this->sendError(500, "Error", "Failed");
