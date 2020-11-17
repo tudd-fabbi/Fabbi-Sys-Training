@@ -1,43 +1,33 @@
-export const state = {
-    courseData: [
-        {
-            id:1,
-            name: 'PHP',
-            description: 'khoa hoc php co ban',
-            is_active: 'Activate'
-        },
-        {
-            id:2,
-            name: 'C++',
-            description: 'khoa hoc C++ co ban',
-            is_active: 'Inactivate'
-        },
-        {
-            id:3,
-            name: 'Java',
-            description: 'khoa hoc Java co ban',
-            is_active: 'Activate'
-        },
-        {
-            id:4,
-            name: 'C#',
-            description: 'khoa hoc C# co ban',
-            is_active: 'Inactivate'
-        },
-        {
-            id:5,
-            name: 'Python',
-            description: 'khoa hoc Python co ban',
-            is_active: 'Activate'
-        },
+import apiCaller from "../../utils/api";
 
-    ]
-};
+export const state = {};
 export const actions = {
-    getCourse({state}) {
-        return state.courseData;
+    getData({}, param) {
+        return new Promise((resolve, reject) => {
+            apiCaller.getRequest(
+                '/api/course',
+                param,
+                response => {
+                    resolve(response.data.data);
+                },
+                err => {
+                    reject(err.response.data.data);
+                }
+            );
+        });
     },
-    getData({state}, id){
-        return state.courseData[id-1];
+    destroyCourse({}, id) {
+        return new Promise(((resolve, reject) => {
+            apiCaller.deleteRequest(
+                '/api/course/' + id,
+                '',
+                response => {
+                    resolve(response.data);
+                },
+                err => {
+                    reject(err.response.data);
+                }
+            )
+        }))
     }
 }
