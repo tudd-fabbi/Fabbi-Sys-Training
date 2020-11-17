@@ -115,4 +115,14 @@ class SubjectController extends ApiBaseController
 
         return $this->sendSuccess($subjects['data']);
     }
+
+    public function getAllSubject()
+    {
+      $subjects = $this->repository->getAllSubject();
+      if (!$subjects['success']) {
+        return $this->sendError(500, "ERROR", "500");
+      }
+
+      return $this->sendSuccess($subjects['data']);
+    }
 }

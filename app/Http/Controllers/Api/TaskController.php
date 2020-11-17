@@ -47,12 +47,8 @@ class TaskController extends ApiBaseController
      */
     public function store(Request $request)
     {
-        $data = $request->only(
-            [
-                'subject_id',
-                'task'
-            ]
-        );
+        $data['task'] = $request['task'];
+        $data['subject_id'] = $request['subject_id'];
         $task = $this->taskRepository->createTask($data);
         if (!$task['success']) {
             return $this->sendError(500, $task['message'], 'failed');
@@ -97,12 +93,8 @@ class TaskController extends ApiBaseController
      */
     public function update(Request $request, $id)
     {
-        $data = $request->only(
-            [
-                'subject_id',
-                'task'
-            ]
-        );
+        $data['task'] = $request['task'];
+        $data['subject_id'] = $request['subject_id'];
         $task = $this->taskRepository->updateTask($data, $id);
         if (!$task['success']) {
             return $this->sendError(500, $task['message'], 'failed');
@@ -125,5 +117,15 @@ class TaskController extends ApiBaseController
         }
 
         return $this->sendSuccess(null, 'Xóa thành công');
+    }
+
+    public function getSubjectOfTask($id)
+    {
+        $task = $this->taskRepository->getSubjectOfTask($id);
+        if (!$task['success']) {
+            return $this->sendError(500, $task['message'], 'failed');
+        }
+
+        return $this->sendSuccess($task['data']);
     }
 }

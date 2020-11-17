@@ -55,19 +55,19 @@
       "search_task": "Search task",
       "custom_paginate": "Pick option record",
       "back_home": "Back",
-      "detail_task": "Detail task"
+      "detail_task": "Detail task",
+      "pick_subject": "Choose subject",
+      "subject_placeholder": "Search or add subject"
     },
     "message": {
-      "task_msgDelete": "delete ok"
+      "task_msgDelete": "delete ok",
+      "task_msgUpdate": "Update ok",
+      "task_reate": "Create ok"
     },
     "button": {
-      "search_btn": "Search"
-    },
-    "task": {
-        "task_name": "Title",
-        "task_content": "Content",
-        "task_description": "Description",
-        "task_deadline": "Deadline"
+      "search_btn": "Search",
+      "create_btn": "Create",
+      "update_btn": "Update"
     }
   },
   "user_screen": {

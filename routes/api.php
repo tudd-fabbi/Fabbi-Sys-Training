@@ -27,6 +27,7 @@ Route::group([
 
 Route::resource('/test', 'Api\HomeController');
 Route::resource('/tasks', 'Api\TaskController');
+Route::get('/tasks/subject-task/{id}', 'Api\TaskController@getSubjectOfTask');
 Route::get('/subject/list','Api\SubjectController@index');
 Route::get('/subject/add','Api\SubjectController@store');
 Route::resource('/course', 'Api\CourseController');
@@ -36,5 +37,6 @@ Route::get('/course', 'Api\CourseController@index');
 Route::resource('/subjects','Api\SubjectController');
 Route::get('/subjects/count/{id}','Api\SubjectController@countTaskCourseSubjectById');
 Route::get('/subjects/courses/{id}','Api\SubjectController@ListCourseBySubjetID');
-
+Route::get('/subject/all', 'Api\SubjectController@getAllSubject');
 Route::resource('user','Api\UserController');
+
