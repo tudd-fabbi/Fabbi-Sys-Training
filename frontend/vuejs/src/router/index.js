@@ -100,6 +100,12 @@ export default new Router({
           name: 'users.add',
           component: () => import('@/views/User/AddUsers.vue'),
           props: true
+        },
+        {
+          path: 'reports/list/:id',
+          name: 'report.list',
+          component: () => import('@/views/Reports/ListReport.vue'),
+          props: true
         }
       ]
     },
