@@ -148,7 +148,8 @@ export default {
             address: "",
             email: "",
             password: "",
-            courseId: []
+            courseId: [],
+            img_path: ""
         }
     },
     methods: {
@@ -167,7 +168,8 @@ export default {
              address: this.address,
              email: this.email,
              password: this.password,
-             courseId: this.courseId
+             course: this.courseId,
+             img_path: this.img_path
            }
          })
       }
