@@ -6,24 +6,34 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="mb-0" :class="type === 'dark' ? 'text-white': ''">
-                        List Course
+                        {{ $t("course_screen.title.list_course") }}
                     </h3>
                 </div>
                 <div class="col text-right">
-                    <base-button type="primary" size="sm">See all</base-button>
+                    <div class="paginate">
+                        <label class="typo__label">{{ $t("course_screen.label.record") }}</label>
+                        <multiselect
+                            v-model="paginate.perPage"
+                            :options="options"
+                            :searchable="false"
+                            :close-on-select="false"
+                            :show-labels="false"
+                            @select="customPaginate()">
+                        </multiselect>
+                    </div>
                 </div>
             </div>
         </div>
         <div>
             <b-row>
                 <b-col>
-                    <b-button :to="'addCourse'" class="my-1" size="sm" variant="primary">
-                        Add Course
+                    <b-button :to="{name: 'AddCourse'}" class="my-1" size="sm" variant="primary">
+                        {{ $t("course_screen.button.add_course") }}
                     </b-button>
                 </b-col>
                 <b-col lg="5" class="my-1" style="float: right">
                     <b-form-group
-                        label="Filter"
+                        label=""
                         label-cols-sm="3"
                         label-align-sm="right"
                         label-size="sm"
@@ -32,13 +42,17 @@
                     >
                         <b-input-group size="sm">
                             <b-form-input
-                                v-model="filter"
+                                v-model="paginate.name"
                                 type="search"
                                 id="filterInput"
-                                placeholder="Search by name"
+                                :placeholder="$t('course_screen.message.search_by_name')"
                             ></b-form-input>
                             <b-input-group-append>
-                                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                                <b-button variant="primary" @click="getData()">
+                                    {{
+                                        $t("course_screen.button.search")
+                                    }}
+                                </b-button>
                             </b-input-group-append>
                         </b-input-group>
                     </b-form-group>
@@ -47,64 +61,105 @@
         </div>
         <div>
             <b-table striped hover :items="data" :fields="fields">
-
-                <template slot="actions" slot-scope="row">
-                    <b-button class="btn btn-danger" @click="onDeleteTask(row.item.id)">delete</b-button>
-                    <b-button class="btn btn-success" v-bind:to="'editCourse/' + row.item.id">update
+                <template v-slot:cell(is_active)="row">
+                    <p>
+                        {{row.item.is_active == 1 ? $t("course_screen.label.active") : $t("course_screen.label.inactive")}}
+                    </p>
+                </template>
+                <template v-slot:cell(actions)="row">
+                    <b-button class="btn btn-danger" @click="destroyCourse(row.item.id)">
+                        {{ $t("course_screen.button.delete") }}
                     </b-button>
-                    <b-button v-b-modal.modal-center @click="getData(row.item.id)">Detail</b-button>
+                    <b-button class="btn btn-success" :to="{ name: 'EditCourse', params: {id:row.item.id}}">
+                        {{ $t("course_screen.button.update") }}
+                    </b-button>
+                    <b-button v-b-modal.modal-center @click="getData(row.item.id)">
+                        {{ $t("course_screen.button.detail") }}
+                    </b-button>
                 </template>
 
             </b-table>
             <b-modal id="modal-center" centered title="BootstrapVue">
-                <p class="my-4" v-if="course">Tên môn học: {{ course.name }} </p>
+                <p class="my-4" v-if="course">{{ $t("course_screen.label.name") }}: {{ course.name }} </p>
             </b-modal>
         </div>
-
-        <!--                        <div class="card-footer d-flex justify-content-end"-->
-        <!--                             :class="type === 'dark' ? 'bg-transparent': ''">-->
-        <!--                            <base-pagination total="30"></base-pagination>-->
-        <!--                        </div>-->
-
+        <div class="pagination">
+            <b-pagination
+                v-model="paginate.page"
+                :total-rows="paginate.total"
+                :per-page="paginate.perPage"
+                aria-controls="my-table"
+                @change="changePage"
+            ></b-pagination>
+        </div>
     </div>
 </template>
 <script>
+import {DEFAULT_OPTION, DEFAULT_PERPAGE} from "../../definition/constants";
+
 export default {
     name: 'projects-table',
 
     data() {
         return {
-            fields: ['name', 'description', 'is_active', 'actions'],
+            fields: [
+                {
+                    key: 'name', label: this.$i18n.t("course_screen.label.name")
+                },
+                {
+                    key: 'description', label: this.$i18n.t("course_screen.label.description")
+                },
+                {
+                    key: 'is_active', label: this.$i18n.t("course_screen.label.is_active"),
+                },
+                {
+                    key: 'actions', label: this.$i18n.t("course_screen.label.actions"),
+                }
+            ],
             data: null,
             type: '',
             filter: '',
-            course:
+            options: DEFAULT_OPTION,
+            paginate:
                 {
-                    name: "",
-                    description: "",
-                    is_active: "",
+                    perPage: DEFAULT_PERPAGE,
+                    total: '0',
+                    name: '',
+                    Page: '1'
                 },
-
+            course: null
         }
     },
     created() {
-        this.getCourse();
         this.getData();
-
     },
     methods: {
-        getCourse() {
-            this.$store.dispatch('course/getCourse')
-                .then(res => {
-                    this.data = res;
-                })
-        },
-        getData(id) {
-            this.$store.dispatch('course/getData',id).then(
+        async getData() {
+            if (this.paginate.name) {
+                this.paginate.page = 1;
+            }
+            await this.$store.dispatch('course/getData', {params: this.paginate}).then(
                 res => {
-                    this.course = res;
+                    this.data = res.data;
+                    this.paginate.perPage = res.per_page;
+                    console.log(this.paginate.perPage)
+                    this.paginate.total = res.total;
                 }
             )
+        },
+        changePage(page) {
+            this.paginate.page = page;
+            this.getData();
+        },
+        customPaginate() {
+            this.getData();
+        },
+        async destroyCourse(id) {
+            if (confirm(this.$i18n.t("course_screen.message.are_you_sure"))) {
+                await this.$store.dispatch('course/deleteCourse', id).then(() => {
+                    this.getData();
+                })
+            }
         }
     },
     computed: {
@@ -114,5 +169,11 @@ export default {
     }
 }
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style>
+.paginate {
+    float: right;
+    margin-right: 50px;
+    width: 80px;
+}
 </style>
