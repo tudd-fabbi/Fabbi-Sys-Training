@@ -41,27 +41,39 @@
           {{ ++row.index }}
         </template>
         <template v-slot:cell(is_active)="row">
-          <p>{{ row.item.is_active == 1 ? $t("task_screen.label.task_active") : $t("task_screen.label.task_inactive") }}</p>
+          <p>
+            {{ row.item.is_active == 1 ? $t("task_screen.label.task_active") : $t("task_screen.label.task_inactive") }}
+          </p>
         </template>
         <template v-slot:cell(actions)="row">
           <b-button class="btn btn-danger" @click="onDeleteTask(row.item.id)"
-          >{{ $t("task_screen.label.task_delete") }}
+          >
+            {{ $t("task_screen.label.task_delete") }}
           </b-button
           >
           <router-link
             class="btn btn-success"
-            v-bind:to="'/tasks/update/' + row.item.id"
-          >{{ $t("task_screen.label.task_update") }}
+            :to="{ name: 'tasks.update', params: row.item.id }"
+          >
+            {{ $t("task_screen.label.task_update") }}
           </router-link
           >
           <router-link
             class="btn btn-primary"
-            v-bind:to="'/tasks/detail/' + row.item.id"
-          >{{ $t("task_screen.label.task_detail") }}
+            :to="{ name: 'tasks.detail', params: row.item.id }"
+          >
+            {{ $t("task_screen.label.task_detail") }}
           </router-link
           >
         </template>
-        <template v-slot:cell(user_task)="row"></template>
+        <template v-slot:cell(user_task)="row">
+          <router-link
+            class="btn btn-primary"
+            :to="{ name: 'report.list', params: { id: row.item.id}}"
+          >
+            {{ $t("report_screen.label.list_report") }}
+          </router-link>
+        </template>
       </b-table>
       <div class="pagination">
         <b-pagination
