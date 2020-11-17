@@ -18,9 +18,15 @@ class UserController extends ApiBaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      $inputData = $request->only('search', 'perPage');
+      $data = $this->repository->getListUser($inputData);
+      if (!$data['success']) {
+          return $this->sendError(500, "Error", "Failed");
+      }
+
+      return $this->sendSuccess($data['listUser']);
     }
 
     /**
