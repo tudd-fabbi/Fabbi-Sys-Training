@@ -53,14 +53,14 @@
           >
           <router-link
             class="btn btn-success"
-            :to="{ name: 'tasks.update', params: row.item.id }"
+            :to="{ name: 'task.update', params: { id: row.item.id }}"
           >
             {{ $t("task_screen.label.task_update") }}
           </router-link
           >
           <router-link
             class="btn btn-primary"
-            :to="{ name: 'tasks.detail', params: row.item.id }"
+            :to="{ name: 'task.detail', params: { id: row.item.id }}"
           >
             {{ $t("task_screen.label.task_detail") }}
           </router-link
