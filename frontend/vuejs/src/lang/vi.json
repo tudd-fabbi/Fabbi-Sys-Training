@@ -55,13 +55,19 @@
       "search_task": "Tìm kiếm theo tên",
       "custom_paginate": "Chọn số bản ghi",
       "back_home": "Quay về",
-      "detail_task": "Chi tiết bài tập"
+      "detail_task": "Chi tiết bài tập",
+      "pick_subject": "Chọn subject",
+      "subject_placeholder": "Tìm kiếm, thêm subject"
     },
     "message": {
-      "task_msgDelete": "Xóa thành công"
+      "task_msgDelete": "Xóa thành công",
+      "task_msgUpdate": "Cập nhật thành công",
+      "task_msgCreate": "Thêm mới thành công"
     },
     "button": {
-      "search_btn": "Tìm kiếm"
+      "search_btn": "Tìm kiếm",
+      "create_btn": "Thêm mới",
+      "update_btn": "Cập nhật"
     }
   },
   "user_screen": {

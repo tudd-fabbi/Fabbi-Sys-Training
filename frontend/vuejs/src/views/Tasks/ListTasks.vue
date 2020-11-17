@@ -139,8 +139,8 @@ export default {
         solid: true
       })
     },
-    onDeleteTask(id) {
-      this.$store.dispatch("task/delete", id)
+    async onDeleteTask(id) {
+      await this.$store.dispatch("task/destroy", id)
         .then(() => {
           this.getData();
           this.makeToast(this.$i18n.t("task_screen.message.task_msgDelete"), 'success');

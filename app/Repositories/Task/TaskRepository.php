@@ -29,11 +29,11 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
         ];
     }
 
-    public function createTask($request)
+    public function createTask($data)
     {
         try {
-            $task = $this->model->create($request['task']);
-            $task->subjects()->attach($request['subject_id'], ['status' => config('config.task.status')]);
+            $task = $this->model->create($data['task']);
+            $task->subjects()->attach($data['subject_id'], ['status' => config('config.task.status')]);
         } catch (Exception $e) {
             return [
                 'success' => false,
@@ -80,13 +80,13 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
         ];
     }
 
-    public function updateTask($request, $id)
+    public function updateTask($data, $id)
     {
         try {
             $task = $this->model->findOrFail($id);
-            $task->update($request['task']);
+            $task->update($data['task']);
             $task->subjects()->detach();
-            $task->subjects()->attach($request['subject_id'], ['status' => config('config.task.status')]);
+            $task->subjects()->attach($data['subject_id'], ['status' => config('config.task.status')]);
         } catch (\Exception $e) {
             return [
                 'success' => false,
@@ -97,5 +97,21 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
         return [
             'success' => true,
         ];
+    }
+
+    public function getSubjectOfTask($id)
+    {
+        try {
+            $task = $this->model->findOrFail($id)->subjects;
+            return [
+                'success' => true,
+                'data' => $task
+            ];
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
     }
 }

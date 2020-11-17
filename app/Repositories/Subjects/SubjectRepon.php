@@ -135,4 +135,19 @@ class SubjectRepon extends BaseRepository implements SubjectInterface
             ];
         }
     }
+
+    public function getAllSubject()
+    {
+      $data = $this->model->all();
+        try {
+            return [
+                'success' => true,
+                'data' => $data
+            ];
+        } catch (\Exception $e) {
+            return [
+                'success' => false
+            ];
+        }
+    }
 }
