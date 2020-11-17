@@ -111,4 +111,37 @@ class UserController extends ApiBaseController
     {
         //
     }
+
+    public function countSubject($id)
+    {
+        $data = $this->repository->countSubjectById($id);
+        if(!$data['success'])
+        {
+            return $this->sendError(500, "Error", "Failed");
+        }
+
+        return $this->sendSuccess($data['result']);
+    }
+
+    public function countTask($id)
+    {
+        $data = $this->repository->countTaskById($id);
+        if(!$data['success'])
+        {
+            return $this->sendError(500, "Error", "Failed");
+        }
+
+        return $this->sendSuccess($data['result']);
+    }
+
+    public function userName($id)
+    {
+        $data = $this->repository->getUserNameById($id);
+        if(!$data['success'])
+        {
+            return $this->sendError(500, "Error", "Failed");
+        }
+
+        return $this->sendSuccess($data['result']);
+    }
 }

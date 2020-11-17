@@ -55,4 +55,61 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
           'listUser' => $list->paginate($perPage)
        ];
     }
+
+    public function countSubjectById($id)
+    {
+        try {
+            $userData = $this->user->findOrFail($id);
+            $result = $userData->subjects()->where('user_id', $id)->count();
+
+            return [
+                'success' => true,
+                'result' => $result
+            ];
+        }
+        catch(\Exception $e)
+        {
+           return [
+               'success' => false
+           ];
+        }
+    }
+
+    public function countTaskById($id)
+    {
+        try {
+            $userData = $this->user->findOrFail($id);
+            $result = $userData->tasks()->where('user_id', $id)->count();
+
+            return [
+                'success' => true,
+                'result' => $result
+            ];
+        }
+        catch(\Exception $e)
+        {
+           return [
+               'success' => false
+           ];
+        }
+    }
+
+    public function getUserNameById($id)
+    {
+        try {
+            $userData = $this->user->findOrFail($id);
+            $name = $userData->name;
+
+            return [
+                'success' => true,
+                'result' => $name
+            ];
+        }
+        catch(\Exception $e)
+        {
+           return [
+               'success' => false
+           ];
+        }
+    }
 }
