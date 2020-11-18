@@ -10,5 +10,6 @@ interface TaskRepositoryInterface
     public function deleteTask($id);
     public function updateTask($request, $id);
     public function getSubjectOfTask($id);
+    public function getUserTask($id);
 }
 
