@@ -5,6 +5,7 @@ namespace App\Repositories\Task;
 use App\Models\Task;
 use App\Repositories\BaseRepository;
 use App\Repositories\Task\TaskRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 use mysql_xdevapi\Exception;
 
 class TaskRepository extends BaseRepository implements TaskRepositoryInterface
@@ -113,5 +114,26 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
                 'message' => $e->getMessage()
             ];
         }
+    }
+
+    public function getUserTask($id)
+    {
+        try {
+            $data = DB::table('user_task')
+                ->join('users', 'user_task.user_id', '=', 'users.id')
+                ->select('user_task.*', 'users.name')
+                ->where('task_id', $id)
+                ->get();
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return [
+            'success' => true,
+            'data' => $data
+        ];
     }
 }

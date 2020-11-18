@@ -128,4 +128,14 @@ class TaskController extends ApiBaseController
 
         return $this->sendSuccess($task['data']);
     }
+
+    public function getUserTask($id)
+    {
+        $task = $this->taskRepository->getUserTask($id);
+        if (!$task['success']) {
+            return $this->sendError(500, $task['message'], 'failed');
+        }
+
+        return $this->sendSuccess($task['data']);
+    }
 }
