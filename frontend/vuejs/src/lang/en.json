@@ -139,5 +139,19 @@
       "pass": "Pass",
       "redo": "Redo"
     }
+  },
+  "user_detail": {
+    "title" : {
+      "user_detail": "User Detail"
+    },
+    "label": {
+      "name": "Name",
+      "course_participated": "Course Participated",
+      "course_completed": "Course Completed",
+      "number_of_subject_participated": "Number of Subject Participated",
+      "number_of_task_participated": "Number of Task Participated",
+      "number_of_subject_completed": "Number of Subject Completed",
+      "number_of_task_completed": "Number of Task Completed"
+    }
   }
 }
