@@ -128,5 +128,19 @@
       "pass": "Duyệt",
       "redo": "Làm lại"
     }
-  }
+  },
+  "user_detail": {
+    "title" : {
+      "user_detail": "Chi tiết người dùng"
+    },
+    "label": {
+      "name": "Tên ",
+      "course_participated": "Các khóa học tham gia ",
+      "course_completed": "Các khóa học đã hoàn thành ",
+      "number_of_subject_participated": "Số lượng môn học tham gia ",
+      "number_of_task_participated": "Số lượng Task tham gia ",
+      "number_of_subject_completed": "Số lượng môn học đã hoàn thành ",
+      "number_of_task_completed": "Số lượng Task đã hoàn thành "
+    }
+}
 }

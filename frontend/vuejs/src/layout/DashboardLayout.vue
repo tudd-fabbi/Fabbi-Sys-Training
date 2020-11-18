@@ -24,6 +24,7 @@
         <sidebar-item :link="{name: 'listTask', icon: 'ni ni-circle-08 text-pink', path: '/tasks'}"/>
         <sidebar-item :link="{name: 'ListSubjects', icon: 'ni ni-circle-08 text-pink', path: '/listSubjects'}"/>
         <sidebar-item :link="{name: 'user.add', icon: 'ni ni-circle-08 text-pink', path: '/users/add'}"/>
+        <sidebar-item :link="{name: 'user.detail', icon: 'ni ni-circle-08 text-pink', path: '/users/detail'}"/>
       </template>
     </side-bar>
     <div class="main-content" :data="sidebarBackground">

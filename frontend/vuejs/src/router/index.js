@@ -106,7 +106,13 @@ export default new Router({
           name: 'report.list',
           component: () => import('@/views/Reports/ListReport.vue'),
           props: true
-        }
+        },
+        {
+          path: '/users/detail',
+          name: 'users.detail',
+          component: () => import('@/views/User/DetailUsers.vue'),
+          props: true
+        },
       ]
     },
     {
