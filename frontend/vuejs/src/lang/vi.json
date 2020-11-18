@@ -93,7 +93,7 @@
       "list_course": "Danh sách khóa học"
     },
     "label": {
-      "name": "tên khóa học",
+      "name": "Tên khóa học",
       "description": "Mô tả",
       "is_active": "Thực trạng",
       "activate": "Thực trạng",
@@ -101,7 +101,8 @@
       "course": "Khóa học",
       "active": "Hiện ",
       "inactive": "Ẩn",
-      "record": "Số bản ghi"
+      "record": "Số bản ghi",
+      "category": "Thể loại"
     },
     "button": {
       "submit": "Lưu",
@@ -114,7 +115,19 @@
     },
     "message": {
       "are_you_sure": "Bạn có muốn xóa không",
-      "search_by_name": "Tìm kiếm theo tên"
+      "search_by_name": "Tìm kiếm theo tên",
+      "enter_name_course": "Điền tên khóa học",
+      "enter_description": "Điền mô tả khóa học",
+      "pick_a_value": "Chọn giá trị"
+
+    "button": {
+      "submit": "Lưu",
+      "reset": "Làm mới",
+      "add_course": "Thêm mới khóa học ",
+      "delete": "Xóa",
+      "detail": "Chi tiết",
+      "update": "Sửa",
+      "search": "Tìm kiếm"
     }
   },
   "report_screen": {

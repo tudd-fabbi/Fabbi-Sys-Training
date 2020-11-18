@@ -31,6 +31,8 @@ Route::get('/tasks/subject-task/{id}', 'Api\TaskController@getSubjectOfTask');
 Route::get('/subject/list','Api\SubjectController@index');
 Route::get('/subject/add','Api\SubjectController@store');
 Route::resource('/course', 'Api\CourseController');
+Route::get('/category','Api\CategoryController@index');
+Route::get('/course/category/{id}','Api\CourseController@listCategoryByCourseId');
 
 
 Route::get('/course', 'Api\CourseController@index');

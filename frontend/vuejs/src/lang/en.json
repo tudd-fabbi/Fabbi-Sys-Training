@@ -162,7 +162,9 @@
       "button": {
         "submit": "Submit"
       }
-    },
+    }
+  },
+
     "course_screen": {
       "title": {
         "list_course": "List Course"
@@ -177,7 +179,8 @@
         "namecourse": "Add Course",
         "active": "Active",
         "inactive": "Inactive",
-        "record": "Record"
+        "record": "Record",
+        "category": "Category"
       },
       "button": {
         "submit": "Submit",
@@ -190,9 +193,11 @@
       },
       "message": {
         "are_you_sure": "AreYouSure",
-        "search_by_name": "Search by name"
+        "search_by_name": "Search by name",
+        "enter_name_course": "Enter Name Course",
+        "enter_description": "Enter Description",
+        "pick_a_value": "Pick a value"
       }
-    }
   },
   "report_screen": {
     "label": {
