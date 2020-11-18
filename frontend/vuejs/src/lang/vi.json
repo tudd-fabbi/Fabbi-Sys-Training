@@ -119,16 +119,8 @@
       "enter_name_course": "Điền tên khóa học",
       "enter_description": "Điền mô tả khóa học",
       "pick_a_value": "Chọn giá trị"
-
-    "button": {
-      "submit": "Lưu",
-      "reset": "Làm mới",
-      "add_course": "Thêm mới khóa học ",
-      "delete": "Xóa",
-      "detail": "Chi tiết",
-      "update": "Sửa",
-      "search": "Tìm kiếm"
     }
+
   },
   "report_screen": {
     "label": {
