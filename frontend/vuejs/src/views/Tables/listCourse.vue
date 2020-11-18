@@ -142,7 +142,6 @@ export default {
                 res => {
                     this.data = res.data;
                     this.paginate.perPage = res.per_page;
-                    console.log(this.paginate.perPage)
                     this.paginate.total = res.total;
                 }
             )
@@ -156,7 +155,7 @@ export default {
         },
         async destroyCourse(id) {
             if (confirm(this.$i18n.t("course_screen.message.are_you_sure"))) {
-                await this.$store.dispatch('course/deleteCourse', id).then(() => {
+                await this.$store.dispatch('course/destroyCourse', id).then(() => {
                     this.getData();
                 })
             }
