@@ -164,6 +164,7 @@
       }
     }
   },
+
     "course_screen": {
       "title": {
         "list_course": "List Course"
@@ -197,5 +198,17 @@
         "enter_description": "Enter Description",
         "pick_a_value": "Pick a value"
       }
+  },
+  "report_screen": {
+    "label": {
+      "list_report": "List users todo",
+      "done": "Done",
+      "todo": "Todo",
+      "title": "List of submissions",
+      "username": "Full name",
+      "report": "Report",
+      "pass": "Pass",
+      "redo": "Redo"
     }
+  }
 }

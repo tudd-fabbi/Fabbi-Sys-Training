@@ -14,3 +14,4 @@ yarn-error.log
 /frontend/nuxtjs
 /frontend/nuxtjs/node_modules
 /frontend/vuejs/node_modules
+/frontend/vuejs/src/utils/api.js

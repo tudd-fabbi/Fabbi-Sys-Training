@@ -41,4 +41,8 @@ Route::get('/subjects/count/{id}','Api\SubjectController@countTaskCourseSubjectB
 Route::get('/subjects/courses/{id}','Api\SubjectController@ListCourseBySubjetID');
 Route::get('/subject/all', 'Api\SubjectController@getAllSubject');
 Route::resource('user','Api\UserController');
+Route::get('/user/countSubject/{id}', 'Api\UserController@countSubject');
+Route::get('/user/countTask/{id}', 'Api\UserController@countTask');
+Route::get('/user/userName/{id}', 'Api\UserController@userName');
+Route::get('/user-task/{id}', 'Api\TaskController@getUserTask');
 

@@ -18,9 +18,15 @@ class UserController extends ApiBaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      $inputData = $request->only('search', 'perPage');
+      $data = $this->repository->getListUser($inputData);
+      if (!$data['success']) {
+          return $this->sendError(500, "Error", "Failed");
+      }
+
+      return $this->sendSuccess($data['listUser']);
     }
 
     /**
@@ -52,6 +58,7 @@ class UserController extends ApiBaseController
             'img_path'
         );
 
+        $inputData['password'] = bcrypt($inputData['password']);
         $data = $this->repository->addUser($inputData);
         if ($data['success']) {
             return $this->sendError(500, "Error", "Failed");
@@ -103,5 +110,38 @@ class UserController extends ApiBaseController
     public function destroy($id)
     {
         //
+    }
+
+    public function countSubject($id)
+    {
+        $data = $this->repository->countSubjectById($id);
+        if(!$data['success'])
+        {
+            return $this->sendError(500, "Error", "Failed");
+        }
+
+        return $this->sendSuccess($data['result']);
+    }
+
+    public function countTask($id)
+    {
+        $data = $this->repository->countTaskById($id);
+        if(!$data['success'])
+        {
+            return $this->sendError(500, "Error", "Failed");
+        }
+
+        return $this->sendSuccess($data['result']);
+    }
+
+    public function userName($id)
+    {
+        $data = $this->repository->getUserNameById($id);
+        if(!$data['success'])
+        {
+            return $this->sendError(500, "Error", "Failed");
+        }
+
+        return $this->sendSuccess($data['result']);
     }
 }

@@ -92,9 +92,21 @@ export default new Router({
         {
           path: '/tasks/detail/:id',
           name: 'task.detail',
-          component: () =>import('@/views/Tasks/DetailTask.vue'),
+          component: () => import('@/views/Tasks/DetailTask.vue'),
           props: true
         },
+        {
+          path: '/users/add',
+          name: 'users.add',
+          component: () => import('@/views/User/AddUsers.vue'),
+          props: true
+        },
+        {
+          path: 'reports/list/:id',
+          name: 'report.list',
+          component: () => import('@/views/Reports/ListReport.vue'),
+          props: true
+        }
       ]
     },
     {
