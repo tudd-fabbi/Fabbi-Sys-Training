@@ -144,4 +144,15 @@ class UserController extends ApiBaseController
 
         return $this->sendSuccess($data['result']);
     }
+
+    public function getUserInfo($id)
+    {
+      $data = $this->repository->getUserInfoById($id);
+      if(!$data['success'])
+      {
+          return $this->sendError(500, "Error", "Failed");
+      }
+
+      return $this->sendSuccess($data['result']);
+    }
 }

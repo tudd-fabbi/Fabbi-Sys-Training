@@ -1,27 +1,40 @@
 import apiCaller from '../../utils/api';
 
 export const state = {
-  info: {
-    name: "Phan Vinh Khanh",
-    courseParticipated: ["Course1","Course2"],
-    courseCompleted: "Course1",
-    numberSubjectParticipated: 100,
-    numberTaskParticipated: 400,
-    numberSubjectCompleted: 60,
-    numberTaskCompleted: 200
-  }
+  Object: []
 };
 
 export const getters = {
-
+  GET_DETAIL_STATE: state => state.Object
 };
 
 export const mutations = {
-
+  getInfoData(state,data)
+  {
+    if(!data.error)
+    {
+      state.Object = data.data;
+    }
+    else
+    {
+      state.Object = error;
+    }
+  }
 };
 
 export const actions = {
-  GEN_FAKEDATA({ state }) {
-    return state;
-  }
+  GETDATA_ACTION: ({ commit }, params) => {
+    return new Promise((resolve, reject) => {
+      apiCaller.getRequest(
+        `api/user/getInfo/` + params.params.id,
+        null,
+        res => {
+          commit("getInfoData",res.data);
+        },
+        err => {
+          reject(err);
+        }
+      );
+    });
+}
 };
