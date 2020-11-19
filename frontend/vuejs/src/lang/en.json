@@ -55,78 +55,72 @@
       "search_task": "Search task",
       "custom_paginate": "Pick option record",
       "back_home": "Back",
-      "detail_task": "Detail task"
+      "detail_task": "Detail task",
+      "pick_subject": "pick subject",
+      "subject_placeholder": "search, add subject"
     },
     "message": {
-      "task_msgDelete": "delete ok"
+      "task_msgDelete": "delete ok",
+      "task_msgUpdate": "update success",
+      "task_msgCreate": "create success"
     },
     "button": {
-      "search_btn": "Search"
-    },
-    "task": {
-      "task_name": "Title",
-      "task_content": "Content",
-      "task_description": "Description",
-      "task_deadline": "Deadline"
+      "search_btn": "Search",
+      "create_btn": "Create",
+      "update_btn": "Update"
     }
   },
   "user_screen": {
     "title": {
       "user_screen": "ADD USER"
     },
-    "user_screen": {
-      "title": {
-        "user_screen": "ADD USER"
-      },
-      "label": {
-        "name": "Name",
-        "upload_image": "Upload Image",
-        "birth_day": "Birth day",
-        "phone_number": "Phone number",
-        "address": "Address",
-        "email": "Email",
-        "password": "Password",
-        "course": "Course"
-      },
-      "button": {
-        "submit": "Submit"
-      }
+    "label": {
+      "name": "Name",
+      "upload_image": "Upload Image",
+      "birth_day": "Birth day",
+      "phone_number": "Phone number",
+      "address": "Address",
+      "email": "Email",
+      "password": "Password",
+      "course": "Course"
+    },
+    "button": {
+      "submit": "Submit"
     }
   },
-
-    "course_screen": {
-      "title": {
-        "list_course": "List Course"
-      },
-      "label": {
-        "name": "Name course",
-        "description": "Description",
-        "is_active": "IsActive",
-        "activate": "Activate",
-        "actions": "Actions",
-        "course": "Courses",
-        "namecourse": "Add Course",
-        "active": "Active",
-        "inactive": "Inactive",
-        "record": "Record",
-        "category": "Category"
-      },
-      "button": {
-        "submit": "Submit",
-        "reset": "Reset",
-        "add_course": "Add Course",
-        "delete": "Delete",
-        "detail": "Detail",
-        "update": "Update",
-        "search": "Search"
-      },
-      "message": {
-        "are_you_sure": "AreYouSure",
-        "search_by_name": "Search by name",
-        "enter_name_course": "Enter Name Course",
-        "enter_description": "Enter Description",
-        "pick_a_value": "Pick a value"
-      }
+  "course_screen": {
+    "title": {
+      "list_course": "List Course"
+    },
+    "label": {
+      "name": "Name course",
+      "description": "Description",
+      "is_active": "IsActive",
+      "activate": "Activate",
+      "actions": "Actions",
+      "course": "Courses",
+      "namecourse": "Add Course",
+      "active": "Active",
+      "inactive": "Inactive",
+      "record": "Record",
+      "category": "Category"
+    },
+    "button": {
+      "submit": "Submit",
+      "reset": "Reset",
+      "add_course": "Add Course",
+      "delete": "Delete",
+      "detail": "Detail",
+      "update": "Update",
+      "search": "Search"
+    },
+    "message": {
+      "are_you_sure": "AreYouSure",
+      "search_by_name": "Search by name",
+      "enter_name_course": "Enter Name Course",
+      "enter_description": "Enter Description",
+      "pick_a_value": "Pick a value"
+    }
   },
   "report_screen": {
     "label": {
@@ -137,11 +131,17 @@
       "username": "Full name",
       "report": "Report",
       "pass": "Pass",
-      "redo": "Redo"
+      "redo": "Redo",
+      "comment": "Comment",
+      "date_submit": "Date_submit"
+    },
+    "message": {
+      "comment_success": "Add comment success",
+      "comment_failed": "Add comment failed"
     }
   },
   "user_detail": {
-    "title" : {
+    "title": {
       "user_detail": "User Detail"
     },
     "label": {

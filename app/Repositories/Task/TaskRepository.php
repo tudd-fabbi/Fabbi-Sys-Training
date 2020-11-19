@@ -121,7 +121,8 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
         try {
             $data = DB::table('user_task')
                 ->join('users', 'user_task.user_id', '=', 'users.id')
-                ->select('user_task.*', 'users.name')
+                ->join('tasks', 'user_task.task_id', '=', 'tasks.id')
+                ->select('user_task.*', 'users.name as username', 'tasks.deadline', 'tasks.name', 'user_task.date_submit')
                 ->where('task_id', $id)
                 ->get();
         } catch (\Exception $e) {
@@ -134,6 +135,28 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
         return [
             'success' => true,
             'data' => $data
+        ];
+    }
+
+    public function updateComment($data, $id)
+    {
+        try {
+            $status =
+                $data['status'] == config('config.user_task.on_time')
+                    ? config('config.user_task.on_time')
+                    : config('config.user_task.late');
+            DB::table('user_task')
+                ->where('id', $id)
+                ->update(['comment' => $data['comment'], 'status' => $status]);
+        } catch (\Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return [
+            'success' => true
         ];
     }
 }
