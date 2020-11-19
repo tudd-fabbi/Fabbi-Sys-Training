@@ -67,6 +67,7 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
     {
         try {
             $task = $this->model->findOrFail($id);
+            $task->users()->detach();
             $task->subjects()->detach();
             $task->delete();
         } catch (\Exception $e) {
