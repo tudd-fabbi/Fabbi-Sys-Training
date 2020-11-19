@@ -11,5 +11,6 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     public function countSubjectById($id);
     public function countTaskById($id);
     public function getUserNameById($id);
+    public function getUserInfoById($id);
 }
 

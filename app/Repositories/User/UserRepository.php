@@ -5,7 +5,7 @@ namespace App\Repositories\Users;
 use App\Models\User;
 use App\Repositories\BaseRepository;
 use App\Repositories\Users\UserRepositoryInterface;
-
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class EquipmentRepository
@@ -111,5 +111,37 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
                'success' => false
            ];
         }
+    }
+
+    public function getUserInfoById($id)
+    {
+       try {
+           $userData = $this->user->findOrFail($id);
+           $name = $userData->name;
+           $numberTask = $userData->tasks()->where('user_id', $id)->count();
+           $numberSubject = $userData->subjects()->where('user_id', $id)->count();
+           $courseParticipatedInfo = $userData->courses()->where('user_id', $id)->select('course_id')->get()->toArray();
+           foreach ($courseParticipatedInfo as $value)
+           {
+                $courseParticipatedName[] = DB::table('courses')->where('id', $value['course_id'])->value('name');
+           }
+           $result = array(
+                "name" => $name,
+                "numberSubject" => $numberSubject,
+                "numberTask" => $numberTask,
+                "courseParticipatedName" => $courseParticipatedName
+            );
+
+           return [
+               'success' => true,
+               'result'  => $result
+           ];
+       }
+       catch(\Exception $e)
+       {
+           return [
+               'success' => false
+           ];
+       }
     }
 }

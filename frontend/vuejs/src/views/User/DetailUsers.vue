@@ -84,28 +84,17 @@
 
               <div class="course">
                 <label for="course">{{ $t("user_detail.label.course_participated") }}:</label>
-                <h2 v-for="(data,index) in fakeData.courseParticipated" :key="index">{{ data }}</h2>
-
-                <label for="">{{ $t("user_detail.label.course_completed") }}:</label>
-                <h2>{{ fakeData.courseCompleted }}</h2>
+                <h2 v-for="(data,index) in fakeData.courseParticipatedName" :key="index">{{ data }},</h2>
               </div>
 
               <div class="subject">
                 <label for="subject">{{ $t("user_detail.label.number_of_subject_participated") }}:</label>
-                <h2>{{ fakeData.numberSubjectParticipated }}</h2>
+                <h2>{{ fakeData.numberSubject }}</h2>
               </div>
 
               <div class="task">
                 <label for="task">{{ $t("user_detail.label.number_of_task_participated") }}:</label>
-                <h2>{{ fakeData.numberTaskParticipated }}</h2>
-              </div>
-
-              <div class="completed">
-                <label for="">{{ $t("user_detail.label.number_of_subject_completed") }}:</label>
-                <h2>{{ fakeData.numberSubjectCompleted }}</h2>
-
-                <label for="">{{ $t("user_detail.label.number_of_task_completed") }}:</label>
-                <h2>{{ fakeData.numberTaskCompleted }}</h2>
+                <h2>{{ fakeData.numberTask }}</h2>
               </div>
             </div>
           </div>
@@ -118,19 +107,24 @@
 import { mapGetters } from "vuex";
 export default {
   data() {
-    return {
-      fakeData: null
-    }
+    return {}
+  },
+  computed: {
+    ...mapGetters({
+        fakeData: "detailUser/GET_DETAIL_STATE"
+    })
   },
   methods: {
-    getFakeData() {
-      this.$store.dispatch("detailUser/GEN_FAKEDATA").then((response) => {
-        this.fakeData = response.info;
+    async getData() {
+      await this.$store.dispatch("detailUser/GETDATA_ACTION",{
+        params: {
+          id: 10
+        }
       });
     }
   },
   created() {
-    this.getFakeData();
+    this.getData();
   }
 }
 </script>
