@@ -11,14 +11,15 @@ class User_TaskSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
             # code...
             DB::table('user_task')->insert(
                 [
                     'user_id'=>random_int(1,10),
                     'task_id'=>random_int(1,10),
-                    'status'=>Str::random(10),
+                    'status'=>random_int(0,1),
                     'report'=>Str::random(1,10),
+                    'date_submit' => '2020-10-11',
                     'comment'=>Str::random(1,10),
                 ]
             );

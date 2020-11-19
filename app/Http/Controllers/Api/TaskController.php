@@ -138,4 +138,16 @@ class TaskController extends ApiBaseController
 
         return $this->sendSuccess($task['data']);
     }
+
+    public function updateComment(Request $request, $id)
+    {
+        $data['comment'] = $request['comment'];
+        $data['status'] = $request['status'];
+        $task = $this->taskRepository->updateComment($data, $id);
+        if (!$task['success']) {
+            return $this->sendError(500, $task['message'], 'failed');
+        }
+
+        return $this->sendSuccess(null, 'Thêm mới thành công');
+    }
 }

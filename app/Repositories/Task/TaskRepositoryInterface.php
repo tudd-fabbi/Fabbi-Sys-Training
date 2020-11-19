@@ -11,5 +11,6 @@ interface TaskRepositoryInterface
     public function updateTask($request, $id);
     public function getSubjectOfTask($id);
     public function getUserTask($id);
+    public function updateComment($data, $id);
 }
 

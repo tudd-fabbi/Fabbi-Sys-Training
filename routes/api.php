@@ -45,5 +45,5 @@ Route::get('/user/countSubject/{id}', 'Api\UserController@countSubject');
 Route::get('/user/countTask/{id}', 'Api\UserController@countTask');
 Route::get('/user/userName/{id}', 'Api\UserController@userName');
 Route::get('/user-task/{id}', 'Api\TaskController@getUserTask');
-
 Route::get('/user/getInfo/{id}','Api\UserController@getUserInfo');
+Route::put('user-task/{id}', 'Api\TaskController@updateComment');

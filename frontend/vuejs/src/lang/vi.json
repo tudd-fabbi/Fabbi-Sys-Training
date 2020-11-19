@@ -131,7 +131,13 @@
       "username": "Họ tên",
       "report": "Báo cáo",
       "pass": "Duyệt",
-      "redo": "Làm lại"
+      "redo": "Làm lại",
+      "comment": "Nhận xét",
+      "date_submit": "Ngày nộp"
+    },
+    "mesage": {
+      "comment_success": "Thêm mới thành công",
+      "comment_failed": "Thêm mới thất bại"
     }
   },
   "user_detail": {

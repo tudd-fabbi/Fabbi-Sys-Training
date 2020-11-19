@@ -17,9 +17,10 @@ class CreateUserTaskTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('task_id');
-            $table->string('status');
-            $table->string('report');
-            $table->string('comment');
+            $table->boolean('status');
+            $table->text('report');
+            $table->date('date_submit');
+            $table->text('comment');
             $table->timestamps();
         });
     }
