@@ -113,6 +113,12 @@ export default new Router({
           component: () => import('@/views/User/DetailUsers.vue'),
           props: true
         },
+        {
+          path: '/users/list',
+          name: 'users.list',
+          component: () => import('@/views/User/ListUsers.vue'),
+          props: true
+        },
       ]
     },
     {

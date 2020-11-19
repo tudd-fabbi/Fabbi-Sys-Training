@@ -1,7 +1,48 @@
 import apiCaller from '../../utils/api';
 
 export const state = {
-
+  info: [
+    {
+      name: "Phan Vinh Khanh",
+      phoneNumber: "0382877861",
+      email: "Khanh161297@gmail.com"
+    },
+    {
+      name: "Phan Vinh Khanh",
+      phoneNumber: "0382877861",
+      email: "Khanh161297@gmail.com"
+    },
+    {
+      name: "Phan Vinh Khanh",
+      phoneNumber: "0382877861",
+      email: "Khanh161297@gmail.com"
+    },
+    {
+      name: "Phan Vinh Khanh",
+      phoneNumber: "0382877861",
+      email: "Khanh161297@gmail.com"
+    },
+    {
+      name: "Phan Vinh Khanh",
+      phoneNumber: "0382877861",
+      email: "Khanh161297@gmail.com"
+    },
+    {
+      name: "Phan Vinh Khanh",
+      phoneNumber: "0382877861",
+      email: "Khanh161297@gmail.com"
+    },
+    {
+      name: "Phan Vinh Khanh",
+      phoneNumber: "0382877861",
+      email: "Khanh161297@gmail.com"
+    },
+    {
+      name: "Phan Vinh Khanh",
+      phoneNumber: "0382877861",
+      email: "Khanh161297@gmail.com"
+    },
+  ]
 };
 
 export const getters = {
@@ -26,5 +67,8 @@ export const actions = {
         }
       );
     });
+  },
+  GEN_FAKEDATA: ({ state }) => {
+    return state;
   }
 };

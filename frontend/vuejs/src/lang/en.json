@@ -153,5 +153,23 @@
       "number_of_subject_completed": "Number of Subject Completed",
       "number_of_task_completed": "Number of Task Completed"
     }
+  },
+  "list_users": {
+    "title": {
+      "list_user": "List User"
+    },
+    "label": {
+      "search": "Search",
+      "no": "Stt",
+      "name": "Name",
+      "phone_number": "Phone Number",
+      "gmail": "Email",
+      "action": "Action"
+    },
+    "button": {
+      "delete": "Delete",
+      "show": "Show",
+      "update": "Update"
+    }
   }
 }
