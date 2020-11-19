@@ -152,6 +152,9 @@ export default {
       })
     },
     async onDeleteTask(id) {
+      if (!confirm('Xóa?')) {
+        return;
+      }
       await this.$store.dispatch("task/destroy", id)
         .then(() => {
           this.getData();
