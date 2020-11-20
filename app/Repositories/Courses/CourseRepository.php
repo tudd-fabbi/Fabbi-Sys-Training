@@ -23,7 +23,7 @@ class CourseRepository extends BaseRepository implements CourseInterface
         'data' => $data,
         'success' => true,
       ];
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       return [
         'success' => false,
         'message' => $e->getMessage()
@@ -57,7 +57,7 @@ class CourseRepository extends BaseRepository implements CourseInterface
         'data' => $data
       ];
 
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       return [
         'success' => false
       ];
@@ -73,7 +73,7 @@ class CourseRepository extends BaseRepository implements CourseInterface
         'success' => true
       ];
 
-    } catch (Exception $e) {
+    } catch (\Exception $e) {
       return [
         'success' => false
       ];

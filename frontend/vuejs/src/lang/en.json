@@ -99,7 +99,7 @@
       "activate": "Activate",
       "actions": "Actions",
       "course": "Courses",
-      "namecourse": "Add Course",
+      "name_course": "Add Course",
       "active": "Active",
       "inactive": "Inactive",
       "record": "Record",
@@ -119,6 +119,7 @@
       "search_by_name": "Search by name",
       "enter_name_course": "Enter Name Course",
       "enter_description": "Enter Description",
+      "enter_category": "Enter Category",
       "pick_a_value": "Pick a value"
     }
   },
