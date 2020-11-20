@@ -34,7 +34,8 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
     {
         try {
             $task = $this->model->create($data['task']);
-            $task->subjects()->attach($data['subject_id'], ['status' => config('config.task.status')]);
+            $task->subjects()->attach($data['subject_id'], ['status' => config('config.subject_task.status_default')]);
+            $task->users()->attach($data['user_id'], ['status' => config('config.user_task.late')]);
         } catch (Exception $e) {
             return [
                 'success' => false,
@@ -88,7 +89,9 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
             $task = $this->model->findOrFail($id);
             $task->update($data['task']);
             $task->subjects()->detach();
-            $task->subjects()->attach($data['subject_id'], ['status' => config('config.task.status')]);
+            $task->subjects()->attach($data['subject_id'], ['status' => config('config.subject_task.status_default')]);
+            $task->users()->detach();
+            $task->users()->attach($data['user_id'], ['status' => config('config.user_task.late')]);
         } catch (\Exception $e) {
             return [
                 'success' => false,
