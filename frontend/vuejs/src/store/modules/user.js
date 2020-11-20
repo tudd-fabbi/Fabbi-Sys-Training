@@ -1,56 +1,7 @@
 import apiCaller from '../../utils/api';
 
 export const state = {
-  info: [
-    {
-      id: 1,
-      name: "Phan Vinh Khanh",
-      phoneNumber: "0382877861",
-      email: "Khanh161297@gmail.com"
-    },
-    {
-      id: 2,
-      name: "Phan Vinh Khanh",
-      phoneNumber: "0382877861",
-      email: "Khanh161297@gmail.com"
-    },
-    {
-      id: 3,
-      name: "Phan Vinh Khanh",
-      phoneNumber: "0382877861",
-      email: "Khanh161297@gmail.com"
-    },
-    {
-      id: 4,
-      name: "Phan Vinh Khanh",
-      phoneNumber: "0382877861",
-      email: "Khanh161297@gmail.com"
-    },
-    {
-      id: 16,
-      name: "Phan Vinh Khanh",
-      phoneNumber: "0382877861",
-      email: "Khanh161297@gmail.com"
-    },
-    {
-      id: 15,
-      name: "Phan Vinh Khanh",
-      phoneNumber: "0382877861",
-      email: "Khanh161297@gmail.com"
-    },
-    {
-      id: 9,
-      name: "Phan Vinh Khanh",
-      phoneNumber: "0382877861",
-      email: "Khanh161297@gmail.com"
-    },
-    {
-      id: 8,
-      name: "Phan Vinh Khanh",
-      phoneNumber: "0382877861",
-      email: "Khanh161297@gmail.com"
-    },
-  ]
+  
 };
 
 export const getters = {
@@ -76,7 +27,32 @@ export const actions = {
       );
     });
   },
-  GEN_FAKEDATA: ({ state }) => {
-    return state;
+  GET_USER: ({ } ,params) => {
+    return new Promise((resolve, reject) => {
+      apiCaller.getRequest(
+        `api/user`,
+        params,
+        res => {
+          resolve(res.data);
+        },
+        err => {
+          reject(err);
+        }
+      );
+    });
+  },
+  DELETE_USER: ({}, id) => {
+    return new Promise((resolve, reject) => {
+      apiCaller.deleteRequest(
+        '/api/user/' + id,
+        null,
+        response => {
+          resolve(response.data);
+        },
+        err => {
+          reject(err.response.data);
+        }
+      )
+    });
   }
 };

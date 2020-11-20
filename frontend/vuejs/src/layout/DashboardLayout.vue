@@ -23,8 +23,6 @@
         <sidebar-item :link="{name: 'Course', icon: 'ni ni-circle-08 text-pink', path: '/course'}"/>
         <sidebar-item :link="{name: 'listTask', icon: 'ni ni-circle-08 text-pink', path: '/tasks'}"/>
         <sidebar-item :link="{name: 'ListSubjects', icon: 'ni ni-circle-08 text-pink', path: '/listSubjects'}"/>
-        <sidebar-item :link="{name: 'user.add', icon: 'ni ni-circle-08 text-pink', path: '/users/add'}"/>
-        <sidebar-item :link="{name: 'user.detail', icon: 'ni ni-circle-08 text-pink', path: '/users/detail'}"/>
         <sidebar-item :link="{name: 'user.list', icon: 'ni ni-circle-08 text-pink', path: '/users/list'}"/>
         <sidebar-item :link="{name: 'Category', icon: 'ni ni-circle-08 text-pink', path: '/listCategories'}"/>
       </template>

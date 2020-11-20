@@ -189,7 +189,11 @@
       "list_user": "List User"
     },
     "label": {
+      "custom_paginate": "Pick option",
+      "search_task": "Search",
+      "add": "Add",
       "search": "Search",
+      "address": "Address",
       "no": "Stt",
       "name": "Name",
       "phone_number": "Phone Number",
@@ -197,9 +201,15 @@
       "action": "Action"
     },
     "button": {
+      "search_btn": "Search",
       "delete": "Delete",
       "show": "Show",
       "update": "Update"
+    },
+    "message": {
+      "task_msgDelete": "Deleted Successfully",
+      "task_msgUpdate": "Updated Successfully",
+      "task_msgCreate": "Added Successfully"
     }
   },
   "common": {
