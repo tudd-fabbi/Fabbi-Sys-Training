@@ -109,6 +109,9 @@ export default {
   data() {
     return {}
   },
+  props: [
+    'id'
+  ],
   computed: {
     ...mapGetters({
         fakeData: "detailUser/GET_DETAIL_STATE"
@@ -118,7 +121,7 @@ export default {
     async getData() {
       await this.$store.dispatch("detailUser/GETDATA_ACTION",{
         params: {
-          id: 10
+          id: this.id
         }
       });
     }
