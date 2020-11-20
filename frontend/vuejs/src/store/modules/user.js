@@ -3,41 +3,49 @@ import apiCaller from '../../utils/api';
 export const state = {
   info: [
     {
+      id: 1,
       name: "Phan Vinh Khanh",
       phoneNumber: "0382877861",
       email: "Khanh161297@gmail.com"
     },
     {
+      id: 2,
       name: "Phan Vinh Khanh",
       phoneNumber: "0382877861",
       email: "Khanh161297@gmail.com"
     },
     {
+      id: 3,
       name: "Phan Vinh Khanh",
       phoneNumber: "0382877861",
       email: "Khanh161297@gmail.com"
     },
     {
+      id: 4,
       name: "Phan Vinh Khanh",
       phoneNumber: "0382877861",
       email: "Khanh161297@gmail.com"
     },
     {
+      id: 16,
       name: "Phan Vinh Khanh",
       phoneNumber: "0382877861",
       email: "Khanh161297@gmail.com"
     },
     {
+      id: 15,
       name: "Phan Vinh Khanh",
       phoneNumber: "0382877861",
       email: "Khanh161297@gmail.com"
     },
     {
+      id: 9,
       name: "Phan Vinh Khanh",
       phoneNumber: "0382877861",
       email: "Khanh161297@gmail.com"
     },
     {
+      id: 8,
       name: "Phan Vinh Khanh",
       phoneNumber: "0382877861",
       email: "Khanh161297@gmail.com"
