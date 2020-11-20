@@ -1,24 +1,28 @@
 import apiCaller from '../../utils/api';
 
 export const state = {
-
+  errors: []
 };
 
 export const getters = {
-
+  errors: state => state.errors
 };
 
 export const mutations = {
-
+  getNotify(state,data)
+  {
+    state.errors = data;
+  }
 };
 
 export const actions = {
-  ADD_USER: ({ } ,data) => {
+  ADD_USER: ({ commit } ,data) => {
     return new Promise((resolve, reject) => {
       apiCaller.postRequest(
         `api/user`,
         data.params,
         res => {
+          commit("getNotify", res.data);
           resolve(res.data);
         },
         err => {

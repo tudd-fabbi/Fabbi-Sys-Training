@@ -54,14 +54,14 @@ class UserController extends ApiBaseController
             'address',
             'email',
             'password',
-            'course',
+            'course_id',
             'img_path'
         );
 
         $inputData['password'] = bcrypt($inputData['password']);
         $data = $this->repository->addUser($inputData);
-        if ($data['success']) {
-            return $this->sendError(500, "Error", "Failed");
+        if (!$data['success']) {
+            return $data['message'];
         }
 
         return $this->sendSuccess('Add User Success');
@@ -105,7 +105,7 @@ class UserController extends ApiBaseController
             'address',
             'email',
             'password',
-            'course',
+            'course_id',
             'img_path'
         );
 

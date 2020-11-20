@@ -16,9 +16,6 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Multiselect from 'vue-multiselect';
 import Vuetify from 'vuetify'
 
-
-
-
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);
@@ -26,7 +23,6 @@ Vue.use(ArgonDashboard);
 Vue.use(VueIziToast);
 Vue.component('multiselect', Multiselect)
 Vue.use(Multiselect);
-
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresVisitor)) {
         if (authToken.getToken()) {
