@@ -31,6 +31,41 @@
           </multiselect>
         </div>
         <div class="form-group">
+          <b-button v-b-modal.modal-center @click="showUsers">{{ $t("task_screen.button.add_user_btn") }}</b-button>
+          <b-modal id="modal-center" size="xl" centered :title="$t('task_screen.label.list_user')">
+            <div class="custom-modal">
+              <template>
+                <div class="overflow-auto">
+                  <b-table id="my-table" :items="users" :fields="fields">
+                    <template #cell(index)="row">
+                      {{ ++row.index }}
+                    </template>
+                    <template v-slot:cell(actions)="row">
+                      <input type="checkbox" v-model="submitUser" :value="row.item">
+                    </template>
+                  </b-table>
+                  <b-pagination
+                    v-model="paginate.page"
+                    :total-rows="paginate.total"
+                    :per-page="paginate.perPage"
+                    aria-controls="my-table"
+                    @change="changePage"
+                  ></b-pagination>
+                </div>
+              </template>
+            </div>
+          </b-modal>
+        </div>
+        <div class="">
+          <div class="tag-input">
+            <div v-for="(user, index) in submitUser" :key="user.id" class="tag-input__tag">
+              {{ user.name }}
+              <span @click="removeTag(index)">x</span>
+            </div>
+          </div>
+        </div>
+        <div style="clear: both"></div>
+        <div class="form-group">
           <label>{{ $t("task_screen.label.task_deadline") }}</label>
           <input type="date" v-model="task.deadline" class="form-control">
         </div>
@@ -47,10 +82,27 @@
 </template>
 
 <script>
+import {DEFAULT_PERPAGE} from "../../definition/constants";
+
 export default {
   name: "UpdateTask",
   data() {
     return {
+      paginate: {
+        page: 1,
+        perPage: DEFAULT_PERPAGE,
+        total: 0,
+        name: '',
+      },
+      fields: [
+        {key: 'index', label: this.$i18n.t("common.label.index")},
+        {key: 'name', label: this.$i18n.t("user_screen.label.name")},
+        {key: 'phoneNumber', label: this.$i18n.t("user_screen.label.phone_number")},
+        {key: 'email', label: this.$i18n.t("user_screen.label.email")},
+        {key: 'actions', label: 'Actions'}
+      ],
+      users: [],
+      submitUser: [],
       task: {
         name: "",
         content: "",
@@ -61,7 +113,7 @@ export default {
       multi: {
         value: [],
         subjects: []
-      }
+      },
     }
   },
   props: [
@@ -75,6 +127,22 @@ export default {
     }
   },
   methods: {
+    changePage(page) {
+      this.paginate.page = page;
+      this.getUsers();
+    },
+    showUsers() {
+      this.getUsers();
+    },
+    async getUsers() {
+      await this.$store.dispatch('user/GEN_FAKEDATA')
+        .then(res => {
+          this.users = res.info
+        })
+    },
+    removeTag(index) {
+      this.submitUser.splice(index, 1)
+    },
     async getSubjectOfTask() {
       await this.$store.dispatch("task/getSubjectOfTask", this.id)
         .then(response => {
@@ -109,19 +177,18 @@ export default {
       if (this.id) {
         await this.$store.dispatch("task/update", {task: this.task, subject_id: subject_id})
           .then(() => {
-            this.$router.push({ name: 'task.list'});
+            this.$router.push({ name: 'task.list' });
             this.makeToast(this.$i18n.t("task_screen.message.task_msgUpdate"), 'success');
           })
       } else {
         await this.$store.dispatch('task/store', {task: this.task, subject: subject_id})
           .then(() => {
-            this.$router.push({ name: 'task.list'});
+            this.$router.push({ name: 'task.list' });
             this.makeToast(this.$i18n.t("task_screen.message.task_msgCreate"), 'success');
           })
       }
     }
-  }
-
+  },
 }
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
@@ -142,5 +209,35 @@ export default {
 .content button {
   margin: auto;
   display: block;
+}
+
+.custom-modal {
+  height: 65vh;
+  overflow-y: scroll;
+}
+
+.tag-input {
+  width: 100%;
+  border: 1px solid #eee;
+  font-size: 0.9em;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.tag-input__tag {
+  height: 30px;
+  float: left;
+  margin-right: 10px;
+  background-color: #eee;
+  margin-top: 10px;
+  line-height: 30px;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+.tag-input__tag > span {
+  cursor: pointer;
+  opacity: 0.75;
 }
 </style>

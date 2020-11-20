@@ -26,7 +26,8 @@
       "back_home": "Back",
       "detail_task": "Detail task",
       "pick_subject": "pick subject",
-      "subject_placeholder": "search, add subject"
+      "subject_placeholder": "search, add subject",
+      "list_user": "list user"
     },
     "message": {
       "task_msgDelete": "delete ok",
@@ -93,7 +94,9 @@
     },
     "button" : {
       "button_delete" : "Delete",
-      "button_update" : "Update"
+      "button_update" : "Update",
+      "update_btn": "Update",
+      "add_user_btn": "Add user"
     }
   },
   "user_screen": {
@@ -197,6 +200,11 @@
       "delete": "Delete",
       "show": "Show",
       "update": "Update"
+    }
+  },
+  "common": {
+    "label": {
+      "index": "index"
     }
   }
 }
