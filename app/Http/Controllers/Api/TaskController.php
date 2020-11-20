@@ -49,6 +49,7 @@ class TaskController extends ApiBaseController
     {
         $data['task'] = $request['task'];
         $data['subject_id'] = $request['subject_id'];
+        $data['user_id'] = $request['user_id'];
         $task = $this->taskRepository->createTask($data);
         if (!$task['success']) {
             return $this->sendError(500, $task['message'], 'failed');
@@ -95,6 +96,7 @@ class TaskController extends ApiBaseController
     {
         $data['task'] = $request['task'];
         $data['subject_id'] = $request['subject_id'];
+        $data['user_id'] = $request['user_id'];
         $task = $this->taskRepository->updateTask($data, $id);
         if (!$task['success']) {
             return $this->sendError(500, $task['message'], 'failed');

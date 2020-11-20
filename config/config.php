@@ -1,7 +1,7 @@
 <?php
 return [
-    'task' => [
-        'status' => 1
+    'subject_task' => [
+        'status_default' => 1
     ],
     'user_task' => [
         'late' => 0,
