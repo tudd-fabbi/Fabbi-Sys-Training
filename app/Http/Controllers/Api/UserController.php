@@ -98,7 +98,25 @@ class UserController extends ApiBaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $inputData = $request->only(
+            'name',
+            'birthday',
+            'phone',
+            'address',
+            'email',
+            'password',
+            'course',
+            'img_path'
+        );
+
+        $inputData['password'] = bcrypt($inputData['password']);
+        $user = $this->repository->updateUserById($inputData, $id);
+        if (!$user['success'])
+        {
+            return $this->sendError(500, "Error", "Failed");
+        }
+
+        return $this->sendSuccess("UPDATE USER SUCCESS");
     }
 
     /**
@@ -109,7 +127,13 @@ class UserController extends ApiBaseController
      */
     public function destroy($id)
     {
-        //
+        $data = $this->repository->deleteUserById($id);
+        if (!$data['success'])
+        {
+            return $this->sendError(500, "Error", "Failed");
+        }
+
+        return $this->sendSuccess("DELETE USER SUCCESS");
     }
 
     public function countSubject($id)
