@@ -144,4 +144,50 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
            ];
        }
     }
+
+    public function deleteUserById($id)
+    {
+        try
+        {
+           $userData = $this->user->findOrFail($id);
+           $userData->subjects()->detach();
+           $userData->courses()->detach();
+           $userData->tasks()->detach();
+           $userData->delete();
+
+           return [
+               'success' => true
+           ];
+        }
+        catch(\Exception $e)
+        {
+           return [
+               'success' => false,
+               'message' => $e->getMessage()
+           ];
+        }
+    }
+
+    public function updateUserById($data,$id)
+    {
+       try
+       {
+          $userData = $this->user->findOrFail($id);
+          $userData->update($data);
+          $course_id = $data['course'];
+          $userData->courses()->detach();
+          $userData->courses()->attach($course_id, ['status' => 'Update']);
+
+          return [
+              'success' => true
+          ];
+       }
+       catch(\Exception $e)
+       {
+          return [
+              'success' => false,
+              'message' => $e->getMessage()
+          ];
+       }
+    }
 }

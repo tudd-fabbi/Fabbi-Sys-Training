@@ -24,7 +24,7 @@
             id="input-2"
             v-model="course.description"
             required
-            placeholder="$t('course_screen.message.enter_description')"
+            :placeholder="$t('course_screen.message.enter_description')"
           ></b-form-input>
         </b-form-group>
 
@@ -43,7 +43,7 @@
             :searchable="false"
             label="name"
             :close-on-select="true"
-            :show-labels="false" :placeholder="$t('course_screen.message.description')"></multiselect>
+            :show-labels="false" :placeholder="$t('course_screen.message.enter_category')"></multiselect>
         </b-form-group>
         <b-button type="submit" variant="primary"> {{ $t("course_screen.button.submit") }}</b-button>
         <b-button type="reset" variant="danger"> {{ $t("course_screen.button.reset") }}</b-button>
