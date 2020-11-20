@@ -116,13 +116,23 @@ class SubjectController extends ApiBaseController
         return $this->sendSuccess($subjects['data']);
     }
 
-    public function getAllSubject()
+    public function listCourses()
     {
-      $subjects = $this->repository->getAllSubject();
-      if (!$subjects['success']) {
-        return $this->sendError(500, "ERROR", "500");
-      }
+        $courses = $this->repository->listCourses();
+        if (!$courses['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
 
-      return $this->sendSuccess($subjects['data']);
+        return $this->sendSuccess($courses['data']);
+    }
+
+    public function updateActive($id)
+    {
+        $subject = $this->repository->updateActive($id);
+        if (!$subject['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess("UPDATE SUBJECT SUCCESS");
     }
 }

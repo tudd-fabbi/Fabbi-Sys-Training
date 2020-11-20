@@ -4,37 +4,6 @@
       "sign_in": "Sign In"
     }
   },
-  "list_subjects": {
-    "subject": {
-      "name": "Name Subject",
-      "description": "Description",
-      "time": "Time",
-      "is_active": "IsActive",
-      "action": "Action",
-      "search": "Search",
-      "list_subjects": "List Subjects",
-      "add_new_subject": "Add New Subject",
-      "delete": "Delete",
-      "detail": "Detail",
-      "update": "Update",
-      "add": "Add",
-      "course": "Courses",
-      "cancel": "Cancel",
-      "addSubject": "Add Subject",
-      "editSubject": "Edit Subject",
-      "active": "Active",
-      "unActive": "UnActive",
-      "nameCourse": "Name Course",
-      "countCourse": "This Subject belongs to",
-      "countTask": "This Subject has",
-      "task": "Tasks",
-      "student": "Students",
-      "finish": "Finished",
-      "detailSubject": "Detail Subject",
-      "courses": "Courses",
-      "nameSubject": "This Subject's name is: "
-    }
-  },
   "task_screen": {
     "label": {
       "task_name": "Title",
@@ -68,6 +37,63 @@
       "search_btn": "Search",
       "create_btn": "Create",
       "update_btn": "Update"
+    },
+    "task": {
+      "task_name": "Title",
+      "task_content": "Content",
+      "task_description": "Description",
+      "task_deadline": "Deadline"
+    }
+  },
+  "list_subjects": {
+    "label": {
+      "name": "Name Subject",
+      "description": "Description",
+      "time": "Time",
+      "is_active": "IsActive",
+      "action": "Action",
+      "course": "Courses",
+      "active": "Active",
+      "unActive": "UnActive",
+      "nameCourse": "Name Course",
+      "countCourse": "This Subject belongs to",
+      "countTask": "This Subject has",
+      "task": "Tasks",
+      "student": "Students",
+      "finish": "Finished",
+      "detailSubject": "Detail Subject",
+      "courses": "Courses",
+      "nameSubject": "This Subject's name is: ",
+      "deleteConfirm": "Do you want to delete this subject?",
+      "selectRecords": "Select the number of records to return"
+    },
+    "title": {
+      "list_subjects": "List Subjects",
+      "add_new_subject": "Add New Subject",
+      "addSubject": "Add Subject",
+      "editSubject": "Edit Subject"
+    },
+    "button": {
+      "search": "Search",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "detail": "Detail",
+      "update": "Update",
+      "add": "Add"
+    }
+  },
+  "categories":{
+    "title" : {
+      "list_category": "LIST CATEGORY",
+      "add_new_category": "Add New Category"
+    },
+    "label" : {
+      "name_category" : "Name Category",
+      "action_category" : "Action"
+    },
+    "button" : {
+      "button_delete" : "Delete",
+      "button_update" : "Update"
     }
   },
   "user_screen": {
