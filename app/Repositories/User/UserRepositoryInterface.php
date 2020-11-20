@@ -12,5 +12,7 @@ interface UserRepositoryInterface extends BaseRepositoryInterface
     public function countTaskById($id);
     public function getUserNameById($id);
     public function getUserInfoById($id);
+    public function deleteUserById($id);
+    public function updateUserById($data,$id);
 }
 
