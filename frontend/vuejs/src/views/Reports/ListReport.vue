@@ -143,6 +143,7 @@ export default {
     },
     rowClass(item, type) {
       if (!item || type !== 'row') return;
+      if (!item.date_submit) return 'table-danger';
       if (this.checkTime(item.date_submit, item.deadline)) {
         return 'table-danger';
       }
