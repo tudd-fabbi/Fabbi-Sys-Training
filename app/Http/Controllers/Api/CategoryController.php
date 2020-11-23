@@ -30,27 +30,6 @@ class CategoryController extends ApiBaseController
         return $this->sendSuccess($subjects['data']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-    }
-
     public function category()
     {
         $categories =  $this->repository->categories();
@@ -69,7 +48,13 @@ class CategoryController extends ApiBaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only('name');
+        $categories = $this->repository->updateCategory($data, $id);
+        if (!$categories['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess("UPDATE CATEGORY SUCCESS");
     }
 
     /**
@@ -85,6 +70,39 @@ class CategoryController extends ApiBaseController
             return $this->sendError(500, "ERROR", "500");
         }
 
-        return $this->sendSuccess("DELETE SUBJECT SUCCESS");
+        return $this->sendSuccess("DELETE CATEGORY SUCCESS");
+    }
+
+    public function addChildren(Request $request)
+    {
+        $data = $request->only('name', 'parent_id');
+        $categories = $this->repository->addChildren($data);
+        if (!$categories['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess("ADD CATEGORY CHILDREN SUCCESS");
+    }
+
+    public function addAllParent(Request $request, $id)
+    {
+        $data = $request->only('name', 'parent_id');
+        $categories = $this->repository->addAllParent($data, $id);
+        if (!$categories['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess("ADD ALL CATEGORY PARENT SUCCESS");
+    }
+
+    public function addOneParent(Request $request, $id)
+    {
+        $data = $request->only('name', 'parent_id');
+        $categories = $this->repository->addOneParent($data, $id);
+        if (!$categories['success']) {
+            return $this->sendError(500, "ERROR", "500");
+        }
+
+        return $this->sendSuccess("ADD ONE CATEGORY PARENT SUCCESS");
     }
 }

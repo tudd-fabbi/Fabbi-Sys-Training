@@ -16,7 +16,7 @@
                   <router-link
                     id="add"
                     class="btn btn-success"
-                    :to="{ name: 'AddSubjects' }"
+                    :to="{ name: 'subjects.add' }"
                     >{{
                       $t("list_subjects.title.add_new_subject")
                     }}</router-link
@@ -106,7 +106,7 @@
                       id="update"
                       class="btn btn-success"
                       :to="{
-                        name: 'EditSubjects',
+                        name: 'subjects.edit',
                         params: { id: sub.id },
                       }"
                       >{{ $t("list_subjects.button.update") }}

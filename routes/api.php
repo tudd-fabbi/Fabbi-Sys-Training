@@ -53,4 +53,8 @@ Route::put('/is_active/update/{id}','Api\SubjectController@updateActive' );
 Route::get('/categories', 'Api\CategoryController@category');
 Route::resource('/category', 'Api\CategoryController');
 Route::get('/task/users/{id}', 'Api\TaskController@getUsersByTaskId');
+Route::post('/categories/add/children', 'Api\CategoryController@addChildren');
+Route::post('/categories/add/all/parent/{id}', 'Api\CategoryController@addAllParent');
+Route::post('/categories/add/one/parent/{id}', 'Api\CategoryController@addOneParent');
+
 

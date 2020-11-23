@@ -124,7 +124,7 @@
               <router-link
                 id="cancel"
                 class="btn btn-success"
-                :to="{ name: 'Subjects' }"
+                :to="{ name: 'subjects.list' }"
                 >{{ $t("list_subjects.button.cancel") }}</router-link
               >
             </form>

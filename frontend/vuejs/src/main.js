@@ -14,11 +14,12 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import Multiselect from 'vue-multiselect';
-import Vuetify from 'vuetify'
+import Vuetify from 'vuetify';
+import '@riophae/vue-treeselect/dist/vue-treeselect.css'
+import { BootstrapVueIcons } from 'bootstrap-vue'
+import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
 
-
-
-
+Vue.use(BootstrapVueIcons)
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios);

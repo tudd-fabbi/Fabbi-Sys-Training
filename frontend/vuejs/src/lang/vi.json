@@ -81,15 +81,24 @@
   "categories": {
     "title": {
       "list_category": "Danh Sách Danh Mục",
-      "add_new_category": "Thêm mới danh mục"
+      "add_new_category": "Thêm mới danh mục",
+      "update_category": "Cập nhật danh mục"
     },
-    "label": {
-      "name_category": "Tên Danh Mục",
-      "action_category": "Hành Động"
+    "label" : {
+      "name_category" : "Tên Danh Mục",
+      "action_category" : "Hành Động",
+      "category_children": "Thêm các danh mục con",
+      "category_parent": "Thêm danh mục cha",
+      "category_delete_confirm":"Bạn có muốn xóa danh mục này không?"
     },
-    "button": {
-      "button_delete": "Xóa",
-      "button_update": "Cập nhật"
+    "button" : {
+      "button_delete" : "Xóa danh mục",
+      "category_children": "Thêm các danh mục con",
+      "button_add_children" : "Thêm danh mục con",
+      "button_add_all_parent" : "Thêm danh mục cha cho tất cả các danh mục con",
+      "button_add_one_parent" : "Thêm danh mục cha",
+      "button_add_friend" : "Thêm danh mục cùng cấp",
+      "button_update" : "Cập nhật"
     }
   },
   "user_screen": {

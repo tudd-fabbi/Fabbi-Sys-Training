@@ -41,4 +41,61 @@ export const actions = {
       );
     });
   },
+  updateData({ }, params) {
+    return new Promise((resolve, reject) => {
+      apiCaller.putRequest(
+        '/api/category/' + params.id,
+        params.name,
+        response => {
+          resolve(response.data);
+        },
+        err => {
+          reject(err.response.data);
+        }
+      );
+    });
+  },
+  addChildrenData({ }, params) {
+    return new Promise((resolve, reject) => {
+      apiCaller.postRequest(
+        '/api/categories/add/children',
+        params,
+        response => {
+          resolve(response.data);
+        },
+        err => {
+          reject(err.response.data);
+        }
+      );
+    });
+  },
+  addAllParentData({ }, params) {
+    return new Promise((resolve, reject) => {
+      apiCaller.postRequest(
+        '/api/categories/add/all/parent/' + params.id,
+        params.data,
+        response => {
+          resolve(response.data);
+        },
+        err => {
+          reject(err.response.data);
+        }
+      );
+    });
+  },
+  addOneParentData({ }, params) {
+    return new Promise((resolve, reject) => {
+      apiCaller.postRequest(
+        '/api/categories/add/one/parent/' + params.id,
+        params.data,
+        response => {
+          resolve(response.data);
+        },
+        err => {
+          reject(err.response.data);
+        }
+      );
+    });
+  },
+  
 };

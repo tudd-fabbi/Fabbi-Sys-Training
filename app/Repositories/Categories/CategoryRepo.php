@@ -65,4 +65,65 @@ class CategoryRepo extends BaseRepository implements CategoryInterface
       ];
     }
   }
+
+  public function updateCategory($data, $id)
+  {
+    try {
+      $category = $this->model->findOrFail($id);
+      $category->name = $data['name'];
+      $category->update();
+      return [
+        'success' => true
+      ];
+    } catch (\Exception $e) {
+      return [
+        'success' => false,
+        'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function addChildren($data)
+  {
+    $category = $this->model->create($data);
+    dd($category);
+    return [
+      'success' => true,
+    ];
+  }
+
+  public function addAllParent($data, $id)
+  {
+    try {
+      $categories = $this->model->findOrFail($id);
+      $categoryChildren = $this->model->where('parent_id', $categories->parent_id)->get();
+      $category = $this->model->create($data);
+      if ($categoryChildren != null) {
+        foreach ($categoryChildren as $categoryChildren) {
+          $categoryChildren->parent_id = $category->id;
+          $categoryChildren->update();
+        }
+      }
+
+      return [
+        'success' => true
+      ];
+    } catch (\Exception $e) {
+      return [
+        'success' => false,
+        'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function addOneParent($data, $id)
+  {
+    $categories = $this->model->findOrFail($id);
+    $category = $this->model->create($data);
+    $categories->parent_id = $category->id;
+    $categories->update();
+    return [
+      'success' => true
+    ];
+  }
 }

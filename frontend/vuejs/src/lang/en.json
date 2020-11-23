@@ -86,17 +86,25 @@
   "categories":{
     "title" : {
       "list_category": "LIST CATEGORY",
-      "add_new_category": "Add New Category"
+      "add_new_category": "Add New Category",
+      "update_category": "Update Category"
     },
     "label" : {
       "name_category" : "Name Category",
-      "action_category" : "Action"
+      "action_category" : "Action",
+      "category_parent": "Add Category Parent",
+      "category_children": "Add Category Children",
+      "category_delete_confirm": "Do you want to delete this category?"
     },
     "button" : {
-      "button_delete" : "Delete",
       "button_update" : "Update",
       "update_btn": "Update",
-      "add_user_btn": "Add user"
+      "button_delete" : "Delete Category",
+      "button_add_children" : "Add Children",
+      "button_add_all_parent" : "Add All Parent",
+      "button_add_one_parent" : "Add One Parent",
+      "button_add_friend" : "Add Friend",
+      "category_children": "Add Category Children"
     }
   },
   "user_screen": {
