@@ -24,6 +24,24 @@
           {{ task.is_active == 1 ? $t("task_screen.label.task_active") : $t("task_screen.label.task_inactive") }}
         </span>
       </div>
+      <hr>
+      <div class="form-group">
+        <label>{{ $t("list_users.title.list_user") }}</label>
+        <b-table striped hover :items="users" :fields="userField">
+          <template #cell(index)="row">
+            {{ ++row.index }}
+          </template>
+        </b-table>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label>{{ $t("list_subjects.title.list_subjects") }}</label>
+        <b-table striped hover :items="subjects" :fields="subjectsField" >
+          <template #cell(index)="row">
+            {{ ++row.index }}
+          </template>
+        </b-table>
+      </div>
       <router-link class="btn btn-primary" to="/tasks">
         <i class="fas fa-undo-alt"> </i>
         {{ $t("task_screen.label.back_home") }}
@@ -38,6 +56,19 @@ export default {
   data() {
     return {
       task: [],
+      users: [],
+      subjects: [],
+      userField: [
+        { key: 'index', label: this.$i18n.t("common.label.index") },
+        { key: 'name', label: this.$i18n.t("user_screen.label.name") },
+        { key: 'email', label: this.$i18n.t("user_screen.label.email") },
+        { key: 'phone', label: this.$i18n.t("user_screen.label.phone_number") },
+      ],
+      subjectsField: [
+        { key: 'index', label: this.$i18n.t("common.label.index") },
+        { key: 'name', label: this.$i18n.t("list_subjects.label.name") },
+        { key: 'description', label: this.$i18n.t("list_subjects.label.description") }
+      ]
     }
   },
   props: [
@@ -45,6 +76,8 @@ export default {
   ],
   created() {
     this.getTask();
+    this.getSubjectOfTask();
+    this.getUsersOfTask();
   },
   methods: {
     async getTask() {
@@ -53,6 +86,18 @@ export default {
           this.task = response;
         })
     },
+    async getUsersOfTask() {
+      await this.$store.dispatch("task/getUsersOfTask", this.id)
+        .then(response => {
+          this.users = response.data
+        })
+    },
+    async getSubjectOfTask() {
+      await this.$store.dispatch("task/getSubjectOfTask", this.id)
+        .then(response => {
+          this.subjects = response;
+        })
+    }
   }
 }
 </script>
