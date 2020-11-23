@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Users;
+namespace App\Repositories\User;
 
 use App\Models\User;
 use App\Repositories\BaseRepository;
-use App\Repositories\Users\UserRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
 /**

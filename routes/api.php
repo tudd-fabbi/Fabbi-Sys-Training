@@ -52,4 +52,5 @@ Route::get('/courses/list','Api\SubjectController@listCourses' );
 Route::put('/is_active/update/{id}','Api\SubjectController@updateActive' );
 Route::get('/categories', 'Api\CategoryController@category');
 Route::resource('/category', 'Api\CategoryController');
+Route::get('/task/users/{id}', 'Api\TaskController@getUsersByTaskId');
 

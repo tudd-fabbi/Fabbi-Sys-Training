@@ -6,6 +6,7 @@ import AuthToken from './token';
 const SERVER_BASE_URL = "http://localhost:2222";
 
 const http = axios.create({
+  baseURL: SERVER_BASE_URL,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -20,7 +21,8 @@ http.interceptors.request.use(config => {
 }, error => Promise.reject(error));
 
 const postRequest = function (url, data, resolve, reject) {
-  const requestUrl = SERVER_BASE_URL + url;
+  // const requestUrl = SERVER_BASE_URL + url;
+  const requestUrl = url;
   http
     .post(requestUrl, data)
     .then(res => {
@@ -32,7 +34,8 @@ const postRequest = function (url, data, resolve, reject) {
 };
 
 const getRequest = function (url, data, resolve, reject) {
-  const requestUrl = SERVER_BASE_URL + url;
+  // const requestUrl = SERVER_BASE_URL + url;
+  const requestUrl = url;
   http
     .get(requestUrl, data)
     .then(res => {
