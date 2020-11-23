@@ -1,7 +1,7 @@
 import apiCaller from '../../utils/api';
 
 export const state = {
-  
+
 };
 
 export const getters = {

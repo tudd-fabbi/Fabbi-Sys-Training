@@ -51,6 +51,7 @@ class TaskController extends ApiBaseController
         $data['subject_id'] = $request['subject_id'];
         $data['user_id'] = $request['user_id'];
         $task = $this->taskRepository->createTask($data);
+
         if (!$task['success']) {
             return $this->sendError(500, $task['message'], 'failed');
         }
@@ -151,5 +152,15 @@ class TaskController extends ApiBaseController
         }
 
         return $this->sendSuccess(null, 'Thêm mới thành công');
+    }
+
+    public function getUsersByTaskId($id)
+    {
+        $task = $this->taskRepository->getUsersByTaskId($id);
+        if (!$task['success']) {
+            return $this->sendError(500, $task['message'], 'failed');
+        }
+
+        return $this->sendSuccess($task['data']);
     }
 }

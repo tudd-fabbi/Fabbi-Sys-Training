@@ -15,6 +15,7 @@ interface SubjectInterface extends BaseRepositoryInterface
     public function listCourses();
     public function ListCourseBySubjetID($id);
     public function updateActive($id);
+    public function getAllSubject();
 }
-    
+
 

@@ -163,4 +163,21 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
             'success' => true
         ];
     }
+
+    public function getUsersByTaskId($id)
+    {
+        try {
+            $data = $this->model->findOrFail($id)->users;
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => $exception->getMessage()
+            ];
+        }
+
+        return [
+            'success' => true,
+            'data' => $data
+        ];
+    }
 }

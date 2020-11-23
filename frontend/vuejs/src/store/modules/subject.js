@@ -146,5 +146,20 @@ export const actions = {
       );
     });
   },
+
+  getAllSubject({ }) {
+    return new Promise((resolve, reject) => {
+      apiCaller.getRequest(
+        '/api/subject/all',
+        '',
+        response => {
+          resolve(response.data)
+        },
+        err => {
+          reject(err.data)
+        }
+      )
+    });
+  }
 };
 

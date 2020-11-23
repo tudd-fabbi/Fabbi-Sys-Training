@@ -31,7 +31,7 @@
           </multiselect>
         </div>
         <div class="form-group">
-          <b-button v-b-modal.modal-center @click="showUsers">{{ $t("task_screen.button.add_user_btn") }}</b-button>
+          <b-button v-b-modal.modal-center>{{ $t("task_screen.button.add_user_btn") }}</b-button>
           <b-modal id="modal-center" size="xl" centered :title="$t('task_screen.label.list_user')">
             <div class="custom-modal">
               <template>
@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import {DEFAULT_PERPAGE} from "../../definition/constants";
+import { DEFAULT_PERPAGE_USER } from "../../definition/constants";
 
 export default {
   name: "UpdateTask",
@@ -90,7 +90,7 @@ export default {
     return {
       paginate: {
         page: 1,
-        perPage: DEFAULT_PERPAGE,
+        perPage: DEFAULT_PERPAGE_USER,
         total: 0,
         name: '',
       },
@@ -121,9 +121,11 @@ export default {
   ],
   created() {
     this.getAllSubject();
+    this.getUsers();
     if (this.id) {
       this.getTask();
       this.getSubjectOfTask();
+      this.getUsersOfTask();
     }
   },
   methods: {
@@ -131,17 +133,22 @@ export default {
       this.paginate.page = page;
       this.getUsers();
     },
-    showUsers() {
-      this.getUsers();
-    },
     async getUsers() {
-      await this.$store.dispatch('user/GEN_FAKEDATA')
-        .then(res => {
-          this.users = res.info
+      await this.$store.dispatch('user/GET_USER', { params: this.paginate })
+        .then(response => {
+          this.users = response.data.data;
+          this.paginate.perPage = response.data.per_page;
+          this.paginate.total = response.data.total;
         })
     },
     removeTag(index) {
-      this.submitUser.splice(index, 1)
+      this.submitUser.splice(index, 1);
+    },
+    async getUsersOfTask() {
+      await this.$store.dispatch("task/getUsersOfTask", this.id)
+        .then(response => {
+          this.submitUser = response.data;
+        })
     },
     async getSubjectOfTask() {
       await this.$store.dispatch("task/getSubjectOfTask", this.id)
@@ -160,7 +167,7 @@ export default {
     async getAllSubject() {
       await this.$store.dispatch('subject/getAllSubject')
         .then(res => {
-          this.multi.subjects = res
+          this.multi.subjects = res.data
         })
     },
     makeToast(message, variant) {
@@ -173,15 +180,21 @@ export default {
       let subject_id = [];
       this.multi.value.forEach(subject => {
         subject_id.push(subject.id);
-      })
+      });
+      let user_id = [];
+      this.submitUser.forEach(user => {
+        user_id.push(user.id)
+      });
+      let params = { task: this.task, subject_id: subject_id, user_id: user_id }
+
       if (this.id) {
-        await this.$store.dispatch("task/update", {task: this.task, subject_id: subject_id})
+        await this.$store.dispatch("task/update", params)
           .then(() => {
             this.$router.push({ name: 'task.list' });
             this.makeToast(this.$i18n.t("task_screen.message.task_msgUpdate"), 'success');
           })
       } else {
-        await this.$store.dispatch('task/store', {task: this.task, subject: subject_id})
+        await this.$store.dispatch('task/store', params)
           .then(() => {
             this.$router.push({ name: 'task.list' });
             this.makeToast(this.$i18n.t("task_screen.message.task_msgCreate"), 'success');
