@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Repositories\Users\UserRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 use App\Http\Controllers\Api\ApiBaseController;
 
 class UserController extends ApiBaseController

@@ -19,3 +19,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+/frontend/vuejs/src/router/index.js

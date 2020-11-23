@@ -99,5 +99,19 @@ export const actions = {
         }
       )
     });
+  },
+  getUsersOfTask({ }, id) {
+    return new Promise((resolve, reject) => {
+      apiCaller.getRequest(
+        '/api/task/users/' + id,
+        '',
+        response => {
+          resolve(response.data)
+        },
+        err => {
+          reject(err.data);
+        }
+      )
+    });
   }
 }
